@@ -15,9 +15,8 @@ class SplashScreen : AppCompatActivity() {
 
         val logo=findViewById<ImageView>(R.id.OK4U_Logo)
 
-        val database = Firebase.database
+        val database = Firebase.database("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/")
         val myRef = database.getReference("message")
-
         myRef.setValue("Hello, World!")
 
         logo.alpha=0f
