@@ -25,7 +25,7 @@
             android:id="@+id/nav_event"
             android:title="Event"/>
         <item
-            android:id="@+id/MapsFacilities"
+            android:id="@+id/mapsFragment"
             android:title="Nearby OKU Facilities"/>
     </group>
 </menu>
