@@ -32,4 +32,9 @@
         android:name="my.edu.tarc.ok4umobile.EventList"
         android:label="@string/menu_eventList"
         tools:layout="@layout/fragment_event_list" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="my.edu.tarc.ok4umobile.MapsFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
 </navigation>
