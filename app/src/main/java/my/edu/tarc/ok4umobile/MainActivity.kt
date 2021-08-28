@@ -17,10 +17,10 @@ class MainActivity : AppCompatActivity() {
             val i= Intent(this,Drawer::class.java)
             startActivity(i)
         }
-        btn1.setOnClickListener{
-            val i= Intent(this,Drawer::class.java)
-            startActivity(i)
-        }
+//        btn1.setOnClickListener{
+//            val i= Intent(this,Drawer::class.java)
+//            startActivity(i)
+//        }
 
 
     }
