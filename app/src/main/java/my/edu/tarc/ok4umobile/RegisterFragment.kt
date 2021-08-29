@@ -1,0 +1,61 @@
+package my.edu.tarc.ok4umobile
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.google.firebase.database.DatabaseReference
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.core.view.get
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.auth.User
+import com.google.firebase.ktx.Firebase
+import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
+
+class RegisterFragment : Fragment() {
+    private lateinit var binding: FragmentRegisterBinding
+    private lateinit var database: DatabaseReference
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
+
+
+        binding.btnRegister.setOnClickListener(){
+            val pass : String = binding.txtPassword.text.toString()
+            val conf : String = binding.txtConfirm.text.toString()
+
+            if(pass.compareTo(conf) == 0){
+                val name : String = binding.txtName.text.toString()
+                val email : String = binding.txtEmail.text.toString()
+                val temp : Int  = binding.radGender.checkedRadioButtonId
+                val rad = view?.findViewById<RadioButton>(temp)
+                val gender = rad?.text.toString()
+
+                val database = Firebase.database("https://kzassignment-d1445-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                val ref = database.getReference("Users")
+                val newuser = User("003", name, gender, pass, email)
+                ref.child("003").setValue(newuser)
+                Toast.makeText(this.context, "Regoster Success", Toast.LENGTH_LONG).show()
+
+                Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
+            }else{
+                Toast.makeText(this.context, "Incorrect Password", Toast.LENGTH_SHORT).show()
+            }
+
+
+            //database.child("users").child("001").setValue(newuser)
+        }
+
+
+        return binding.root
+    }
+}
