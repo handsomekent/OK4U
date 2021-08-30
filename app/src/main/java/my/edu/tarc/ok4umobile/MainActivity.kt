@@ -12,16 +12,23 @@ class MainActivity : AppCompatActivity() {
 
         val btn1=findViewById<Button>(R.id.button2)
         val btn2=findViewById<Button>(R.id.button3)
-
+        var usertype: String
         btn1.setOnClickListener{
+            usertype="OKU"
             val i= Intent(this,Drawer::class.java)
+            i.putExtra( "Name",usertype)
+
             startActivity(i)
         }
-//        btn1.setOnClickListener{
-//            val i= Intent(this,Drawer::class.java)
-//            startActivity(i)
-//        }
+        btn2.setOnClickListener{
+             usertype="admin"
 
+            val i= Intent(this,Drawer::class.java)
+            i.putExtra( "Name",usertype)
+
+            startActivity(i)
+
+        }
 
     }
 }

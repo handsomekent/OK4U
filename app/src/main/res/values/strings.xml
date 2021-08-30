@@ -17,5 +17,6 @@
     <string name="title_activity_admin_drawer">AdminDrawer</string>
     <string name="title_activity_ngo_drawer">NgoDrawer</string>
     <string name="menu_editprofile">Profile</string>
-    <string name="menu_eventList">Event</string>
+    <string name="menu_eventlist">Event</string>
+    <string name="okumap">MapsFacility</string>
 </resources>
