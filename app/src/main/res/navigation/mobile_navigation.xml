@@ -37,19 +37,4 @@
         android:name="my.edu.tarc.ok4umobile.MapsFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
-    <fragment
-        android:id="@+id/nav_apply_event"
-        android:name="my.edu.tarc.ok4umobile.ApplyEventPostingFragmentt"
-        android:label="fragment_apply_event_posting_fragmentt"
-        tools:layout="@layout/fragment_apply_event_posting_fragmentt" />
-    <fragment
-        android:id="@+id/nav_verify_event"
-        android:name="my.edu.tarc.ok4umobile.VerifyEventPosting"
-        android:label="fragment_verify_event_posting"
-        tools:layout="@layout/fragment_verify_event_posting" />
-    <fragment
-        android:id="@+id/nav_verify_new_facilities"
-        android:name="my.edu.tarc.ok4umobile.VerifyNewFacilities"
-        android:label="fragment_verify_new_facilities"
-        tools:layout="@layout/fragment_verify_new_facilities" />
 </navigation>
