@@ -19,4 +19,8 @@
     <string name="menu_editprofile">Profile</string>
     <string name="menu_eventlist">Event</string>
     <string name="okumap">MapsFacility</string>
+    <string name="nav_map">nav_map</string>
+    <string name="nav_apply_event_posting">nav_apply_event_posting</string>
+    <string name="nav_verify_facilities" >nav_verify_facilities</string>
+    <string name="nav_verify_event_posting">nav_verify_event_posting</string>
 </resources>

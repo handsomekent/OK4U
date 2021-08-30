@@ -10,7 +10,7 @@ import com.google.firebase.ktx.Firebase
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_scree)
+        setContentView(R.layout.activity_splash_screen)
 
 
         val logo=findViewById<ImageView>(R.id.OK4U_Logo)
