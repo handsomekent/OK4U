@@ -17,16 +17,16 @@ import my.edu.tarc.ok4umobile.databinding.AdmindrawerBinding
 class Drawer : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    //private lateinit var binding: AdmindrawerBinding
-    private lateinit var binding: ActivityDrawerBinding
+    private lateinit var binding: AdmindrawerBinding
+  //  private lateinit var bindingadmin: AdmindrawerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
         super.onCreate(savedInstanceState)
 
-     //   binding = AdmindrawerBinding.inflate(layoutInflater)
-        binding = ActivityDrawerBinding.inflate(layoutInflater)
+        binding = AdmindrawerBinding.inflate(layoutInflater)
+   //     binding = ActivityDrawerBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
@@ -36,8 +36,8 @@ class Drawer : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-            //    val drawerLayout: DrawerLayout = binding.adminDrawer
-        val drawerLayout: DrawerLayout = binding.drawerlayout
+        val drawerLayout: DrawerLayout = binding.adminDrawer
+    //    val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_drawer)
         // Passing each menu ID as a set of Ids because each
