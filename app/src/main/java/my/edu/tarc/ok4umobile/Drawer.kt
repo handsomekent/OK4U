@@ -18,7 +18,7 @@ class Drawer : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: AdmindrawerBinding
-  //  private lateinit var bindingadmin: AdmindrawerBinding
+  //  private lateinit var binding: ActivityDrawerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
