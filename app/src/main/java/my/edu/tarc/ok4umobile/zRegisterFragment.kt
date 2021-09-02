@@ -1,5 +1,7 @@
 package my.edu.tarc.ok4umobile
 
+import my.edu.tarc.ok4umobile.User
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,12 +13,13 @@ import android.widget.Toast
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
+//import com.google.firebase.firestore.auth.User as User
+
+
 
 class zRegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
@@ -40,7 +43,8 @@ class zRegisterFragment : Fragment() {
                 val rad = view?.findViewById<RadioButton>(temp)
                 val gender = rad?.text.toString()
 
-                val database = Firebase.database("https://kzassignment-d1445-default-rtdb.asia-southeast1.firebasedatabase.app/")
+
+                val database = Firebase.database("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val ref = database.getReference("Users")
                 val newuser = User("003", name, gender, pass, email)
                 ref.child("003").setValue(newuser)
