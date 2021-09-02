@@ -47,7 +47,8 @@ class zRegisterFragment : Fragment() {
                 val user_type= radio_usertype?.text.toString()
 
 
-                val database = Firebase.database("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/")
+               // val database = Firebase.database("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                val database = Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val ref = database.getReference("Users")
                // val newuser = User("003", name, gender, pass, email,user_type)
                // ref.child("003").setValue(newuser)

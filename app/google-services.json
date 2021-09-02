@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "502264749840",
-    "project_id": "ok4u-bc86a",
-    "storage_bucket": "ok4u-bc86a.appspot.com"
+    "project_number": "890872280653",
+    "project_id": "ok4u-a1047",
+    "storage_bucket": "ok4u-a1047.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:502264749840:android:3823c2fe6aca7f3c534f95",
+        "mobilesdk_app_id": "1:890872280653:android:5096750232d7ad8a214e04",
         "android_client_info": {
           "package_name": "my.edu.tarc.ok4umobile"
         }
       },
       "oauth_client": [
         {
-          "client_id": "502264749840-5kbk6tten8k5pnb7gbl7nl0jlecdl9js.apps.googleusercontent.com",
+          "client_id": "890872280653-sbqhmcjfg8g5l6p2kblaavg7sv2lptvf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB4Vf_Jbhj4X8pAJ_fA789Nvdnv8JttJLU"
+          "current_key": "AIzaSyCuuAyyFSdXCNd4ojYQKMWEsOPxv5NvPik"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "502264749840-5kbk6tten8k5pnb7gbl7nl0jlecdl9js.apps.googleusercontent.com",
+              "client_id": "890872280653-sbqhmcjfg8g5l6p2kblaavg7sv2lptvf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -50,7 +50,7 @@ class zLoginFragment : Fragment() {
             //val database = Firebase.database("https://kzassignment-d1445-default-rtdb.asia-southeast1.firebasedatabase.app/")
             //val ref = database.getReference("Users")
 
-            val database  = FirebaseDatabase.getInstance("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users")
+            val database  = FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users")
             database.addValueEventListener(object : ValueEventListener{
 
                 override fun onDataChange(snapshot: DataSnapshot) {
