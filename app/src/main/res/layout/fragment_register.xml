@@ -16,7 +16,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.100000024"
+            app:layout_constraintVertical_bias="0.047"
             app:srcCompat="@drawable/ok4u" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:id="@+id/txtName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:shadowColor="@color/gray"
@@ -59,14 +59,15 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/radGender" />
 
+
         <RadioGroup
             android:id="@+id/radGender"
             android:layout_width="250dp"
             android:layout_height="45dp"
-            android:layout_marginTop="@dimen/kzmargintop"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/txtName"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/txtName"
             app:layout_constraintTop_toBottomOf="@+id/txtName">
 
@@ -84,6 +85,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Female"
+                tools:layout_editor_absoluteX="209dp"
+                tools:layout_editor_absoluteY="350dp" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radUserType"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/txtConfirm"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/txtConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/txtConfirm">
+
+            <RadioButton
+                android:id="@+id/Oku"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Oku"
+                tools:layout_editor_absoluteX="86dp"
+                tools:layout_editor_absoluteY="350dp" />
+
+            <RadioButton
+                android:id="@+id/Ngo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngo"
                 tools:layout_editor_absoluteX="209dp"
                 tools:layout_editor_absoluteY="350dp" />
 
@@ -130,7 +161,7 @@
             android:id="@+id/txtPassword"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/kzmargintop"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Enter your password"
@@ -170,10 +201,10 @@
             android:id="@+id/btnRegister"
             style="@style/style_button"
             android:layout_width="250dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="100dp"
             android:text="Register"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtConfirm" />
 
@@ -181,13 +212,25 @@
             android:id="@+id/lblLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:text="Already have account? Log in"
             android:textSize="@dimen/login_textsize"
             app:layout_constraintEnd_toEndOf="@+id/btnRegister"
             app:layout_constraintHorizontal_bias="0.511"
             app:layout_constraintStart_toStartOf="@+id/btnRegister"
             app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register as"
+            android:textColor="@color/black"
+            android:textSize="@dimen/login_textsize"
+            app:layout_constraintEnd_toEndOf="@+id/radUserType"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/radUserType"
+            tools:layout_editor_absoluteY="518dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

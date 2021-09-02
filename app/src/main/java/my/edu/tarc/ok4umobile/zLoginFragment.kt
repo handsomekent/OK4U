@@ -33,8 +33,7 @@ class zLoginFragment : Fragment() {
 
     ): View? {
 
-        val email = binding.txtEmail.text.toString()
-        val pass = binding.txtPassword.text.toString()
+
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
@@ -46,8 +45,8 @@ class zLoginFragment : Fragment() {
 //        }
 
         binding.btnLogin.setOnClickListener(){
-//            val email = binding.txtEmail.text.toString()
-//            val pass = binding.txtPassword.text.toString()
+            val email = binding.txtEmail.text.toString()
+            val pass = binding.txtPassword.text.toString()
             //val database = Firebase.database("https://kzassignment-d1445-default-rtdb.asia-southeast1.firebasedatabase.app/")
             //val ref = database.getReference("Users")
 
@@ -65,6 +64,7 @@ class zLoginFragment : Fragment() {
                             var temp3 = i.child("gender").getValue().toString()
                             var temp4 = i.child("password").getValue().toString()
                             var temp5 = i.child("email").getValue().toString()
+                            var temp6 = i.child("userType").getValue().toString()
 
 
 
@@ -83,9 +83,10 @@ class zLoginFragment : Fragment() {
 //
 //                                    startActivity(i)
 
-                                val bundle = bundleOf(Pair("bundle", temp2))
+                                //val bundle = bundleOf(Pair("bundle", temp2))
                                 val intent = Intent(activity, Drawer::class.java) // open activity from fragment
-                                intent.putExtra("Name",bundle)
+                            //    intent.putExtra("Name",bundle)
+                                intent.putExtra("userType",temp6)
                                         startActivity(intent)
                             } else {
                                 Toast.makeText(context, "failed", Toast.LENGTH_LONG) //   }
