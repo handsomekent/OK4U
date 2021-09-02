@@ -18,7 +18,7 @@ import com.google.firebase.firestore.auth.User
 import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
 
-class RegisterFragment : Fragment() {
+class zRegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var database: DatabaseReference
 

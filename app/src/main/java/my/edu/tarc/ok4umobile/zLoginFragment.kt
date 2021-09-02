@@ -22,7 +22,7 @@ import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ok4umobile.databinding.FragmentLoginBinding
 import kotlin.contracts.Returns
 
-class LoginFragment : Fragment() {
+class zLoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var userList: ArrayList<User>
 
