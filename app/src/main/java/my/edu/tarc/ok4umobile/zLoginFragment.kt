@@ -77,8 +77,15 @@ class zLoginFragment : Fragment() {
                                 //failed to pass obj
                                 //val bundle = bundleOf(Pair("bundle", user))
 
+//                                    usertype="OKU"
+//                                    val i= Intent(this,Drawer::class.java)
+//                                    i.putExtra( "Name",usertype)
+//
+//                                    startActivity(i)
+
                                 val bundle = bundleOf(Pair("bundle", temp2))
                                 val intent = Intent(activity, Drawer::class.java) // open activity from fragment
+                                intent.putExtra("Name",bundle)
                                         startActivity(intent)
                             } else {
                                 Toast.makeText(context, "failed", Toast.LENGTH_LONG) //   }
