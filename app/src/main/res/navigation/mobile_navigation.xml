@@ -3,38 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_event">
+    app:startDestination="@+id/nav_event">
 
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="my.edu.tarc.ok4umobile.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_home"-->
+<!--        android:name="my.edu.tarc.ok4umobile.ui.home.HomeFragment"-->
+<!--        android:label="@string/menu_home"-->
+<!--        tools:layout="@layout/fragment_home" />-->
 
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="my.edu.tarc.ok4umobile.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_gallery"-->
+<!--        android:name="my.edu.tarc.ok4umobile.ui.gallery.GalleryFragment"-->
+<!--        android:label="@string/menu_gallery"-->
+<!--        tools:layout="@layout/fragment_gallery" />-->
 
+<!--    <fragment-->
+<!--        android:id="@+id/nav_slideshow"-->
+<!--        android:name="my.edu.tarc.ok4umobile.ui.slideshow.SlideshowFragment"-->
+<!--        android:label="@string/menu_slideshow"-->
+<!--        tools:layout="@layout/fragment_slideshow" />-->
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="my.edu.tarc.ok4umobile.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
-        android:id="@+id/nav_editProfile"
-        android:name="my.edu.tarc.ok4umobile.EditProfile"
+        android:id="@+id/nav_oku_editProfile"
+        android:name="my.edu.tarc.ok4umobile.OkuEditProfile"
         android:label="@string/menu_editprofile"
-        tools:layout="@layout/fragment_edit_profile" />
+        tools:layout="@layout/fragment_oku_edit_profile" />
     <fragment
         android:id="@+id/nav_event"
-        android:name="my.edu.tarc.ok4umobile.EventList"
-        android:label="@string/menu_eventList"
-        tools:layout="@layout/fragment_event_list" />
+        android:name="my.edu.tarc.ok4umobile.zEventList"
+        android:label="@string/menu_eventlist"
+        tools:layout="@layout/fragmentt_event_list" />
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="my.edu.tarc.ok4umobile.MapsFragment"
-        android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        android:name="my.edu.tarc.ok4umobile.zMapsFragment"
+        android:label="@string/nav_map"
+        tools:layout="@layout/fragmentt_map" />
+    <fragment
+        android:id="@+id/nav_apply_event_posting"
+        android:name="my.edu.tarc.ok4umobile.ApplyEventPostingFragmentt"
+        android:label="Apply event posting"
+        tools:layout="@layout/fragment_ngo_apply_event_posting_fragmentt" />
+    <fragment
+        android:id="@+id/nav_verify_new_facilities"
+        android:name="my.edu.tarc.ok4umobile.VerifyNewFacilities"
+        android:label="Verify new facilities"
+        tools:layout="@layout/fragment_admin_verify_new_facilities" />
+    <fragment
+        android:id="@+id/nav_verify_event_posting"
+        android:name="my.edu.tarc.ok4umobile.VerifyEventPosting"
+        android:label="Verify event posting"
+        tools:layout="@layout/fragment_admin_verify_event_posting" />
+    <fragment
+        android:id="@+id/nav_ngo_edit_profile"
+        android:name="my.edu.tarc.ok4umobile.NgoEditProfile"
+        android:label="Edit profile"
+        tools:layout="@layout/fragment_ngo_edit_profile" />
+    <fragment
+        android:id="@+id/nav_oku_suggest_facilities"
+        android:name="my.edu.tarc.ok4umobile.Suggestfacilities"
+        android:label="Suggest new facilities"
+        tools:layout="@layout/fragment_oku_suggestfacilities" />
 </navigation>

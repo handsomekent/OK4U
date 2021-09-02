@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EventDetails">
+    tools:context=".OkuEventDetails">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:orientation="vertical"
-        tools:context=".EventDetails">
+        tools:context=".OkuEventDetails">
 
         <TextView
             android:id="@+id/tvEventTitle2"

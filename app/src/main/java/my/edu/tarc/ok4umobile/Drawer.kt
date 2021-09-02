@@ -11,17 +11,25 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import my.edu.tarc.ok4umobile.databinding.ActivityDrawerBinding
+import my.edu.tarc.ok4umobile.databinding.DrawerAdminBinding
+
 
 class Drawer : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityDrawerBinding
+    private lateinit var binding: DrawerAdminBinding
+    //private lateinit var binding: DrawerNgoBinding
+    //private lateinit var binding: DrawerOkuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
 
-        binding = ActivityDrawerBinding.inflate(layoutInflater)
+        binding = DrawerAdminBinding.inflate(layoutInflater)
+        //binding = DrawerNgoBinding.inflate(layoutInflater)
+        //binding = DrawerOkuBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarDrawer.toolbar)
@@ -30,14 +38,22 @@ class Drawer : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-        val drawerLayout: DrawerLayout = binding.drawerLayout
+          val drawerLayout: DrawerLayout = binding.adminDrawer
+        //val drawerLayout: DrawerLayout = binding.ngoDrawer
+        //val drawerLayout: DrawerLayout = binding.okuDrawer
+
+
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_drawer)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
+
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_editProfile,R.id.nav_event,R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.mapsFragment
+                R.id.nav_oku_editProfile,R.id.nav_event,
+                R.id.mapsFragment,R.id.nav_apply_event_posting,R.id.nav_verify_event_posting,R.id.nav_verify_new_facilities
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
