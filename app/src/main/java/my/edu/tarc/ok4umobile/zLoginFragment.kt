@@ -33,17 +33,68 @@ class zLoginFragment : Fragment() {
 
     ): View? {
 
-
-
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         val email = binding.txtEmail.text.toString()
         val pass = binding.txtPassword.text.toString()
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
+
 
 //        binding.btnLogin.setOnClickListener()
 //        {
 //            val intent = Intent(activity, Drawer::class.java) // open activity from fragment
 //            startActivity(intent)
 //        }
+
+        binding.btnLogin.setOnClickListener(){
+//            val email = binding.txtEmail.text.toString()
+//            val pass = binding.txtPassword.text.toString()
+            //val database = Firebase.database("https://kzassignment-d1445-default-rtdb.asia-southeast1.firebasedatabase.app/")
+            //val ref = database.getReference("Users")
+
+            val database  = FirebaseDatabase.getInstance("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users")
+            database.addValueEventListener(object : ValueEventListener{
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        binding.textView.text = "can"
+                        //change text failed
+
+                        for (i in snapshot.children) {
+                            var temp1 = i.child("id").getValue().toString()
+                            var temp2 = i.child("name").getValue().toString()
+                            var temp3 = i.child("gender").getValue().toString()
+                            var temp4 = i.child("password").getValue().toString()
+                            var temp5 = i.child("email").getValue().toString()
+
+
+
+                            if (email.equals(temp5)==true&& pass.equals(temp4)==true) {
+                            //if (email.compareTo(temp5) == 1 && pass.compareTo(temp4) == 1) {
+
+                                Toast.makeText( context,"Sucess", Toast.LENGTH_LONG)
+                                // toast failed
+                                //val user = User(temp1, temp2, temp3, temp4, temp5)
+                                //failed to pass obj
+                                //val bundle = bundleOf(Pair("bundle", user))
+
+                                val bundle = bundleOf(Pair("bundle", temp2))
+                                val intent = Intent(activity, Drawer::class.java) // open activity from fragment
+                                        startActivity(intent)
+                            } else {
+                                Toast.makeText(context, "failed", Toast.LENGTH_LONG) //   }
+                            }
+//                            val temp = i.getValue(User::class.java)
+//                            binding.textView.text = temp?.name.toString()
+//                            //userList.add(temp)
+                        }
+                        // binding.textView.text = userList.size.toString()
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    //Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_testFragment)
+                }
+            })
+        }
 
 
 

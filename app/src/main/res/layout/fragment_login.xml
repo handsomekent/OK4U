@@ -39,6 +39,7 @@
             android:layout_marginTop="50dp"
             android:ems="10"
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:shadowColor="@color/gray"
             android:text="yeapzyee@gmail.com"
             android:textColor="@color/gray"
@@ -68,6 +69,7 @@
             android:layout_marginTop="60dp"
             android:ems="10"
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:text="password"
             android:textColor="@color/gray"
             app:layout_constraintEnd_toEndOf="@+id/txtEmail"
@@ -111,9 +113,11 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
             android:text="TextView"
-            tools:layout_editor_absoluteX="171dp"
-            tools:layout_editor_absoluteY="608dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblReset" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
