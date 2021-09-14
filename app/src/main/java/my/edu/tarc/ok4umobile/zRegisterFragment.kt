@@ -34,7 +34,7 @@ class zRegisterFragment : Fragment() {
 
         binding.btnRegister.setOnClickListener(){
             val pass : String = binding.txtPassword.text.toString()
-            val conf : String = binding.txtConfirm.text.toString()
+            val conf : String = binding.txtConfirm.text.toString()  //
 
             if(pass.compareTo(conf) == 0){
                 val name : String = binding.txtName.text.toString()
