@@ -16,7 +16,9 @@ class User(
     var gender:String,
     var password:String,
     var email:String,
+    var address: String,
+    var phoneNumber:String,
     var userType:String
 ){
-    constructor(): this("","","","","")
+    constructor(): this("","","","","","","")
 }

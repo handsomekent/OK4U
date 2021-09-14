@@ -29,12 +29,18 @@ class Drawer : AppCompatActivity() {
     private lateinit var binding2: DrawerNgoBinding
     private lateinit var binding3: DrawerOkuBinding
 
+  //  var email=intent.getStringExtra("email")
+  //  var name=intent.getStringExtra("name")
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
         super.onCreate(savedInstanceState)
         var intent=intent
-        var userType: String? =intent.getStringExtra("userType")
+    //    var userType: String? =intent.getStringExtra("userType")
+    //    var email: String? =intent.getStringExtra("email")
+        var login=zLoginFragment()
+        var userType: String? =login.userType
 
         Log.i("MainActivity", ""+userType)//test only
 
