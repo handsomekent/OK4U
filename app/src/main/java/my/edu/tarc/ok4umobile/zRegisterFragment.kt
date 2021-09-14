@@ -34,7 +34,7 @@ class zRegisterFragment : Fragment() {
 
         binding.btnRegister.setOnClickListener(){
             val pass : String = binding.txtPassword.text.toString()
-            val conf : String = binding.txtConfirm.text.toString()  //
+            val conf : String = binding.txtConfirm.text.toString()
 
             if(pass.compareTo(conf) == 0){
                 val name : String = binding.txtName.text.toString()
@@ -50,9 +50,14 @@ class zRegisterFragment : Fragment() {
                // val database = Firebase.database("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val database = Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val ref = database.getReference("Users")
+
+
                // val newuser = User("003", name, gender, pass, email,user_type)
                // ref.child("003").setValue(newuser)
                 val newuser = User(name, gender, pass, email,user_type)
+
+
+
                 ref.child(name).setValue(newuser)
                 Toast.makeText(this.context, "Register Success", Toast.LENGTH_LONG).show()
 
