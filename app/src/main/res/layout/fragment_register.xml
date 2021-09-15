@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="@dimen/login_iconsize"
+            android:layout_height="@dimen/login_iconsize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.047"
+            app:srcCompat="@drawable/ok4u" />
+
+        <TextView
+            android:id="@+id/lblName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/login_textsize"
+            app:layout_constraintBottom_toTopOf="@+id/txtName"
+            app:layout_constraintEnd_toEndOf="@+id/txtName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtName" />
+
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:shadowColor="@color/gray"
+            android:text="Enter your Full Name"
+            android:textColor="@color/gray"
+            android:textColorHint="@color/gray"
+            app:layout_constraintEnd_toEndOf="@+id/imgIcon"
+            app:layout_constraintStart_toStartOf="@+id/imgIcon"
+            app:layout_constraintTop_toBottomOf="@+id/imgIcon" />
+
+        <TextView
+            android:id="@+id/lblGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textColor="@color/black"
+            android:textSize="@dimen/login_textsize"
+            app:layout_constraintBottom_toTopOf="@+id/radGender"
+            app:layout_constraintEnd_toEndOf="@+id/radGender"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/radGender" />
+
+
+        <RadioGroup
+            android:id="@+id/radGender"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/txtName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtName"
+            app:layout_constraintTop_toBottomOf="@+id/txtName">
+
+            <RadioButton
+                android:id="@+id/rabMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Male"
+                tools:layout_editor_absoluteX="86dp"
+                tools:layout_editor_absoluteY="350dp" />
+
+            <RadioButton
+                android:id="@+id/rdbFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                tools:layout_editor_absoluteX="209dp"
+                tools:layout_editor_absoluteY="350dp" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/radUserType"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/txtConfirm"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/txtConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/txtConfirm">
+
+            <RadioButton
+                android:id="@+id/Oku"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Oku"
+                tools:layout_editor_absoluteX="86dp"
+                tools:layout_editor_absoluteY="350dp" />
+
+            <RadioButton
+                android:id="@+id/Ngo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngo"
+                tools:layout_editor_absoluteX="209dp"
+                tools:layout_editor_absoluteY="350dp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/lblEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="@dimen/login_textsize"
+            app:layout_constraintBottom_toTopOf="@+id/txtEmail"
+            app:layout_constraintEnd_toEndOf="@+id/txtEmail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txtEmail" />
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/kzmargintop"
+            android:text="Enter your email address"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@+id/radGender"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/radGender"
+            app:layout_constraintTop_toBottomOf="@+id/radGender" />
+
+        <TextView
+            android:id="@+id/lblPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="@color/black"
+            android:textSize="@dimen/login_textsize"
+            app:layout_constraintBottom_toTopOf="@+id/txtPassword"
+            app:layout_constraintEnd_toEndOf="@+id/txtPassword"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtPassword" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Enter your password"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@+id/txtEmail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtEmail"
+            app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+        <TextView
+            android:id="@+id/lblConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm Password"
+            android:textColor="@color/black"
+            android:textSize="@dimen/login_textsize"
+            app:layout_constraintBottom_toTopOf="@+id/txtConfirm"
+            app:layout_constraintEnd_toEndOf="@+id/txtConfirm"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtConfirm" />
+
+        <EditText
+            android:id="@+id/txtConfirm"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/kzmargintop"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Confirm your password"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@+id/txtPassword"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtPassword"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            style="@style/style_button"
+            android:layout_width="250dp"
+            android:layout_marginTop="100dp"
+            android:text="Register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtConfirm" />
+
+        <TextView
+            android:id="@+id/lblLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Already have account? Log in"
+            android:textSize="@dimen/login_textsize"
+            app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="@+id/btnRegister"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register as"
+            android:textColor="@color/black"
+            android:textSize="@dimen/login_textsize"
+            app:layout_constraintEnd_toEndOf="@+id/radUserType"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/radUserType"
+            tools:layout_editor_absoluteY="518dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

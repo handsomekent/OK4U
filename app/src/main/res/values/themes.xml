@@ -22,4 +22,9 @@
     <style name="Theme.OK4Umobile.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.OK4Umobile.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="style_button">
+        <item name="android:layout_height">50dp</item>
+        <item name="backgroundTint">@color/pinkred</item>
+    </style>
 </resources>
