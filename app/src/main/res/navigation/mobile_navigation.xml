@@ -51,4 +51,9 @@
         android:name="my.edu.tarc.ok4umobile.Suggestfacilities"
         android:label="Suggest new facilities"
         tools:layout="@layout/fragment_oku_suggestfacilities" />
+    <activity
+        android:id="@+id/nav_act_event"
+        android:name="my.edu.tarc.ok4umobile.Event"
+        android:label="activity_event"
+        tools:layout="@layout/activity_event" />
 </navigation>
