@@ -36,12 +36,11 @@ class Drawer : AppCompatActivity() {
 
 
         super.onCreate(savedInstanceState)
-        var intent=intent
+
     //    var userType: String? =intent.getStringExtra("userType")
     //    var email: String? =intent.getStringExtra("email")
-        var login=zLoginFragment()
-        var userType: String? =login.userType
 
+var userType =null
         Log.i("MainActivity", ""+userType)//test only
 
 

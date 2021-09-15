@@ -25,9 +25,7 @@ import kotlin.contracts.Returns
 class zLoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var userList: ArrayList<User>
-var name:String? = null
-    var email:String? = null
-    var userType:String? = null
+
 
 
     override fun onCreateView(
@@ -94,9 +92,9 @@ var name:String? = null
 //                                intent.putExtra("email",temp5)
 //                                intent.putExtra("name",temp2)
 
-                                name=temp2
-                                email=temp5
-                                userType=temp6
+                                val sharedPref = activity?.getSharedPreferences(
+                                    getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+
                                         startActivity(intent)
                             } else {
                                 Toast.makeText(context, "failed", Toast.LENGTH_LONG) //   }
