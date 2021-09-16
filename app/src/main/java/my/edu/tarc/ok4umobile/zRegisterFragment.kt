@@ -60,7 +60,7 @@ class zRegisterFragment : Fragment() {
 
 
 
-                ref.child(name).setValue(newuser)
+                ref.child(email).setValue(newuser)
                 Toast.makeText(this.context, "Register Success", Toast.LENGTH_LONG).show()
 
                 Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)

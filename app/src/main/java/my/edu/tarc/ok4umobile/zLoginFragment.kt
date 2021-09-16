@@ -100,6 +100,7 @@ class zLoginFragment : Fragment() {
                                 val editor: SharedPreferences.Editor? =  sharedPref?.edit()
                                 editor?.putString("userType",temp6)
                                 editor?.putString("email",temp5)
+                                editor?.putString("name",temp2)
                                 editor?.apply()
 
 

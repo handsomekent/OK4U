@@ -24,108 +24,95 @@ import my.edu.tarc.ok4umobile.databinding.DrawerOkuBinding
 class Drawer : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    val sharedPrefFile = "kotlinsharedpreference"
-
 
 
     private lateinit var binding1: DrawerAdminBinding
     private lateinit var binding2: DrawerNgoBinding
     private lateinit var binding3: DrawerOkuBinding
 
-  //  var email=intent.getStringExtra("email")
-  //  var name=intent.getStringExtra("name")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val sharedPref : SharedPreferences? = this.getSharedPreferences(
-            sharedPrefFile, Context.MODE_PRIVATE) ?: return
-
-        var userType: String = sharedPref?.getString("userType","No Data").toString()
 
 
+        val sharedPref: SharedPreferences? = this.getSharedPreferences(
+            "kotlinsharedpreference", Context.MODE_PRIVATE
+        ) ?: return
+        var email: String = sharedPref?.getString("email", "No Data").toString()
+        var name: String = sharedPref?.getString("name", "No Data").toString()
+        var userType: String = sharedPref?.getString("userType", "No Data").toString()
 
 
-        //    var userType: String? =intent.getStringExtra("userType")
-    //    var email: String? =intent.getStringExtra("email")
 
-        Log.i("MainActivity", ""+userType)//test only
+        Log.i("MainActivity", "" + userType)//test only
 
 
 //if user is admin
-        if (userType=="admin"){
+        if (userType == "admin") {
             binding1 = DrawerAdminBinding.inflate(layoutInflater)
             setContentView(binding1.root)
 
             setSupportActionBar(binding1.appBarDrawer.toolbar)
 
-            binding1.appBarDrawer.fab.setOnClickListener { view ->
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-            }
+
             val drawerLayout: DrawerLayout = binding1.adminDrawer
-            //val drawerLayout: DrawerLayout = binding.ngoDrawer
-            //val drawerLayout: DrawerLayout = binding.okuDrawer
 
 
             val navView: NavigationView = binding1.navView
             val navController = findNavController(R.id.nav_host_fragment_content_drawer)
             appBarConfiguration = AppBarConfiguration(
                 setOf(
-                    R.id.nav_oku_editProfile,R.id.nav_event,
-                    R.id.mapsFragment,R.id.nav_apply_event_posting,R.id.nav_verify_event_posting,R.id.nav_verify_new_facilities
+                    R.id.nav_oku_editProfile,
+                    R.id.nav_oku_suggest_facilities,
+                    R.id.nav_event,
+                    R.id.mapsFragment,
+                    R.id.nav_apply_event_posting,
+                    R.id.nav_verify_event_posting,
+                    R.id.nav_verify_new_facilities
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
             navView.setupWithNavController(navController)
         }
         //if user is ngo
-        if(userType=="Ngo"){
+        if (userType == "Ngo") {
             binding2 = DrawerNgoBinding.inflate(layoutInflater)
             setContentView(binding2.root)
 
             setSupportActionBar(binding2.appBarDrawer.toolbar)
 
-            binding2.appBarDrawer.fab.setOnClickListener { view ->
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
 
-                //val drawerLayout: DrawerLayout = binding2.adminDrawer
-                val drawerLayout: DrawerLayout = binding2.ngoDrawer
-                //val drawerLayout: DrawerLayout = binding.okuDrawer
-
-                val navView: NavigationView = binding2.navView
-                val navController = findNavController(R.id.nav_host_fragment_content_drawer)
-
-
-                appBarConfiguration = AppBarConfiguration(
-                    setOf(
-                        R.id.nav_oku_editProfile,R.id.nav_event,
-                        R.id.mapsFragment,R.id.nav_apply_event_posting,R.id.nav_verify_event_posting,R.id.nav_verify_new_facilities
-                    ), drawerLayout
-                )
-                setupActionBarWithNavController(navController, appBarConfiguration)
-                navView.setupWithNavController(navController)
-            }
-
+            val drawerLayout: DrawerLayout = binding2.ngoDrawer
 
 
             val navView: NavigationView = binding2.navView
             val navController = findNavController(R.id.nav_host_fragment_content_drawer)
 
+
+            appBarConfiguration = AppBarConfiguration(
+                setOf(
+                    R.id.nav_ngo_edit_profile,
+                    R.id.nav_oku_suggest_facilities,
+                    R.id.nav_event,
+                    R.id.mapsFragment,
+                    R.id.nav_apply_event_posting,
+                    R.id.nav_verify_event_posting,
+                    R.id.nav_verify_new_facilities
+                ), drawerLayout
+            )
+            setupActionBarWithNavController(navController, appBarConfiguration)
+            navView.setupWithNavController(navController)
+
+
         }
         //if user is oku
-        if(userType=="Oku"){
+        if (userType == "Oku") {
             binding3 = DrawerOkuBinding.inflate(layoutInflater)
             setContentView(binding3.root)
 
             setSupportActionBar(binding3.appBarDrawer.toolbar)
 
-            binding3.appBarDrawer.fab.setOnClickListener { view ->
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-            }
-            //val drawerLayout: DrawerLayout = binding3.adminDrawer
-            //val drawerLayout: DrawerLayout = binding.ngoDrawer
+
             val drawerLayout: DrawerLayout = binding3.okuDrawer
 
 
@@ -134,8 +121,13 @@ class Drawer : AppCompatActivity() {
 
             appBarConfiguration = AppBarConfiguration(
                 setOf(
-                    R.id.nav_oku_editProfile,R.id.nav_event,
-                    R.id.mapsFragment,R.id.nav_apply_event_posting,R.id.nav_verify_event_posting,R.id.nav_verify_new_facilities
+                    R.id.nav_oku_editProfile,
+                    R.id.nav_oku_suggest_facilities,
+                    R.id.nav_event,
+                    R.id.mapsFragment,
+                    R.id.nav_apply_event_posting,
+                    R.id.nav_verify_event_posting,
+                    R.id.nav_verify_new_facilities
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -144,16 +136,8 @@ class Drawer : AppCompatActivity() {
         }
 
 
-
-
-
-
-
-
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-
-
 
 
     }

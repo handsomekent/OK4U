@@ -40,8 +40,8 @@
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_maps.xml" value="0.15104166666666666" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_ngo_apply_event_posting_fragmentt.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_ngo_edit_profile.xml" value="0.28541666666666665" />
-        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_ngo_event_details.xml" value="0.28541666666666665" />
-        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_oku_edit_profile.xml" value="0.264" />
+        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_ngo_event_details.xml" value="0.4" />
+        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_oku_edit_profile.xml" value="0.4" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_oku_event_details.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_oku_suggestfacilities.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_register.xml" value="0.2" />
@@ -56,6 +56,7 @@
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/menu/admin_menu.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/menu/admin_menu2.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/menu/drawer.xml" value="0.28541666666666665" />
+        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/menu/map_options.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/menu/ngo_drawer.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/menu/ngo_menu.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/menu/oku_menu.xml" value="0.28541666666666665" />
