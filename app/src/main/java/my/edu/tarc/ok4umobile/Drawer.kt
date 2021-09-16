@@ -1,6 +1,8 @@
 package my.edu.tarc.ok4umobile
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -22,6 +24,7 @@ import my.edu.tarc.ok4umobile.databinding.DrawerOkuBinding
 class Drawer : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    val sharedPrefFile = "kotlinsharedpreference"
 
 
 
@@ -33,14 +36,18 @@ class Drawer : AppCompatActivity() {
   //  var name=intent.getStringExtra("name")
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
+        val sharedPref : SharedPreferences? = this.getSharedPreferences(
+            sharedPrefFile, Context.MODE_PRIVATE) ?: return
 
-    //    var userType: String? =intent.getStringExtra("userType")
+        var userType: String = sharedPref?.getString("userType","No Data").toString()
+
+
+
+
+        //    var userType: String? =intent.getStringExtra("userType")
     //    var email: String? =intent.getStringExtra("email")
 
-var userType =null
         Log.i("MainActivity", ""+userType)//test only
 
 

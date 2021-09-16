@@ -28,8 +28,7 @@ class OkuEditProfile : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var login=zLoginFragment()
-        var userType: String? =login.userType
+
       //  var s:String = email
 //        val databaseuser  = FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users")
 //

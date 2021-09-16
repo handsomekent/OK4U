@@ -1,6 +1,8 @@
 package my.edu.tarc.ok4umobile
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -91,11 +93,18 @@ class zLoginFragment : Fragment() {
 //                                intent.putExtra("userType",temp6)
 //                                intent.putExtra("email",temp5)
 //                                intent.putExtra("name",temp2)
+                                val sharedPrefFile = "kotlinsharedpreference"
 
-                                val sharedPref = activity?.getSharedPreferences(
-                                    getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+                                val sharedPref : SharedPreferences? = activity?.getSharedPreferences(
+                                    sharedPrefFile, Context.MODE_PRIVATE)
+                                val editor: SharedPreferences.Editor? =  sharedPref?.edit()
+                                editor?.putString("userType",temp6)
+                                editor?.putString("email",temp5)
+                                editor?.apply()
 
-                                        startActivity(intent)
+
+
+                                startActivity(intent)
                             } else {
                                 Toast.makeText(context, "failed", Toast.LENGTH_LONG) //   }
                             }
