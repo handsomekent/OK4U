@@ -42,6 +42,8 @@ class zRegisterFragment : Fragment() {
                 val temp : Int  = binding.radGender.checkedRadioButtonId
                 val rad = view?.findViewById<RadioButton>(temp)
                 val gender = rad?.text.toString()
+                val address=binding.txtAddress.text.toString()
+                val phoneNum=binding.txtPhoneNum.text.toString()
                 val radio_user_type:Int =binding.radUserType.checkedRadioButtonId
                 val radio_usertype= view?.findViewById<RadioButton>(radio_user_type)
                 val user_type= radio_usertype?.text.toString()
@@ -50,10 +52,15 @@ class zRegisterFragment : Fragment() {
                // val database = Firebase.database("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val database = Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val ref = database.getReference("Users")
+
+
                // val newuser = User("003", name, gender, pass, email,user_type)
                // ref.child("003").setValue(newuser)
-                val newuser = User(name, gender, pass, email,user_type)
-                ref.child(name).setValue(newuser)
+                val newuser = User(name, gender, pass, email,address,phoneNum,user_type)
+
+
+
+                ref.child(email).setValue(newuser)
                 Toast.makeText(this.context, "Register Success", Toast.LENGTH_LONG).show()
 
                 Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)

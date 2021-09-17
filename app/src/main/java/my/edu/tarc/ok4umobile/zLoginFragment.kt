@@ -1,6 +1,8 @@
 package my.edu.tarc.ok4umobile
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,6 +28,8 @@ class zLoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var userList: ArrayList<User>
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,8 +49,8 @@ class zLoginFragment : Fragment() {
 //        }
 
         binding.btnLogin.setOnClickListener(){
-            val email = binding.txtEmail.text.toString()
-            val pass = binding.txtPassword.text.toString()
+            val email1 = binding.txtEmail.text.toString()
+            val pass1 = binding.txtPassword.text.toString()
             //val database = Firebase.database("https://kzassignment-d1445-default-rtdb.asia-southeast1.firebasedatabase.app/")
             //val ref = database.getReference("Users")
 
@@ -68,7 +72,7 @@ class zLoginFragment : Fragment() {
 
 
 
-                            if (email.equals(temp5)==true&& pass.equals(temp4)==true) {
+                            if (email1.equals(temp5)==true&& pass1.equals(temp4)==true) {
                             //if (email.compareTo(temp5) == 1 && pass.compareTo(temp4) == 1) {
 
                                 Toast.makeText( context,"Sucess", Toast.LENGTH_LONG)
@@ -86,8 +90,22 @@ class zLoginFragment : Fragment() {
                                 //val bundle = bundleOf(Pair("bundle", temp2))
                                 val intent = Intent(activity, Drawer::class.java) // open activity from fragment
                             //    intent.putExtra("Name",bundle)
-                                intent.putExtra("userType",temp6)
-                                        startActivity(intent)
+//                                intent.putExtra("userType",temp6)
+//                                intent.putExtra("email",temp5)
+//                                intent.putExtra("name",temp2)
+                                val sharedPrefFile = "kotlinsharedpreference"
+
+                                val sharedPref : SharedPreferences? = activity?.getSharedPreferences(
+                                    sharedPrefFile, Context.MODE_PRIVATE)
+                                val editor: SharedPreferences.Editor? =  sharedPref?.edit()
+                                editor?.putString("userType",temp6)
+                                editor?.putString("email",temp5)
+                                editor?.putString("name",temp2)
+                                editor?.apply()
+
+
+
+                                startActivity(intent)
                             } else {
                                 Toast.makeText(context, "failed", Toast.LENGTH_LONG) //   }
                             }
