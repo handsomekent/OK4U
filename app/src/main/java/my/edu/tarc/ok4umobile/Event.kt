@@ -1,45 +1,85 @@
 package my.edu.tarc.ok4umobile
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.*
 import my.edu.tarc.ok4umobile.data.Event
 import my.edu.tarc.ok4umobile.data.MyAdapter
 
-class Event : AppCompatActivity() {
-    //private lateinit var db : FirebaseFirestore
-    private val db : FirebaseFirestore = FirebaseFirestore.getInstance()
-    private val eventsRef : CollectionReference = db.collection("events")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_event)
 
-        //db = FirebaseFirestore.getInstance()
-        //val eventsRef = db.collection("events")
-        eventsRef.addSnapshotListener{ snapshot, exception ->
-            if(exception != null || snapshot == null){
-                Log.d("TAG","Exception",exception)
-                return@addSnapshotListener
+class Event : Fragment() {
+    private lateinit var db: DatabaseReference
+    private lateinit var eventRecyclerView: RecyclerView
+    private lateinit var eventArrayList: ArrayList<Event>
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_event, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        eventRecyclerView = view.findViewById(R.id.eventRecyclerView)
+        eventRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        eventRecyclerView.setHasFixedSize(true)
+        eventArrayList = arrayListOf<Event>()
+
+        getEventData()
+    }
+
+    private fun getEventData() {
+        db =
+            FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("events")
+
+        db.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (snap in snapshot.children) {
+                        val eve = snap.getValue(Event::class.java)
+                        eventArrayList.add(eve!!)
+                    }
+                    var adapter = MyAdapter(eventArrayList)
+                    eventRecyclerView.adapter = adapter
+                    adapter.setonItemClickListener(object :
+                        MyAdapter.onItemClickListener {
+                        override fun onItemClick(position: Int) {
+                            val bundle = Bundle()
+                            bundle.putString("eventTitle",eventArrayList[position].title)
+                            bundle.putString("eventDay",eventArrayList[position].date)
+                            bundle.putString("location",eventArrayList[position].location)
+                            bundle.putString("ngoName",eventArrayList[position].ngoName)
+                            bundle.putString("desc",eventArrayList[position].eventDesc)
+                            bundle.putString("slot",eventArrayList[position].currentSlot)
+                            bundle.putString("imageUrl",eventArrayList[position].imageUrl)
+
+                            val fragment = OkuEventDetails()
+                            fragment.arguments = bundle
+                            fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment_content_drawer,fragment)?.commit()
+
+                            //Log.i("pos", "$position")
+
+                        }
+
+                    })
+                }
             }
-            for(document in snapshot.documents){
-                Log.i("Testing","Document ${document.id} : ${document.data}")
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.i("Error", "No Event Found")
             }
 
-        }
+        })
 
-        val eventList : List<my.edu.tarc.ok4umobile.data.Event> = listOf(
-            Event("Cycling","2 days ago"),
-            Event("Food Giving","5 days ago"),Event("Give Away","1 days ago"))
-
-        val eventAdapter = MyAdapter(eventList)
-        val recycleView : RecyclerView = findViewById(R.id.eventRecycleView)
-
-
-        recycleView.adapter = eventAdapter
-        recycleView.setHasFixedSize(true)
     }
 }
