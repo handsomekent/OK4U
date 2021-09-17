@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
+import androidx.core.app.ComponentActivity
 
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -37,8 +38,8 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
     GoogleMap.OnMyLocationClickListener,
     OnRequestPermissionsResultCallback {
 
-   // private var permissionDenied = false
-   // private lateinit var map: GoogleMap
+    private var permissionDenied = false
+    private lateinit var map: GoogleMap
 
 //    private val PERTH = LatLng(-31.952854, 115.857342)
 //    private val SYDNEY = LatLng(-33.87365, 151.20689)
@@ -109,10 +110,10 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
 
         // Set a listener for marker click.
         map.setOnMarkerClickListener(this)
-        map.isMyLocationEnabled = true
+     //   map.isMyLocationEnabled = true
         map.setOnMyLocationButtonClickListener(this)
         map.setOnMyLocationClickListener(this)
-       // enableMyLocation()
+        enableMyLocation()
 
     }
 
@@ -165,34 +166,39 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
         return false
     }
 
-//    private fun enableMyLocation() {
-//        if (!::map.isInitialized) return
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-//            == PackageManager.PERMISSION_GRANTED) {
-//            map.isMyLocationEnabled = true
-//        } else {
-//            // Permission to access the location is missing. Show rationale and request permission
-//
-//            requestPermission(this, LOCATION_PERMISSION_REQUEST_CODE,
-//                Manifest.permission.ACCESS_FINE_LOCATION, true
-//            )
-//        }
-//    }
-//
-//    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-//        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
-//            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//            return
-//        }
-//        if (isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
-//            // Enable the my location layer if the permission has been granted.
-//            enableMyLocation()
-//        } else {
-//            // Permission was denied. Display an error message
-//            // Display the missing permission error dialog when the fragments resume.
-//            permissionDenied = true
-//        }
-//    }
+    private fun enableMyLocation() {
+        if (!::map.isInitialized) return
+        if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED) {
+            map.isMyLocationEnabled = true
+        } else {
+            // Permission to access the location is missing. Show rationale and request permission
+
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+            return
+        }
+       // if (isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
+        if(grantResults.isNotEmpty()){
+            // Enable the my location layer if the permission has been granted.
+            enableMyLocation()
+        } else {
+            // Permission was denied. Display an error message
+            // Display the missing permission error dialog when the fragments resume.
+            permissionDenied = true
+        }
+    }
+
+
+
+
 
     companion object {
         /**
