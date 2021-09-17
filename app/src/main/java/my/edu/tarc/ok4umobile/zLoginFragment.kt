@@ -72,6 +72,7 @@ class zLoginFragment : Fragment() {
 
 
 
+
                             if (email1.equals(temp5)==true&& pass1.equals(temp4)==true) {
                             //if (email.compareTo(temp5) == 1 && pass.compareTo(temp4) == 1) {
 

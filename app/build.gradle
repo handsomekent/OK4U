@@ -7,14 +7,17 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdk 30
 
+
     defaultConfig {
         applicationId "my.edu.tarc.ok4umobile"
-        minSdk 21
+        minSdk 19
         targetSdk 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion 19
+        targetSdkVersion 30
     }
 
     buildTypes {
