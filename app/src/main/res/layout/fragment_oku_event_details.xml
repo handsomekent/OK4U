@@ -37,12 +37,35 @@
             android:text="Event Description" />
 
         <TextView
+            android:id="@+id/tvOrganizer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Organizer" />
+
+        <TextView
             android:id="@+id/tvPostDay2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginRight="5dp"
             android:text="5 days ago" />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="5dp"
+            android:text="Location" />
+
+        <TextView
+            android:id="@+id/tvCurrentSlot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="5dp"
+            android:text="Slot" />
 
         <CheckBox
             android:id="@+id/chkVehicle"

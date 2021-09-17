@@ -13,7 +13,7 @@
             android:id="@+id/nav_oku_suggest_facilities"
             android:title="@string/okumap" />
         <item
-            android:id="@+id/nav_act_event"
+            android:id="@+id/event"
             android:title="@string/menu_eventlist" />
         <item
             android:id="@+id/mapsFragment"

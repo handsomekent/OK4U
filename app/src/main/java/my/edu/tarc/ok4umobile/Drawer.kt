@@ -123,7 +123,7 @@ class Drawer : AppCompatActivity() {
             appBarConfiguration = AppBarConfiguration(
                 setOf(
                     R.id.nav_oku_editProfile,R.id.nav_event,
-                    R.id.mapsFragment,R.id.nav_apply_event_posting,R.id.nav_verify_event_posting,R.id.nav_verify_new_facilities//,R.id.nav_act_event
+                    R.id.mapsFragment,R.id.nav_apply_event_posting,R.id.nav_verify_event_posting,R.id.nav_verify_new_facilities,R.id.event,R.id.okuEventDetails
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
