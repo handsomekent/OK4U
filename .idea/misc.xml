@@ -3,6 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/activity_splash_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/app_bar_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/content_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/drawer_admin.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/drawer_ngo.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/drawer_oku.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_admin_event_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_admin_verify_event_posting.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_admin_verify_new_facilities.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_forgetpass.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_ngo_apply_event_posting_fragmentt.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_ngo_edit_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_ngo_event_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_oku_edit_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_oku_event_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_oku_suggestfacilities.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragment_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragmentt_event_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/fragmentt_map.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/GitHub/OK4U/OK4U/app/src/main/res/layout/nav_header_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/clken/Documents/Degree Note/OK4Umobile/app/src/main/res/layout/activity_main.xml" value="0.2713541666666667" />
         <entry key="..\:/Users/clken/Documents/Degree Note/OK4Umobile/app/src/main/res/layout/activity_maps.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/Degree Note/OK4Umobile/app/src/main/res/layout/activity_splash_scree.xml" value="0.28541666666666665" />
