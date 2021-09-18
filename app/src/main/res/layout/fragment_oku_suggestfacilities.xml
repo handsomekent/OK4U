@@ -22,7 +22,7 @@
             app:layout_constraintHorizontal_bias="0.549"
             app:layout_constraintStart_toStartOf="@+id/txt_location"
             app:layout_constraintTop_toBottomOf="@+id/txt_location"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.322" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -33,7 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.105" />
+            app:layout_constraintVertical_bias="0.027" />
 
         <TextView
             android:id="@+id/textView3"
@@ -112,8 +112,8 @@
 
         <EditText
             android:id="@+id/txt_location"
-            android:layout_width="165dp"
-            android:layout_height="35dp"
+            android:layout_width="186dp"
+            android:layout_height="47dp"
             android:layout_marginTop="24dp"
             android:editable="false"
             android:ems="10"

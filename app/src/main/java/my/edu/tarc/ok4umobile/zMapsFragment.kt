@@ -23,15 +23,13 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PointOfInterest
+import com.google.android.gms.maps.model.*
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.*
 
 class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
     , GoogleMap.OnMarkerClickListener,
@@ -65,7 +63,7 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
 //            override fun onDataChange(snapshot: DataSnapshot) {
 //
 //                for (i in snapshot.children) {
-//                    var facilityName = i.child("facilityName").getValue().toString()
+//                    var facilityName = i.child("name").getValue().toString()
 //                    var lat = i.child("latitude").getValue().toString()
 //                    var long = i.child("longitude").getValue().toString()
 //                    var intLat: Double = lat.toDouble()
@@ -139,6 +137,52 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
 
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap ?: return
+
+        val database =
+            FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("Facilities")
+
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                for (i in snapshot.children) {
+                    var facilityName = i.child("facilityName").getValue().toString()
+                    var lat = i.child("latitude").getValue().toString()
+                    var long = i.child("longitude").getValue().toString()
+                    var isFaci=i.child("facility").getValue().toString()
+                    var intLat: Double = lat.toDouble()
+                    var intLong: Double = long.toDouble()
+
+                    val snippet=String.format(Locale.getDefault(),"Facility")
+                    val temp1 = LatLng(intLat, intLong)
+                    if(isFaci=="1"){
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(temp1)
+                                .title(""+facilityName+" (Facility)")
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))
+
+                    }else{
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(temp1)
+                                .title(""+facilityName+" (Service)")
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+                    }
+
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+
+
+
+
+
         googleMap.setOnMyLocationButtonClickListener(this)
         googleMap.setOnMyLocationClickListener(this)
         enableMyLocation()
@@ -148,18 +192,18 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
     private fun enableMyLocation() {
         if (!::map.isInitialized) return
             if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED) {
+            == PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(
                     requireActivity(), arrayOf(
                         Manifest.permission.ACCESS_FINE_LOCATION
                     ), LOCATION_PERMISSION_REQUEST_CODE
                 )
             }
-//         else {
-//            // Permission to access the location is missing. Show rationale and request permission
-//                map.isMyLocationEnabled = true
-//
-//        }
+         else {
+            // Permission to access the location is missing. Show rationale and request permission
+                map.isMyLocationEnabled = true
+
+        }
     }
 
     // set display data
@@ -181,10 +225,10 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
 
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-       // if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
+        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
             onRequestPermissionsResult(requestCode, permissions, grantResults)
-    //        return
-   //     }
+            return
+        }
        // if (isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
         when(requestCode){
             requestCode->{

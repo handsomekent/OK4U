@@ -1,7 +1,6 @@
 package my.edu.tarc.ok4umobile
 
 import my.edu.tarc.ok4umobile.User
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -67,11 +66,11 @@ class zRegisterFragment : Fragment() {
             }else{
                 Toast.makeText(this.context, "Incorrect Password", Toast.LENGTH_SHORT).show()
             }
+            Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
 
 
             //database.child("users").child("001").setValue(newuser)
         }
-
 
         return binding.root
     }
