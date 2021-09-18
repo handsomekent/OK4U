@@ -6,6 +6,8 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toolbar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -52,7 +54,7 @@ class Drawer : AppCompatActivity() {
             binding1 = DrawerAdminBinding.inflate(layoutInflater)
             setContentView(binding1.root)
 
-            setSupportActionBar(binding1.appBarDrawer.toolbar)
+               setSupportActionBar(binding1.appBarDrawer.toolbar)
 
 
             val drawerLayout: DrawerLayout = binding1.adminDrawer
@@ -79,7 +81,12 @@ class Drawer : AppCompatActivity() {
             binding2 = DrawerNgoBinding.inflate(layoutInflater)
             setContentView(binding2.root)
 
+            val toolbar : androidx.appcompat.widget.Toolbar =binding2.appBarDrawer.toolbar
+
+
+
             setSupportActionBar(binding2.appBarDrawer.toolbar)
+
 
 
             val drawerLayout: DrawerLayout = binding2.ngoDrawer
@@ -151,5 +158,25 @@ class Drawer : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_drawer)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_settings -> {
+            // User chose the "Settings" item, show the app settings UI...
+            true
+        }
+
+        R.id.log_out -> {
+            // User chose the "Favorite" action, mark the current item
+            // as a favorite...
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            true
+        }
+
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 }
