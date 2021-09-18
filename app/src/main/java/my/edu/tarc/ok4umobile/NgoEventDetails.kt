@@ -11,17 +11,7 @@ import android.view.ViewGroup
 class NgoEventDetails : Fragment() {
 
 
-//    val sharedPref: SharedPreferences? = this.getSharedPreferences(
-//        "kotlinsharedpreference", Context.MODE_PRIVATE
-//    )
-//    var email: String = sharedPref?.getString("email", "No Data").toString()
-//    var name: String = sharedPref?.getString("name", "No Data").toString()
-//    var userType: String = sharedPref?.getString("userType", "No Data").toString()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
