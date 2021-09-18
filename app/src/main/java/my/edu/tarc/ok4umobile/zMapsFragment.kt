@@ -36,7 +36,8 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
     , GoogleMap.OnMarkerClickListener,
     GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
-    OnRequestPermissionsResultCallback {
+    OnRequestPermissionsResultCallback,
+    OnMapReadyCallback{
 
     private var permissionDenied = false
     private lateinit var map: GoogleMap
@@ -50,7 +51,7 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
 //    private lateinit var markerBrisbane: Marker
 
 
-    @SuppressLint("MissingPermission")
+   // @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { map ->
 
         val database =
@@ -130,11 +131,96 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
         super.onViewCreated(view, savedInstanceState)
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
+        mapFragment?.getMapAsync(this)
+    }
+
+    override fun onMapReady(googleMap: GoogleMap?) {
+        map = googleMap ?: return
+        googleMap.setOnMyLocationButtonClickListener(this)
+        googleMap.setOnMyLocationClickListener(this)
+        enableMyLocation()
+    }
+
+  //  @SuppressLint("MissingPermission")
+    private fun enableMyLocation() {
+        if (!::map.isInitialized) return
+            if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                    requireActivity(), arrayOf(
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                    ), LOCATION_PERMISSION_REQUEST_CODE
+                )
+            }
+         else {
+            // Permission to access the location is missing. Show rationale and request permission
+           //     map.isMyLocationEnabled = true
+
+        }
+    }
+
+    // set display data
+
+    // get current location permission
+    override fun onMyLocationClick(location: Location) {
+        Toast.makeText(context, "Current location:\n$location", Toast.LENGTH_LONG)
+            .show()
+    }
+
+    override fun onMyLocationButtonClick(): Boolean {
+        Toast.makeText(context, "MyLocation button clicked", Toast.LENGTH_SHORT)
+            .show()
+        // Return false so that we don't consume the event and the default behavior still occurs
+        // (the camera animates to the user's current position).
+        return false
     }
 
 
-    // set display data
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
+            onRequestPermissionsResult(requestCode, permissions, grantResults)
+            return
+        }
+       // if (isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
+        when(requestCode){
+            requestCode->{
+                if(grantResults.isEmpty()||grantResults[0]!=PackageManager.PERMISSION_GRANTED){
+                    // Enable the my location layer if the permission has been granted.
+                  //  permissionDenied = true
+                     map.isMyLocationEnabled = false
+
+                } else {
+                    // Permission was denied. Display an error message
+                    // Display the missing permission error dialog when the fragments resume.
+                   // enableMyLocation()
+                         map.isMyLocationEnabled = true
+                }
+            }
+        }
+
+    }
+
+    fun onResumeFragments() {
+        onResumeFragments()
+        if (permissionDenied) {
+            // Permission was not granted, display error dialog.
+
+            permissionDenied = false
+        }
+    }
+
+
+
+    companion object {
+        /**
+         * Request code for location permission request.
+         *
+         * @see .onRequestPermissionsResult
+         */
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+    }
+
     override fun onMarkerClick(marker: Marker): Boolean {
 
         // Retrieve the data from the marker.
@@ -151,62 +237,6 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
             ).show()
         }
         return false
-    }
-    // get current location permission
-    override fun onMyLocationClick(location: Location) {
-        Toast.makeText(context, "Current location:\n$location", Toast.LENGTH_LONG)
-            .show()
-    }
-
-    override fun onMyLocationButtonClick(): Boolean {
-        Toast.makeText(context, "MyLocation button clicked", Toast.LENGTH_SHORT)
-            .show()
-        // Return false so that we don't consume the event and the default behavior still occurs
-        // (the camera animates to the user's current position).
-        return false
-    }
-
-    private fun enableMyLocation() {
-        if (!::map.isInitialized) return
-        if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED) {
-            map.isMyLocationEnabled = true
-        } else {
-            // Permission to access the location is missing. Show rationale and request permission
-
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(
-                Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE
-            )
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-            return
-        }
-       // if (isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
-        if(grantResults.isNotEmpty()){
-            // Enable the my location layer if the permission has been granted.
-            enableMyLocation()
-        } else {
-            // Permission was denied. Display an error message
-            // Display the missing permission error dialog when the fragments resume.
-            permissionDenied = true
-        }
-    }
-
-
-
-
-
-    companion object {
-        /**
-         * Request code for location permission request.
-         *
-         * @see .onRequestPermissionsResult
-         */
-        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 //add on point
 //    override fun onPoiClick(poi: PointOfInterest) {
