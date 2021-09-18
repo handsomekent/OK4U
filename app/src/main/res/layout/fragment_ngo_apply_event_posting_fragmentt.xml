@@ -50,7 +50,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivLogo"
-            app:layout_constraintVertical_bias="0.19" />
+            app:layout_constraintVertical_bias="0.192" />
 
         <TextView
             android:id="@+id/tvlabelEventName"
@@ -75,10 +75,10 @@
             android:hint="Enter Event Name"
             android:textColorHint="@color/gray"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnApply"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvInputNGOName"
-            app:layout_constraintVertical_bias="0.317" />
+            app:layout_constraintVertical_bias="0.179" />
 
         <TextView
             android:id="@+id/tvlabelDescription"
@@ -104,10 +104,64 @@
             android:hint="Enter Event Description"
             android:textColorHint="@color/gray"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnApply"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvInputNGOName"
-            app:layout_constraintVertical_bias="0.72" />
+            app:layout_constraintVertical_bias="0.411" />
+
+        <TextView
+            android:id="@+id/tvLabelDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date :"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.785" />
+
+        <TextView
+            android:id="@+id/tvInputDate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Date"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.829" />
+
+        <TextView
+            android:id="@+id/tvLabelLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location :"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.874" />
+
+        <TextView
+            android:id="@+id/tvInputLocation"
+            android:layout_width="390dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Location"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.761"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.918" />
 
         <Button
             android:id="@+id/btnApply"
@@ -121,7 +175,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivLogo"
-            app:layout_constraintVertical_bias="0.802" />
+            app:layout_constraintVertical_bias="0.987" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
