@@ -49,43 +49,35 @@ class ApplyEventPostingFragmentt : Fragment() {
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("events")
 
-        binding.btnApply.setOnClickListener(){
+        binding.btnRegister.setOnClickListener(){
 
-                val ngoName : String = binding.tvInputNGOName.text.toString()
+                val ngoName : String = binding.tvInputNgoName.text.toString()
                 val eventName : String = binding.tvInputEventName.text.toString()
                 val eventDescription=binding.tvInputDescription.text.toString()
                 val date = binding.tvInputDate.text.toString()
                 val location = binding.tvInputLocation.text.toString()
+                val availableSlot = binding.tvInputSlot.text.toString()
+                val status = 0
 
 
 
-
-                // val database = Firebase.database("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val database = Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                val ref = database.getReference("Users")
+                val ref = database.getReference("events")
 
 
-                // val newuser = User("003", name, gender, pass, email,user_type)
-                // ref.child("003").setValue(newuser)
-                val newevent = event(ngoName, gender, pass, email,address,phoneNum,user_type)
+                val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,status,"")
 
 
 
-                ref.child(email).setValue(newuser)
-                Toast.makeText(this.context, "Register Success", Toast.LENGTH_LONG).show()
+                ref.child(eventName).setValue(newevent)
+                Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
 
                 Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
 
 
-
-            //database.child("users").child("001").setValue(newuser)
         }
 
-
-
-
         return binding.root
-
 
     }
 }
