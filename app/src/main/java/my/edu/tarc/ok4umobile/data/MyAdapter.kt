@@ -45,6 +45,7 @@ class MyAdapter (private val eventList : List<Event>): RecyclerView.Adapter<MyAd
 
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
         val current = eventList[position]
+        
         holder.tvEventTitle.text  = current.title
         holder.tvPostDay.text = current.date
         Glide.with(holder.img.context).load(current.imageUrl).into(holder.img)

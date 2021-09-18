@@ -93,7 +93,20 @@ class OkuEventDetails : Fragment() {
                     btnRegis.text = "Full"
                     btnRegis.setBackgroundColor(Color.GRAY)
                     showFullDialog()
+                    btnCancel.setOnClickListener() {
+                        current = slot.toInt() - 1
+                        Log.i("current","$current")
+                        db3.child("currentSlot").setValue("$current")
+                        db2.addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                var del = snapshot.ref.removeValue()
 
+                            }
+                            override fun onCancelled(error: DatabaseError) {
+                                Log.i("Error", "Read failed")
+                            }
+                        })
+                    }
                 } else {
                     db2.addValueEventListener(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
