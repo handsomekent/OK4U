@@ -15,7 +15,6 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
-import androidx.core.app.ComponentActivity
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
@@ -39,9 +38,10 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
     GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
     OnRequestPermissionsResultCallback,
-    OnMapReadyCallback{
+    OnMapReadyCallback
+{
 
-    lateinit var fusedLocation : FusedLocationProviderClient
+ //   lateinit var fusedLocation : FusedLocationProviderClient
     private var permissionDenied = false
     private lateinit var map: GoogleMap
 
@@ -55,71 +55,71 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
 
 
    // @SuppressLint("MissingPermission")
-    private val callback = OnMapReadyCallback { map ->
-
-        val database =
-            FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("Facilities")
-
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                for (i in snapshot.children) {
-                    var facilityName = i.child("facilityName").getValue().toString()
-                    var lat = i.child("latitude").getValue().toString()
-                    var long = i.child("longitude").getValue().toString()
-                    var intLat: Double = lat.toDouble()
-                    var intLong: Double = long.toDouble()
-
-
-                    val temp1 = LatLng(intLat, intLong)
-
-                    map.addMarker(
-                        MarkerOptions()
-                            .position(temp1)
-                            .title(facilityName)
-                    )
-
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-
-        })
-
-
-        //val sydney = LatLng(-34.0, 151.0)
-//        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15f))
-//        googleMap.setOnPoiClickListener(this)
-
-//        markerPerth = map.addMarker(
-//            MarkerOptions()
-//                .position(PERTH)
-//                .title("Perth"))
-//        markerPerth.tag = 0
-//        markerSydney = map.addMarker(
-//            MarkerOptions()
-//                .position(SYDNEY)
-//                .title("Sydney")
-//        )
-//        markerSydney.tag = 0
-//        markerBrisbane = map.addMarker(
-//            MarkerOptions()
-//                .position(BRISBANE)
-//                .title("Brisbane")
-//        )
-//        markerBrisbane.tag = 0
-
-        // Set a listener for marker click.
-        map.setOnMarkerClickListener(this)
-     //   map.isMyLocationEnabled = true
-        map.setOnMyLocationButtonClickListener(this)
-        map.setOnMyLocationClickListener(this)
-        enableMyLocation()
-
-    }
+//    private val callback = OnMapReadyCallback { map ->
+//
+//        val database =
+//            FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
+//                .getReference("Facilities")
+//
+//        database.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                for (i in snapshot.children) {
+//                    var facilityName = i.child("facilityName").getValue().toString()
+//                    var lat = i.child("latitude").getValue().toString()
+//                    var long = i.child("longitude").getValue().toString()
+//                    var intLat: Double = lat.toDouble()
+//                    var intLong: Double = long.toDouble()
+//
+//
+//                    val temp1 = LatLng(intLat, intLong)
+//
+//                    map.addMarker(
+//                        MarkerOptions()
+//                            .position(temp1)
+//                            .title(facilityName)
+//                    )
+//
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//
+//        })
+//
+//
+//        //val sydney = LatLng(-34.0, 151.0)
+////        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+////        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15f))
+////        googleMap.setOnPoiClickListener(this)
+//
+////        markerPerth = map.addMarker(
+////            MarkerOptions()
+////                .position(PERTH)
+////                .title("Perth"))
+////        markerPerth.tag = 0
+////        markerSydney = map.addMarker(
+////            MarkerOptions()
+////                .position(SYDNEY)
+////                .title("Sydney")
+////        )
+////        markerSydney.tag = 0
+////        markerBrisbane = map.addMarker(
+////            MarkerOptions()
+////                .position(BRISBANE)
+////                .title("Brisbane")
+////        )
+////        markerBrisbane.tag = 0
+//
+//        // Set a listener for marker click.
+//        map.setOnMarkerClickListener(this)
+//     //   map.isMyLocationEnabled = true
+//        map.setOnMyLocationButtonClickListener(this)
+//        map.setOnMyLocationClickListener(this)
+//        enableMyLocation()
+//
+//    }
 
 
     override fun onCreateView(
@@ -132,7 +132,7 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-fusedLocation=LocationServices.getFusedLocationProviderClient(activity)
+//fusedLocation=LocationServices.getFusedLocationProviderClient(activity)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
     }
@@ -155,13 +155,11 @@ fusedLocation=LocationServices.getFusedLocationProviderClient(activity)
                     ), LOCATION_PERMISSION_REQUEST_CODE
                 )
             }
-         else {
-          //   var location :Location
-          //   var s  = location.latitude
-            // Permission to access the location is missing. Show rationale and request permission
-           //     map.isMyLocationEnabled = true
-
-        }
+//         else {
+//            // Permission to access the location is missing. Show rationale and request permission
+//                map.isMyLocationEnabled = true
+//
+//        }
     }
 
     // set display data
@@ -183,23 +181,25 @@ fusedLocation=LocationServices.getFusedLocationProviderClient(activity)
 
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
+       // if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
             onRequestPermissionsResult(requestCode, permissions, grantResults)
-            return
-        }
+    //        return
+   //     }
        // if (isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
         when(requestCode){
             requestCode->{
                 if(grantResults.isEmpty()||grantResults[0]!=PackageManager.PERMISSION_GRANTED){
                     // Enable the my location layer if the permission has been granted.
-                  //  permissionDenied = true
+                 //   permissionDenied = true
                      map.isMyLocationEnabled = false
+                 //   map.isMyLocationEnabled = true
 
                 } else {
                     // Permission was denied. Display an error message
                     // Display the missing permission error dialog when the fragments resume.
-                   // enableMyLocation()
-                         map.isMyLocationEnabled = true
+                  //  enableMyLocation()
+                        map.isMyLocationEnabled = true
+                //    map.isMyLocationEnabled = false
                 }
             }
         }
