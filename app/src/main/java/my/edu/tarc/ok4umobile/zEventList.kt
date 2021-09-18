@@ -9,7 +9,6 @@ import android.view.ViewGroup
 
 
 class zEventList : Fragment() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

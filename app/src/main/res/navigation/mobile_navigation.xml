@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_event">
+    app:startDestination="@id/event">
 
 
 
@@ -51,4 +51,14 @@
         android:name="my.edu.tarc.ok4umobile.Suggestfacilities"
         android:label="Suggest new facilities"
         tools:layout="@layout/fragment_oku_suggestfacilities" />
+    <fragment
+        android:id="@+id/okuEventDetails"
+        android:name="my.edu.tarc.ok4umobile.OkuEventDetails"
+        android:label="fragment_oku_event_details"
+        tools:layout="@layout/fragment_oku_event_details" />
+    <fragment
+        android:id="@+id/event"
+        android:name="my.edu.tarc.ok4umobile.Event"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" />
 </navigation>
