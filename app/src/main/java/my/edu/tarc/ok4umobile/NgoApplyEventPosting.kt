@@ -37,12 +37,7 @@ class ApplyEventPostingFragmentt : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_ngo_apply_event_posting_fragmentt,
-            container,
-            false
-        )
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ngo_apply_event_posting_fragmentt, container, false)
 
         val sharedPref = this.activity?.getSharedPreferences(
             "pref", Context.MODE_PRIVATE
@@ -52,23 +47,17 @@ class ApplyEventPostingFragmentt : Fragment() {
 
         val databaseuser =
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("Users")
+                .getReference("events")
 
         binding.btnApply.setOnClickListener(){
-            val pass : String = binding.txtPassword.text.toString()
-            val conf : String = binding.txtConfirm.text.toString()
 
-            if(pass.compareTo(conf) == 0){
-                val name : String = binding.txtName.text.toString()
-                val email : String = binding.txtEmail.text.toString()
-                val temp : Int  = binding.radGender.checkedRadioButtonId
-                val rad = view?.findViewById<RadioButton>(temp)
-                val gender = rad?.text.toString()
-                val address=binding.txtAddress.text.toString()
-                val phoneNum=binding.txtPhoneNum.text.toString()
-                val radio_user_type:Int =binding.radUserType.checkedRadioButtonId
-                val radio_usertype= view?.findViewById<RadioButton>(radio_user_type)
-                val user_type= radio_usertype?.text.toString()
+                val ngoName : String = binding.tvInputNGOName.text.toString()
+                val eventName : String = binding.tvInputEventName.text.toString()
+                val eventDescription=binding.tvInputDescription.text.toString()
+                val date = binding.tvInputDate.text.toString()
+                val location = binding.tvInputLocation.text.toString()
+
+
 
 
                 // val database = Firebase.database("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/")
@@ -78,7 +67,7 @@ class ApplyEventPostingFragmentt : Fragment() {
 
                 // val newuser = User("003", name, gender, pass, email,user_type)
                 // ref.child("003").setValue(newuser)
-                val newuser = User(name, gender, pass, email,address,phoneNum,user_type)
+                val newevent = event(ngoName, gender, pass, email,address,phoneNum,user_type)
 
 
 
@@ -86,15 +75,13 @@ class ApplyEventPostingFragmentt : Fragment() {
                 Toast.makeText(this.context, "Register Success", Toast.LENGTH_LONG).show()
 
                 Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
-            }else{
-                Toast.makeText(this.context, "Incorrect Password", Toast.LENGTH_SHORT).show()
-            }
+
 
 
             //database.child("users").child("001").setValue(newuser)
         }
 
-        )
+
 
 
         return binding.root
