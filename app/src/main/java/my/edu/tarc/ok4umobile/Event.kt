@@ -1,5 +1,7 @@
 package my.edu.tarc.ok4umobile
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -23,11 +25,19 @@ class Event : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_event, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val sharedPref : SharedPreferences? = this.activity?.getSharedPreferences(
+            "kotlinsharedpreference", Context.MODE_PRIVATE)
+        var name: String =sharedPref?.getString("name","No Data").toString()
+        var email: String =sharedPref?.getString("email","No Data").toString()
+
+        Log.i("beta", "$email" )//test only
 
         eventRecyclerView = view.findViewById(R.id.eventRecyclerView)
         eventRecyclerView.layoutManager = LinearLayoutManager(this.context)

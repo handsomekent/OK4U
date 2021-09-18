@@ -74,6 +74,7 @@
         <entry key="app/src/main/res/layout/drawer_oku.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/fragment_admin_event_details.xml" value="0.2824074074074074" />
         <entry key="app/src/main/res/layout/fragment_beta.xml" value="0.2953703703703704" />
+        <entry key="app/src/main/res/layout/fragment_custom_dialog.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.2824074074074074" />
         <entry key="app/src/main/res/layout/fragment_event.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/fragment_event_details.xml" value="0.2824074074074074" />
