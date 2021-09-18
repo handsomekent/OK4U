@@ -1,6 +1,6 @@
 package my.edu.tarc.ok4umobile
 
-class Event(
+class Event1(
     var ngoName:String,
     var eventName:String,
     var eventDescription:String,
@@ -8,7 +8,7 @@ class Event(
     var eventLocation: String,
     var currentSlot:String,
     var maxslot:String,
-    var status:Int,
+    var status:String,
     var denyReason:String
 ){
     constructor(): this("","","","","","","","","")

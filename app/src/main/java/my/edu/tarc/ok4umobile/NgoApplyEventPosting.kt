@@ -57,7 +57,7 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val date = binding.tvInputDate.text.toString()
                 val location = binding.tvInputLocation.text.toString()
                 val availableSlot = binding.tvInputSlot.text.toString()
-                val status = 0
+                val status = "0"
 
 
 
@@ -65,7 +65,7 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val ref = database.getReference("events")
 
 
-                val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,status,"")
+                val newevent = Event1(ngoName, eventName, eventDescription, date, location,"",availableSlot,status,"")
 
 
 

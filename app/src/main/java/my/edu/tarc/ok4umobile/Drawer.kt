@@ -81,16 +81,9 @@ class Drawer : AppCompatActivity() {
             binding2 = DrawerNgoBinding.inflate(layoutInflater)
             setContentView(binding2.root)
 
-            val toolbar : androidx.appcompat.widget.Toolbar =binding2.appBarDrawer.toolbar
-
-
-
             setSupportActionBar(binding2.appBarDrawer.toolbar)
 
-
-
             val drawerLayout: DrawerLayout = binding2.ngoDrawer
-
 
             val navView: NavigationView = binding2.navView
             val navController = findNavController(R.id.nav_host_fragment_content_drawer)
@@ -104,7 +97,8 @@ class Drawer : AppCompatActivity() {
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
                     R.id.nav_verify_event_posting,
-                    R.id.nav_verify_new_facilities
+                    R.id.nav_verify_new_facilities,
+                    R.id.event,
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
