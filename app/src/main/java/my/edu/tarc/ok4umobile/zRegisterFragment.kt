@@ -23,7 +23,7 @@ import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
 
 class zRegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
-    private lateinit var database: DatabaseReference
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

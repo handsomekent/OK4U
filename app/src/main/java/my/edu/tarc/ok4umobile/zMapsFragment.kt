@@ -16,6 +16,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback
 import androidx.core.app.ComponentActivity
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -39,6 +41,7 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
     OnRequestPermissionsResultCallback,
     OnMapReadyCallback{
 
+    lateinit var fusedLocation : FusedLocationProviderClient
     private var permissionDenied = false
     private lateinit var map: GoogleMap
 
@@ -62,7 +65,7 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 for (i in snapshot.children) {
-                    var facilityName = i.child("name").getValue().toString()
+                    var facilityName = i.child("facilityName").getValue().toString()
                     var lat = i.child("latitude").getValue().toString()
                     var long = i.child("longitude").getValue().toString()
                     var intLat: Double = lat.toDouble()
@@ -129,7 +132,7 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+fusedLocation=LocationServices.getFusedLocationProviderClient(activity)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
     }
@@ -145,7 +148,7 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
     private fun enableMyLocation() {
         if (!::map.isInitialized) return
             if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED) {
+            != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(
                     requireActivity(), arrayOf(
                         Manifest.permission.ACCESS_FINE_LOCATION
@@ -153,6 +156,8 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
                 )
             }
          else {
+          //   var location :Location
+          //   var s  = location.latitude
             // Permission to access the location is missing. Show rationale and request permission
            //     map.isMyLocationEnabled = true
 
