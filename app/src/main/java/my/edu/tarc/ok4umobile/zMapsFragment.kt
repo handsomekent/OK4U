@@ -31,12 +31,12 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.util.*
 
-class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
-    , GoogleMap.OnMarkerClickListener,
-    GoogleMap.OnMyLocationButtonClickListener,
+class zMapsFragment : Fragment()
+    , OnMapReadyCallback
+   , GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
-    OnRequestPermissionsResultCallback,
-    OnMapReadyCallback
+    OnRequestPermissionsResultCallback
+
 {
 
  //   lateinit var fusedLocation : FusedLocationProviderClient
@@ -51,73 +51,6 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
 //    private lateinit var markerSydney: Marker
 //    private lateinit var markerBrisbane: Marker
 
-
-   // @SuppressLint("MissingPermission")
-//    private val callback = OnMapReadyCallback { map ->
-//
-//        val database =
-//            FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-//                .getReference("Facilities")
-//
-//        database.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//
-//                for (i in snapshot.children) {
-//                    var facilityName = i.child("name").getValue().toString()
-//                    var lat = i.child("latitude").getValue().toString()
-//                    var long = i.child("longitude").getValue().toString()
-//                    var intLat: Double = lat.toDouble()
-//                    var intLong: Double = long.toDouble()
-//
-//
-//                    val temp1 = LatLng(intLat, intLong)
-//
-//                    map.addMarker(
-//                        MarkerOptions()
-//                            .position(temp1)
-//                            .title(facilityName)
-//                    )
-//
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//            }
-//
-//        })
-//
-//
-//        //val sydney = LatLng(-34.0, 151.0)
-////        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-////        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15f))
-////        googleMap.setOnPoiClickListener(this)
-//
-////        markerPerth = map.addMarker(
-////            MarkerOptions()
-////                .position(PERTH)
-////                .title("Perth"))
-////        markerPerth.tag = 0
-////        markerSydney = map.addMarker(
-////            MarkerOptions()
-////                .position(SYDNEY)
-////                .title("Sydney")
-////        )
-////        markerSydney.tag = 0
-////        markerBrisbane = map.addMarker(
-////            MarkerOptions()
-////                .position(BRISBANE)
-////                .title("Brisbane")
-////        )
-////        markerBrisbane.tag = 0
-//
-//        // Set a listener for marker click.
-//        map.setOnMarkerClickListener(this)
-//     //   map.isMyLocationEnabled = true
-//        map.setOnMyLocationButtonClickListener(this)
-//        map.setOnMyLocationClickListener(this)
-//        enableMyLocation()
-//
-//    }
 
 
     override fun onCreateView(
@@ -153,7 +86,7 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
                     var intLat: Double = lat.toDouble()
                     var intLong: Double = long.toDouble()
 
-                    val snippet=String.format(Locale.getDefault(),"Facility")
+            //        val snippet=String.format(Locale.getDefault(),"Facility")
                     val temp1 = LatLng(intLat, intLong)
                     if(isFaci=="1"){
                         map.addMarker(
@@ -196,8 +129,8 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
                 ActivityCompat.requestPermissions(
                     requireActivity(), arrayOf(
                         Manifest.permission.ACCESS_FINE_LOCATION
-                    ), LOCATION_PERMISSION_REQUEST_CODE
-                )
+                    ), LOCATION_PERMISSION_REQUEST_CODE)
+
             }
          else {
             // Permission to access the location is missing. Show rationale and request permission
@@ -270,32 +203,4 @@ class zMapsFragment : Fragment()//,GoogleMap.OnPoiClickListener
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 
-    override fun onMarkerClick(marker: Marker): Boolean {
-
-        // Retrieve the data from the marker.
-        val clickCount = marker.tag as? Int
-
-        // Check if a click count was set, then display the click count.
-        clickCount?.let {
-            val newClickCount = it + 1
-            marker.tag = newClickCount
-            Toast.makeText(
-                context,
-                "${marker.title} has been clicked $newClickCount times.",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-        return false
-    }
-//add on point
-//    override fun onPoiClick(poi: PointOfInterest) {
-//        var toast:Toast = Toast.makeText(
-//            context,
-//            """Clicked: ${poi.name}
-//            Place ID:${poi.placeId}
-//            Latitude:${poi.latLng.latitude} Longitude:${poi.latLng.longitude}""",
-//            Toast.LENGTH_SHORT
-//        )
-//        toast.show()
-//    }
 }
