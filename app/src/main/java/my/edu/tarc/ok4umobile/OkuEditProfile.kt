@@ -60,12 +60,12 @@ databaseuser.addValueEventListener(object : ValueEventListener{
             if(email.equals(emaildb)){
                 Log.i("MainActivity", "3" )//test only
 
-                binding.tfFullName.setText(namedb)
+                binding.txtOkuName.setText(namedb)
                 binding.editGender.setText(genderdb)
                 binding.editTextPhone.setText(phonedb)
                 binding.editTextPostalAddress.setText(addressdb)
                 binding.btnUpdateProfile.setOnClickListener(){
-                    databaseuser.child(email).child("name").setValue(binding.tfFullName.text.toString())
+                    databaseuser.child(email).child("name").setValue(binding.txtOkuName.text.toString())
                     databaseuser.child(email).child("gender").setValue(binding.editGender.text.toString())
                     databaseuser.child(email).child("address").setValue(binding.editTextPostalAddress.text.toString())
                     databaseuser.child(email).child("phoneNumber").setValue(binding.editTextPhone.text.toString())
