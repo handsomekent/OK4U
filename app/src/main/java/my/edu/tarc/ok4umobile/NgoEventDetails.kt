@@ -12,17 +12,6 @@ class NgoEventDetails : Fragment() {
 
 
 
-    var sharedPref = this.activity
-        ?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-
-    var email: String = sharedPref?.getString("email", "No Data").toString()
-    var name: String = sharedPref?.getString("name", "No Data").toString()
-    var userType: String = sharedPref?.getString("userType", "No Data").toString()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

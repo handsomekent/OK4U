@@ -1,59 +1,83 @@
 package my.edu.tarc.ok4umobile
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import my.edu.tarc.ok4umobile.databinding.FragmentNgoApplyEventPostingFragmenttBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ApplyEventPostingFragmentt.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ApplyEventPostingFragmentt : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var binding: FragmentNgoApplyEventPostingFragmenttBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ngo_apply_event_posting_fragmentt, container, false)
-    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ApplyEventPostingFragmentt.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ApplyEventPostingFragmentt().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ngo_apply_event_posting_fragmentt, container, false)
+
+        val sharedPref = this.activity?.getSharedPreferences(
+            "pref", Context.MODE_PRIVATE
+        )
+        var name: String = sharedPref?.getString("name", "No Data").toString()
+        var email: String = sharedPref?.getString("email", "No Data").toString()
+
+        val databaseuser =
+            FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("events")
+
+        binding.btnRegister.setOnClickListener(){
+
+                val ngoName : String = binding.tvInputNgoName.text.toString()
+                val eventName : String = binding.tvInputEventName.text.toString()
+                val eventDescription=binding.tvInputDescription.text.toString()
+                val date = binding.tvInputDate.text.toString()
+                val location = binding.tvInputLocation.text.toString()
+                val availableSlot = binding.tvInputSlot.text.toString()
+                val status = 0
+
+
+
+                val database = Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                val ref = database.getReference("events")
+
+
+                val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,status,"")
+
+
+
+                ref.child(eventName).setValue(newevent)
+                Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
+
+                Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
+
+
+        }
+
+        return binding.root
+
     }
 }
