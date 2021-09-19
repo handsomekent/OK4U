@@ -56,6 +56,7 @@ class Event : Fragment() {
                 if (snapshot.exists()) {
                     for (snap in snapshot.children) {
                         val eve = snap.getValue(Event::class.java)
+
                         eventArrayList.add(eve!!)
                     }
                     var adapter = MyAdapter(eventArrayList)
