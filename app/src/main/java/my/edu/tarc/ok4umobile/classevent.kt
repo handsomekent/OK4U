@@ -1,8 +1,6 @@
 package my.edu.tarc.ok4umobile
 
-import android.net.Uri
-
-class Event(
+class Event1(
     var ngoName:String,
     var eventName:String,
     var eventDescription:String,
@@ -11,8 +9,7 @@ class Event(
     var currentSlot:String,
     var maxslot:String,
     var status:String,
-    var denyReason:String,
-    var ImageUrl: String
+    var denyReason:String
 ){
-    constructor(): this("","","","","","","","","","")
+    constructor(): this("","","","","","","","","")
 }

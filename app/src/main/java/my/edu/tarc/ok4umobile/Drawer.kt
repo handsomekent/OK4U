@@ -3,6 +3,7 @@ package my.edu.tarc.ok4umobile
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -18,6 +19,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.google.android.gms.maps.GoogleMap
 import my.edu.tarc.ok4umobile.databinding.DrawerAdminBinding
 import my.edu.tarc.ok4umobile.databinding.DrawerNgoBinding
 import my.edu.tarc.ok4umobile.databinding.DrawerOkuBinding
@@ -26,6 +28,7 @@ import my.edu.tarc.ok4umobile.databinding.DrawerOkuBinding
 class Drawer : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var map: GoogleMap
 
 
     private lateinit var binding1: DrawerAdminBinding
@@ -81,16 +84,9 @@ class Drawer : AppCompatActivity() {
             binding2 = DrawerNgoBinding.inflate(layoutInflater)
             setContentView(binding2.root)
 
-            val toolbar : androidx.appcompat.widget.Toolbar =binding2.appBarDrawer.toolbar
-
-
-
             setSupportActionBar(binding2.appBarDrawer.toolbar)
 
-
-
             val drawerLayout: DrawerLayout = binding2.ngoDrawer
-
 
             val navView: NavigationView = binding2.navView
             val navController = findNavController(R.id.nav_host_fragment_content_drawer)
@@ -104,7 +100,8 @@ class Drawer : AppCompatActivity() {
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
                     R.id.nav_verify_event_posting,
-                    R.id.nav_verify_new_facilities
+                    R.id.nav_verify_new_facilities,
+                    R.id.event,
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -134,7 +131,9 @@ class Drawer : AppCompatActivity() {
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
                     R.id.nav_verify_event_posting,
-                    R.id.nav_verify_new_facilities
+                    R.id.nav_verify_new_facilities,
+                    R.id.event,
+                    R.id.okuEventDetails
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -178,5 +177,30 @@ class Drawer : AppCompatActivity() {
             // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        //  if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        //       return
+        //    }
+        // if (isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
+        when(requestCode){
+            requestCode->{
+                if(grantResults.isEmpty()||grantResults[0]!= PackageManager.PERMISSION_GRANTED){
+                    // Enable the my location layer if the permission has been granted.
+                    //   permissionDenied = true
+                    map.isMyLocationEnabled = false
+                    //   map.isMyLocationEnabled = true
+
+                } else {
+                    // Permission was denied. Display an error message
+                    // Display the missing permission error dialog when the fragments resume.
+                    //  enableMyLocation()
+
+                    //    map.isMyLocationEnabled = false
+                }
+            }
+        }
+
     }
 }
