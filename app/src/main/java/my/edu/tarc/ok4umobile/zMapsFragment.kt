@@ -34,8 +34,8 @@ import java.util.*
 class zMapsFragment : Fragment()
     , OnMapReadyCallback
    , GoogleMap.OnMyLocationButtonClickListener,
-    GoogleMap.OnMyLocationClickListener,
-    OnRequestPermissionsResultCallback
+    GoogleMap.OnMyLocationClickListener
+    ,OnRequestPermissionsResultCallback
 
 {
 
@@ -121,15 +121,15 @@ class zMapsFragment : Fragment()
         enableMyLocation()
     }
 
-  //  @SuppressLint("MissingPermission")
+    //@SuppressLint("MissingPermission")
     private fun enableMyLocation() {
-        if (!::map.isInitialized) return
-            if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED) {
+      //  if (!::map.isInitialized) return
+            if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(
                     requireActivity(), arrayOf(
                         Manifest.permission.ACCESS_FINE_LOCATION
-                    ), LOCATION_PERMISSION_REQUEST_CODE)
+                    ), 1)
 
             }
          else {
@@ -158,10 +158,10 @@ class zMapsFragment : Fragment()
 
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
-            onRequestPermissionsResult(requestCode, permissions, grantResults)
-            return
-        }
+      //  if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
+            activity?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+     //       return
+    //    }
        // if (isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
         when(requestCode){
             requestCode->{
