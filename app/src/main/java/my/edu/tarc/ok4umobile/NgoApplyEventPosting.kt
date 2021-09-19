@@ -38,8 +38,9 @@ class ApplyEventPostingFragmentt : Fragment() {
 
     private val pickImages =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            ImageUri = uri!!
             uri?.let { it ->
-                ImageUri = it
+
                 // The image was saved into the given Uri -> do something with it
                 Picasso.with(context).load(it).resize(800, 800).into(binding.ivUpload)
             }
@@ -104,7 +105,7 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val date = binding.tvInputDate.text.toString()
                 val location = binding.tvInputLocation.text.toString()
                 val availableSlot = binding.tvInputSlot.text.toString()
-
+                var imageLink : String
 
 
 
@@ -112,18 +113,36 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val ref = database.getReference("events")
 
 
-                val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,"0","","")
+//                val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,"0","","")
 
-                val storageReference = FirebaseStorage.getInstance().getReference("images/UUID.randomUUID().toString()")
-
-                storageReference.putFile(ImageUri)
-
-                ref.child(eventName).setValue(newevent)
-                Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
+                val storageReference = FirebaseStorage.getInstance().getReference("images/"+UUID.randomUUID().toString())
 
 
+
+                storageReference.putFile(ImageUri).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        binding.ivUpload.setImageURI(null)
+                        imageLink = task.result.toString()
+                        Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
+
+                        val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,"0","",imageLink)
+                        ref.child(eventName).setValue(newevent)
+                    } else {
+                        Toast.makeText(this.context, "Upload Fail", Toast.LENGTH_LONG).show()
+                    }
+//                binding.ivUpload.setImageURI(null)
+//                    imageLink = task.result.toString()
+//                Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
+//
+//                }.addOnFailureListener {
+//                Toast.makeText(this.context, "Upload Fail", Toast.LENGTH_LONG).show()
+//                }
+                }
+
+//                 ref.child(eventName).setValue(newevent)
+                 Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
 //                uploadImage()
-                Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
+//                Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
 
 
         }
