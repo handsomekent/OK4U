@@ -159,7 +159,7 @@ class zMapsFragment : Fragment()
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
       //  if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
-            activity?.onRequestPermissionsResult(requestCode, permissions, grantResults)
+            onRequestPermissionsResult(requestCode, permissions, grantResults)
      //       return
     //    }
        // if (isPermissionGranted(permissions, grantResults, Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -175,7 +175,7 @@ class zMapsFragment : Fragment()
                     // Permission was denied. Display an error message
                     // Display the missing permission error dialog when the fragments resume.
                   //  enableMyLocation()
-                        map.isMyLocationEnabled = true
+                        enableMyLocation()
                 //    map.isMyLocationEnabled = false
                 }
             }
