@@ -2,6 +2,7 @@ package my.edu.tarc.ok4umobile
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.google.firebase.database.DataSnapshot
@@ -24,7 +26,12 @@ import my.edu.tarc.ok4umobile.databinding.FragmentNgoApplyEventPostingFragmenttB
 class ApplyEventPostingFragmentt : Fragment() {
 
     private lateinit var binding: FragmentNgoApplyEventPostingFragmenttBinding
+    lateinit var ImageUri : Uri
 
+        private val pickImages =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { uri : Uri?
+            -> ImageUri = uri!!
+            uri?.let { it ->}}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,10 +72,21 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val ref = database.getReference("events")
 
 
-                val newevent = Event1(ngoName, eventName, eventDescription, date, location,"",availableSlot,status,"")
 
 
 
+                Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
+                 storageReference.putFile(ImageUri).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    binding.ivUpload.setImageURI(null)
+                    imageLink = task.result.toString()
+                    Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
+
+                    val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,"0","",imageLink)
+                    ref.child(eventName).setValue(newevent)
+                } else {
+                    Toast.makeText(this.context, "Upload Fail", Toast.LENGTH_LONG).show()
+                }
                 ref.child(eventName).setValue(newevent)
                 Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
 
