@@ -1,24 +1,47 @@
 package my.edu.tarc.ok4umobile
 
+import android.Manifest
+import android.app.ProgressDialog
 import android.content.Context
-import android.content.Intent
+import android.content.pm.PackageManager
+import android.icu.text.SimpleDateFormat
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 import my.edu.tarc.ok4umobile.databinding.FragmentNgoApplyEventPostingFragmenttBinding
+import java.util.*
+import android.content.Intent as Intent
 
 
 class ApplyEventPostingFragmentt : Fragment() {
 
     private lateinit var binding: FragmentNgoApplyEventPostingFragmenttBinding
+    lateinit var ImageUri : Uri
+
+
+    private val pickImages =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let { it ->
+                // The image was saved into the given Uri -> do something with it
+                Picasso.with(context).load(it).resize(800, 800).into(binding.ivUpload)
+            }
+        }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,14 +66,29 @@ class ApplyEventPostingFragmentt : Fragment() {
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("events")
 
-        binding.btnSelect.setOnClickListener(){
-
-            selectImage()
-        }
 
         binding.btnUpload.setOnClickListener(){
+            if (ContextCompat.checkSelfPermission(
+                    requireActivity(),
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    requireActivity(), arrayOf(
+                        Manifest.permission.READ_EXTERNAL_STORAGE
+                    ), 2000
+                )
 
-            uploadImage()
+
+            } else {
+                val cameraIntent = Intent(Intent.ACTION_GET_CONTENT)
+                cameraIntent.type = "image/*"
+
+                pickImages.launch("image/")
+
+            }
+
+
         }
 
 
@@ -78,6 +116,8 @@ class ApplyEventPostingFragmentt : Fragment() {
                 ref.child(eventName).setValue(newevent)
                 Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
 
+
+                uploadImage()
                 Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
 
 
@@ -88,19 +128,28 @@ class ApplyEventPostingFragmentt : Fragment() {
     }
 
     private fun uploadImage() {
-        TODO("Not yet implemented")
+
+//        val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
+//        val now = Date()
+//        val filename = formatter.format(now)
+        val storageReference = FirebaseStorage.getInstance().getReference("images/UUID.randomUUID().toString()")
+        ImageUri = pickImages
+
+        storageReference.putFile(ImageUri).addOnSuccessListener {
+            binding.ivUpload.setImageURI(null)
+            Toast.makeText(
+                this@StorageActivity,
+                "Sucessfully uploaded",
+                Toast.LENGTH_SHORT
+            ).show()
+        }.addOnFailureListener{
+            Toast.makeText(
+                this@StorageActivity,
+                "Failed uploaded",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
-
-    private fun selectImage() {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-
-
-
-    }
-
-
 
 
 }
