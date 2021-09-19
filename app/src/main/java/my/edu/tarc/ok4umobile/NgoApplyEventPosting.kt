@@ -25,7 +25,6 @@ class ApplyEventPostingFragmentt : Fragment() {
 
     private lateinit var binding: FragmentNgoApplyEventPostingFragmenttBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -48,6 +47,8 @@ class ApplyEventPostingFragmentt : Fragment() {
         val databaseuser =
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("events")
+
+
 
         binding.btnRegister.setOnClickListener(){
 
@@ -79,5 +80,11 @@ class ApplyEventPostingFragmentt : Fragment() {
 
         return binding.root
 
+        fun OpenFileChooser(){
+            
+        }
+
     }
+
+
 }

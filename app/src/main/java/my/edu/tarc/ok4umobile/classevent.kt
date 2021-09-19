@@ -11,5 +11,5 @@ class Event(
     var status:Int,
     var denyReason:String
 ){
-    constructor(): this("","","","","","","","","")
+    constructor(): this("","","","","","","",0,"")
 }

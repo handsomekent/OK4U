@@ -54,14 +54,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgIcon" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tvInputNgoName"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Enter NGO Name"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintHorizontal_bias="0.252"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelName" />
 
@@ -89,25 +90,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvInputEventName" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tvInputDescription"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:hint="Enter Description"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.052"
+                app:layout_constraintHorizontal_bias="0.252"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelDescription" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tvInputEventName"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Enter Event Name"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.053"
+                app:layout_constraintHorizontal_bias="0.252"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelEventName" />
 
@@ -123,14 +126,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvInputDescription" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tvInputDate"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Enter Event Date"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.055"
+                app:layout_constraintHorizontal_bias="0.252"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelDate" />
 
@@ -146,14 +150,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvInputDate" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tvInputLocation"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="Enter Event Location"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.06"
+                app:layout_constraintHorizontal_bias="0.252"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelLocation" />
 
@@ -169,27 +174,72 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvInputLocation" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tvInputSlot"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
                 android:hint="Enter Available Slot"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.058"
+                app:layout_constraintHorizontal_bias="0.252"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelSlot" />
+
+            <TextView
+                android:id="@+id/tvLabelImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image :"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.046"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvInputSlot" />
+
+            <Button
+                android:id="@+id/btnUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.053"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLabelImage" />
+
+
+            <ImageView
+                android:id="@+id/ivUpload"
+                android:layout_width="343dp"
+                android:layout_height="191dp"
+                android:layout_above="@+id/progress_bar"
+                android:layout_below="@+id/btnUpload"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnUpload" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/btnRegister"
+                android:layout_below="@+id/ivUpload"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/ivUpload"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="-16dp" />
 
             <Button
                 android:id="@+id/btnRegister"
                 style="@style/style_button"
                 android:layout_width="250dp"
-                android:layout_marginTop="12dp"
+                android:layout_below="@+id/progress_bar"
+                android:layout_marginTop="33dp"
                 android:text="Register"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintHorizontal_bias="0.484"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvInputSlot" />
+                app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
