@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,13 +35,17 @@ class ApplyEventPostingFragmentt : Fragment() {
     lateinit var ImageUri : Uri
 
 
+
     private val pickImages =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             uri?.let { it ->
+                ImageUri = it
                 // The image was saved into the given Uri -> do something with it
                 Picasso.with(context).load(it).resize(800, 800).into(binding.ivUpload)
             }
         }
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,9 +67,7 @@ class ApplyEventPostingFragmentt : Fragment() {
         var name: String = sharedPref?.getString("name", "No Data").toString()
         var email: String = sharedPref?.getString("email", "No Data").toString()
 
-        val databaseuser =
-            FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("events")
+//        binding.tvInputDate.text = ImageUri.getPath().equals("/")
 
 
         binding.btnUpload.setOnClickListener(){
@@ -101,7 +104,7 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val date = binding.tvInputDate.text.toString()
                 val location = binding.tvInputLocation.text.toString()
                 val availableSlot = binding.tvInputSlot.text.toString()
-                val status = 0
+
 
 
 
@@ -109,15 +112,17 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val ref = database.getReference("events")
 
 
-                val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,status,"","")
+                val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,"0","","")
 
+                val storageReference = FirebaseStorage.getInstance().getReference("images/UUID.randomUUID().toString()")
 
+                storageReference.putFile(ImageUri)
 
                 ref.child(eventName).setValue(newevent)
                 Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
 
 
-                uploadImage()
+//                uploadImage()
                 Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
 
 
@@ -133,21 +138,12 @@ class ApplyEventPostingFragmentt : Fragment() {
 //        val now = Date()
 //        val filename = formatter.format(now)
         val storageReference = FirebaseStorage.getInstance().getReference("images/UUID.randomUUID().toString()")
-        ImageUri = pickImages
 
         storageReference.putFile(ImageUri).addOnSuccessListener {
-            binding.ivUpload.setImageURI(null)
-            Toast.makeText(
-                this@StorageActivity,
-                "Sucessfully uploaded",
-                Toast.LENGTH_SHORT
-            ).show()
+//            binding.ivUpload.setImageURI(null)
+            Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
+
         }.addOnFailureListener{
-            Toast.makeText(
-                this@StorageActivity,
-                "Failed uploaded",
-                Toast.LENGTH_SHORT
-            ).show()
         }
     }
 
