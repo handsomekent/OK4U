@@ -12,10 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.google.firebase.database.*
-import org.w3c.dom.Text
 
 
 class OkuEventDetails : Fragment() {
@@ -47,12 +45,13 @@ class OkuEventDetails : Fragment() {
         )
         var name: String = sharedPref?.getString("name", "No Data").toString()
         var email: String = sharedPref?.getString("email", "No Data").toString()
+        var userType: String = sharedPref?.getString("userType", "No Data").toString()
 
         var current : Int
 
-        val tvTitle: TextView = view.findViewById(R.id.tvEventTitle2)
-        val tvPost: TextView = view.findViewById(R.id.tvPostDay2)
-        val tvDesc: TextView = view.findViewById(R.id.tvEventDescription)
+        val tvTitle: TextView = view.findViewById(R.id.tvEventTitle)
+        val tvPost: TextView = view.findViewById(R.id.tvEventDate)
+        val tvDesc: TextView = view.findViewById(R.id.tvEventDesc)
         val tvOrganizer: TextView = view.findViewById(R.id.tvOrganizer)
         val tvLocation: TextView = view.findViewById(R.id.tvLocation)
         val tvSlot: TextView = view.findViewById(R.id.tvCurrentSlot)
@@ -82,119 +81,168 @@ class OkuEventDetails : Fragment() {
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("events").child("$inputData")
 
-        db3.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                var slot = snapshot.child("currentSlot").value.toString()
-                var maxSlot = snapshot.child("maxSlot").value.toString()
-                Log.i("Slot", "$slot")
-                if (slot.toInt() >= maxSlot.toInt()) {
+        if(userType == "Oku"){
+            //vehicle.visibility = View.VISIBLE
+            //btnRegis.visibility = View.VISIBLE
+            //btnCancel.visibility = View.VISIBLE
+            db3.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    var slot = snapshot.child("currentSlot").value.toString()
+                    var maxSlot = snapshot.child("maxSlot").value.toString()
+                    Log.i("Slot", "$slot")
+                    if (slot.toInt() >= maxSlot.toInt()) {
 
-                    btnRegis.isClickable = false
-                    btnRegis.text = "Full"
-                    btnRegis.setBackgroundColor(Color.GRAY)
-                    showFullDialog()
+                        btnRegis.isClickable = false
+                        btnRegis.text = "Full"
+                        btnRegis.setBackgroundColor(Color.GRAY)
+                        showFullDialog()
 
-                } else {
-                    db2.addValueEventListener(object : ValueEventListener {
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            var check = snapshot.child("email").value.toString()
+                        btnCancel.setOnClickListener() {
+                            current = slot.toInt() - 1
+                            Log.i("current","$current")
+                            db3.child("currentSlot").setValue("$current")
+                            db2.addListenerForSingleValueEvent(object : ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    var del = snapshot.ref.removeValue()
 
-                            if (check.equals("$email")) {
-                                btnRegis.isClickable = false
-                                btnRegis.text = "Registered"
-                                btnRegis.setBackgroundColor(Color.GRAY)
-                                btnCancel.visibility = View.VISIBLE
-
-                                btnCancel.setOnClickListener() {
-                                    current = slot.toInt() - 1
-                                    Log.i("current","$current")
-                                    db3.child("currentSlot").setValue("$current")
-                                    db2.addListenerForSingleValueEvent(object : ValueEventListener {
-                                        override fun onDataChange(snapshot: DataSnapshot) {
-                                            var del = snapshot.ref.removeValue()
-
-                                        }
-                                        override fun onCancelled(error: DatabaseError) {
-                                            Log.i("Error", "Read failed")
-                                        }
-                                    })
                                 }
-                            } else {
-                                btnRegis.isClickable = true
-                                btnRegis.text = "Register"
-                                btnRegis.setBackgroundColor(Color.parseColor("#4CAF50"))
-                                btnCancel.visibility = View.INVISIBLE
-                                btnRegis.setOnClickListener() {
+                                override fun onCancelled(error: DatabaseError) {
+                                    Log.i("Error", "Read failed")
+                                }
+                            })
+                        }
 
-                                    val builder: AlertDialog.Builder =
-                                        AlertDialog.Builder(view.context)
-                                    builder.setTitle("Register Confirmation")
-                                    builder.setMessage("Confirm to register the event ?")
+                    } else {
+                        db2.addValueEventListener(object : ValueEventListener {
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                var check = snapshot.child("email").value.toString()
 
-                                    builder.setPositiveButton(
-                                        "Yes",
-                                        DialogInterface.OnClickListener { dialog, which ->
+                                if (check.equals("$email")) {
+                                    btnRegis.isClickable = false
+                                    btnRegis.text = "Registered"
+                                    btnRegis.setBackgroundColor(Color.GRAY)
+                                    btnCancel.visibility = View.VISIBLE
 
-                                            current = slot.toInt() + 1
-                                            db3.child("currentSlot").setValue("$current")
-                                            Log.i("currentplus","$current")
+                                    btnCancel.setOnClickListener() {
+                                        val builder: AlertDialog.Builder =
+                                            AlertDialog.Builder(view.context)
+                                        builder.setTitle("Cancel Confirmation")
+                                        builder.setMessage("Your registration will be remove,Confirm to cancel ?")
 
-                                            if (vehicle.isChecked) {
-                                                db.child("$inputData").child("register")
-                                                    .child("$email").child("email")
-                                                    .setValue("$email")
-                                                db.child("$inputData").child("register")
-                                                    .child("$email").child("transport")
-                                                    .setValue("Yes")
+                                        builder.setPositiveButton(
+                                            "Yes",
+                                            DialogInterface.OnClickListener { dialog, which ->
+                                                current = slot.toInt() - 1
+                                                Log.i("current","$current")
+                                                db3.child("currentSlot").setValue("$current")
+                                                db2.addListenerForSingleValueEvent(object : ValueEventListener {
+                                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                                        var del = snapshot.ref.removeValue()
+
+                                                    }
+                                                    override fun onCancelled(error: DatabaseError) {
+                                                        Log.i("Error", "Read failed")
+                                                    }
+                                                })
                                                 Toast.makeText(
                                                     context,
-                                                    "Register Successful",
+                                                    "Cancel Successful",
                                                     Toast.LENGTH_LONG
                                                 ).show()
-                                            } else {
-                                                db.child("$inputData").child("register")
-                                                    .child("$email").child("email")
-                                                    .setValue("$email")
-                                                db.child("$inputData").child("register")
-                                                    .child("$email").child("transport")
-                                                    .setValue("No")
-                                                Toast.makeText(
-                                                    context,
-                                                    "Register Successful",
-                                                    Toast.LENGTH_LONG
-                                                ).show()
-                                            }
-                                            dialog.cancel()
-                                        })
+                                                dialog.cancel()
+                                            })
 
-                                    builder.setNegativeButton(
-                                        "Cancel",
-                                        DialogInterface.OnClickListener { dialog, which ->
-                                            dialog.cancel()
-                                        })
+                                        builder.setNegativeButton(
+                                            "Cancel",
+                                            DialogInterface.OnClickListener { dialog, which ->
+                                                dialog.cancel()
+                                            })
 
-                                    val alertDialog: AlertDialog = builder.create()
-                                    alertDialog.show()
+                                        val alertDialog: AlertDialog = builder.create()
+                                        alertDialog.show()
+                                    }
+                                } else {
+                                    btnRegis.isClickable = true
+                                    btnRegis.text = "Register"
+                                    btnRegis.setBackgroundColor(Color.parseColor("#4CAF50"))
+                                    btnCancel.visibility = View.INVISIBLE
+                                    btnRegis.setOnClickListener() {
+
+                                        val builder: AlertDialog.Builder =
+                                            AlertDialog.Builder(view.context)
+                                        builder.setTitle("Register Confirmation")
+                                        builder.setMessage("Confirm to register the event ?")
+
+                                        builder.setPositiveButton(
+                                            "Yes",
+                                            DialogInterface.OnClickListener { dialog, which ->
+
+                                                current = slot.toInt() + 1
+                                                db3.child("currentSlot").setValue("$current")
+                                                Log.i("currentplus","$current")
+
+                                                if (vehicle.isChecked) {
+                                                    db.child("$inputData").child("register")
+                                                        .child("$email").child("email")
+                                                        .setValue("$email")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$email").child("transport")
+                                                        .setValue("Yes")
+                                                    Toast.makeText(
+                                                        context,
+                                                        "Register Successful",
+                                                        Toast.LENGTH_LONG
+                                                    ).show()
+                                                } else {
+                                                    db.child("$inputData").child("register")
+                                                        .child("$email").child("email")
+                                                        .setValue("$email")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$email").child("transport")
+                                                        .setValue("No")
+                                                    Toast.makeText(
+                                                        context,
+                                                        "Register Successful",
+                                                        Toast.LENGTH_LONG
+                                                    ).show()
+                                                }
+                                                dialog.cancel()
+                                            })
+
+                                        builder.setNegativeButton(
+                                            "Cancel",
+                                            DialogInterface.OnClickListener { dialog, which ->
+                                                dialog.cancel()
+                                            })
+
+                                        val alertDialog: AlertDialog = builder.create()
+                                        alertDialog.show()
 
 
+                                    }
                                 }
                             }
-                        }
 
-                        override fun onCancelled(error: DatabaseError) {
-                            Log.i("Error", "Read failed")
-                        }
+                            override fun onCancelled(error: DatabaseError) {
+                                Log.i("Error", "Read failed")
+                            }
 
-                    })
+                        })
 
+                    }
                 }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.i("Error", "Read failed")
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    Log.i("Error", "Read failed")
+                }
 
-        })
+            })
+
+        }else{
+            vehicle.visibility = View.GONE
+            btnRegis.visibility = View.GONE
+            btnCancel.visibility = View.GONE
+        }
 
     }
 

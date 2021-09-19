@@ -64,6 +64,7 @@ class Drawer : AppCompatActivity() {
             val navController = findNavController(R.id.nav_host_fragment_content_drawer)
             appBarConfiguration = AppBarConfiguration(
                 setOf(
+                    R.id.event,
                     R.id.nav_oku_editProfile,
                     R.id.nav_oku_suggest_facilities,
                     R.id.nav_event,
@@ -136,7 +137,8 @@ class Drawer : AppCompatActivity() {
                     R.id.nav_verify_event_posting,
                     R.id.nav_verify_new_facilities,
                     R.id.event,
-                    R.id.okuEventDetails
+                    R.id.okuEventDetails,
+                    R.id.verifyEvent
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)

@@ -37,7 +37,6 @@ class Event : Fragment() {
         var name: String =sharedPref?.getString("name","No Data").toString()
         var email: String =sharedPref?.getString("email","No Data").toString()
 
-        Log.i("beta", "$email" )//test only
 
         eventRecyclerView = view.findViewById(R.id.eventRecyclerView)
         eventRecyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -64,7 +63,7 @@ class Event : Fragment() {
                     adapter.setonItemClickListener(object :
                         MyAdapter.onItemClickListener {
                         override fun onItemClick(position: Int) {
-                            val bundle = Bundle()
+                            /*val bundle = Bundle()
                             bundle.putString("eventTitle",eventArrayList[position].title)
                             bundle.putString("eventDay",eventArrayList[position].date)
                             bundle.putString("location",eventArrayList[position].location)
@@ -75,12 +74,8 @@ class Event : Fragment() {
 
                             val fragment = OkuEventDetails()
                             fragment.arguments = bundle
-                            fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment_content_drawer,fragment)?.commit()
-
-                            //Log.i("pos", "$position")
-
+                            fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment_content_drawer,fragment)?.commit()*/
                         }
-
                     })
                 }
             }

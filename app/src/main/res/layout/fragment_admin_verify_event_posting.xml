@@ -14,29 +14,21 @@ tools:context=".VerifyEventPosting">
     tools:context=".OkuEventDetails">
 
     <TextView
-        android:id="@+id/tvEventTitle2"
+        android:id="@+id/tvFacTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="EventTitle" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <TextView
-        android:id="@+id/tvEventDescription"
+        android:id="@+id/tvFacType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Event Description" />
 
     <TextView
-        android:id="@+id/tvPostDay2"
+        android:id="@+id/tvEventDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
