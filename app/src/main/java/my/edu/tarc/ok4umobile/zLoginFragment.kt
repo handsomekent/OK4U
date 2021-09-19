@@ -81,7 +81,7 @@ auth=Firebase.auth
                                         var temp5 = i.child("email").getValue().toString()
                                         var temp6 = i.child("userType").getValue().toString()
 
-                                        if (email1.equals(temp5) == true && pass1.equals(temp4) == true) {
+                                        if (email1.equals(temp5) == true ) {
                                             Toast.makeText(context, "Sucess", Toast.LENGTH_LONG)
                                             val intent = Intent(
                                                 activity,
