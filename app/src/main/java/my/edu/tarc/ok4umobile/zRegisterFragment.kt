@@ -13,12 +13,15 @@ import android.widget.Toast
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
 //import com.google.firebase.firestore.auth.User as User
 
+private lateinit var auth: FirebaseAuth;
 
 
 class zRegisterFragment : Fragment() {
@@ -30,6 +33,11 @@ class zRegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
+
+
+
+        auth = Firebase.auth
+
 
 
         binding.btnRegister.setOnClickListener(){
@@ -49,18 +57,21 @@ class zRegisterFragment : Fragment() {
                 val user_type= radio_usertype?.text.toString()
 
 
-               // val database = Firebase.database("https://ok4u-bc86a-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val database = Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val ref = database.getReference("Users")
-
-
-               // val newuser = User("003", name, gender, pass, email,user_type)
-               // ref.child("003").setValue(newuser)
                 val newuser = User(name, gender, pass, email,address,phoneNum,user_type)
-
-
-
                 ref.child(email).setValue(newuser)
+
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,pass).addOnCompleteListener(
+                    {task ->
+                        if(task.isSuccessful){
+                            val firebaseUser :
+                        }
+
+                    }
+                )
+
+
                 Toast.makeText(this.context, "Register Success", Toast.LENGTH_LONG).show()
 
                 Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
