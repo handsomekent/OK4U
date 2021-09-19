@@ -180,6 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:hint="Enter Available Slot"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.252"
                 app:layout_constraintStart_toStartOf="parent"
@@ -197,26 +198,36 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvInputSlot" />
 
             <Button
-                android:id="@+id/btnUpload"
+                android:id="@+id/btnSelect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload"
+                android:text="SELECT"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.053"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLabelImage" />
 
 
+            <Button
+                android:id="@+id/btnUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UPLOAD"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.101"
+                app:layout_constraintStart_toEndOf="@+id/btnSelect"
+                tools:layout_editor_absoluteY="844dp" />
+
             <ImageView
                 android:id="@+id/ivUpload"
                 android:layout_width="343dp"
                 android:layout_height="191dp"
                 android:layout_above="@+id/progress_bar"
-                android:layout_below="@+id/btnUpload"
+                android:layout_below="@+id/btnSelect"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnUpload" />
+                app:layout_constraintTop_toBottomOf="@+id/btnSelect" />
 
             <ProgressBar
                 android:id="@+id/progress_bar"

@@ -1,21 +1,16 @@
 package my.edu.tarc.ok4umobile
 
 import android.content.Context
-import android.content.SharedPreferences
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ok4umobile.databinding.FragmentNgoApplyEventPostingFragmenttBinding
@@ -48,6 +43,16 @@ class ApplyEventPostingFragmentt : Fragment() {
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("events")
 
+        binding.btnSelect.setOnClickListener(){
+
+            selectImage()
+        }
+
+        binding.btnUpload.setOnClickListener(){
+
+            uploadImage()
+        }
+
 
 
         binding.btnRegister.setOnClickListener(){
@@ -66,7 +71,7 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val ref = database.getReference("events")
 
 
-                val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,status,"")
+                val newevent = Event(ngoName, eventName, eventDescription, date, location,"",availableSlot,status,"","")
 
 
 
@@ -80,11 +85,22 @@ class ApplyEventPostingFragmentt : Fragment() {
 
         return binding.root
 
-        fun OpenFileChooser(){
-            
-        }
+    }
+
+    private fun uploadImage() {
+        TODO("Not yet implemented")
+    }
+
+    private fun selectImage() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+
+
 
     }
+
+
 
 
 }
