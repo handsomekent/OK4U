@@ -11,5 +11,5 @@ data class Event(var title:String = "",
                 var ngoName: String = "",
                 var status: String = "",
                 var denyStatus: String = "",
-var maxSlot:String = "")
+                var maxSlot:String = "")
 

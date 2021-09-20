@@ -74,7 +74,11 @@ class Drawer : AppCompatActivity() {
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
                     R.id.nav_verify_event_posting,
-                    R.id.nav_verify_new_facilities
+                    R.id.nav_verify_new_facilities,
+                    R.id.verifyEvent,
+                    R.id.adminVerifyEventPosting,
+                    R.id.adminVerifyNewFacilities,
+                    R.id.facility
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -134,8 +138,7 @@ class Drawer : AppCompatActivity() {
                     R.id.nav_verify_event_posting,
                     R.id.nav_verify_new_facilities,
                     R.id.event,
-                    R.id.okuEventDetails,
-                    R.id.verifyEvent
+                    R.id.okuEventDetails
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)

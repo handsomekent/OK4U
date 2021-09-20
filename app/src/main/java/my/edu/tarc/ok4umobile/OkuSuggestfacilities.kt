@@ -62,7 +62,7 @@ class Suggestfacilities : Fragment(),
         var longitude : String="null"
         val database =
             Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-        val ref = database.getReference("Facilities")
+        val ref = database.getReference("PendingFacility")
 
         binding.btnLocation.setOnClickListener() {
 

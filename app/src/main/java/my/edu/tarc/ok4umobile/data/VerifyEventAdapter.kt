@@ -1,10 +1,13 @@
 package my.edu.tarc.ok4umobile.data
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import my.edu.tarc.ok4umobile.AdminVerifyEventPosting
 import my.edu.tarc.ok4umobile.R
 
 class VerifyEventAdapter(private val verEventList: List<Event>) :
@@ -49,6 +52,20 @@ class VerifyEventAdapter(private val verEventList: List<Event>) :
             holder.itemView.visibility = View.GONE
         }
         holder.itemView.setOnClickListener() {
+            val bundle = Bundle()
+            bundle.putString("eventTitle",current.title)
+            bundle.putString("eventDay",current.date)
+            bundle.putString("location",current.location)
+            bundle.putString("ngoName",current.ngoName)
+            bundle.putString("desc",current.eventDesc)
+            bundle.putString("slot",current.currentSlot)
+            bundle.putString("imageUrl",current.imageUrl)
+            bundle.putString("maxSlot",current.maxSlot)
+
+
+            val fragment = AdminVerifyEventPosting()
+            fragment.arguments = bundle
+            Navigation.findNavController(it).navigate(R.id.action_verifyEvent_to_adminVerifyEventPosting,bundle)
 
         }
     }

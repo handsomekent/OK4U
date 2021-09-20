@@ -39,7 +39,7 @@ class Facility : Fragment() {
     private fun getFacilityData() {
         db =
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("Facilities")
+                .getReference("PendingFacility")
 
         db.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {

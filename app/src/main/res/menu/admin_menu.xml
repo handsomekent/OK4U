@@ -23,5 +23,11 @@
             android:id="@+id/mapsFragment"
             android:title="@string/okumap" />
 
+        <item android:id="@+id/facility"
+            android:title="Verify Facility"/>
+
+        <item android:id="@+id/verifyEvent"
+            android:title="Verify Event"/>
+
     </group>
 </menu>

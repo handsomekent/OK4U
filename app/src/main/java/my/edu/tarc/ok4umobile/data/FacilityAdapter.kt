@@ -61,6 +61,7 @@ class FacilityAdapter (private val facilityList : List<Facility>): RecyclerView.
             bundle.putString("facType",current.facility)
             bundle.putString("facLat",current.latitude)
             bundle.putString("facLong",current.longitude)
+            bundle.putString("userEmail",current.userEmail)
 
             val fragment = AdminVerifyNewFacilities()
             fragment.arguments = bundle

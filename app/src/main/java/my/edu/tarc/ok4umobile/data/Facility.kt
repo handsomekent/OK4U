@@ -5,6 +5,7 @@ data class Facility(var facilityName:String = "",
                     var faciDesc: String="",
                     var status: String = "",
                     var latitude: String = "",
-                    var longitude: String = ""
+                    var longitude: String = "",
+                    var userEmail: String = ""
 
 )

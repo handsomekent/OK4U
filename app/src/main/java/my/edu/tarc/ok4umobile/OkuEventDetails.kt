@@ -46,6 +46,7 @@ class OkuEventDetails : Fragment() {
         var name: String = sharedPref?.getString("name", "No Data").toString()
         var email: String = sharedPref?.getString("email", "No Data").toString()
         var userType: String = sharedPref?.getString("userType", "No Data").toString()
+        var id : String = sharedPref?.getString("id","No Data").toString()
 
         var current : Int
 
@@ -76,7 +77,7 @@ class OkuEventDetails : Fragment() {
 
         val db2 =
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app")
-                .getReference("events").child("$inputData").child("register").child("$email")
+                .getReference("events").child("$inputData").child("register").child("$id")
         val db3 =
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("events").child("$inputData")
@@ -115,9 +116,10 @@ class OkuEventDetails : Fragment() {
                     } else {
                         db2.addValueEventListener(object : ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
-                                var check = snapshot.child("email").value.toString()
-
-                                if (check.equals("$email")) {
+                                //user email as path
+                                var check = snapshot.child("id").value.toString()
+                                //use email before
+                                if (check.equals("$id")) {
                                     btnRegis.isClickable = false
                                     btnRegis.text = "Registered"
                                     btnRegis.setBackgroundColor(Color.GRAY)
@@ -182,11 +184,15 @@ class OkuEventDetails : Fragment() {
                                                 Log.i("currentplus","$current")
 
                                                 if (vehicle.isChecked) {
+                                                    //path from email to id
                                                     db.child("$inputData").child("register")
-                                                        .child("$email").child("email")
+                                                        .child("$id").child("email")
                                                         .setValue("$email")
                                                     db.child("$inputData").child("register")
-                                                        .child("$email").child("transport")
+                                                        .child("$id").child("id")
+                                                        .setValue("$id")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$id").child("transport")
                                                         .setValue("Yes")
                                                     Toast.makeText(
                                                         context,
@@ -194,11 +200,15 @@ class OkuEventDetails : Fragment() {
                                                         Toast.LENGTH_LONG
                                                     ).show()
                                                 } else {
+                                                    //path from email to id
                                                     db.child("$inputData").child("register")
-                                                        .child("$email").child("email")
+                                                        .child("$id").child("email")
                                                         .setValue("$email")
                                                     db.child("$inputData").child("register")
-                                                        .child("$email").child("transport")
+                                                        .child("$id").child("id")
+                                                        .setValue("$id")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$id").child("transport")
                                                         .setValue("No")
                                                     Toast.makeText(
                                                         context,

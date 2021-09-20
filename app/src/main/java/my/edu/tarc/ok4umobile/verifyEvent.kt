@@ -40,7 +40,7 @@ class verifyEvent : Fragment() {
     private fun getVerifyEventData() {
         db =
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("events")
+                .getReference("PendingEvent")
 
         db.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {

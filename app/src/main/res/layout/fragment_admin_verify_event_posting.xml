@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".VerifyEventPosting">
+tools:context=".AdminVerifyEventPosting">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -14,25 +14,39 @@ tools:context=".VerifyEventPosting">
     tools:context=".OkuEventDetails">
 
     <TextView
-        android:id="@+id/tvFacTitle"
+        android:id="@+id/tvVerifyEventTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="EventTitle" />
+        android:text="TextView" />
 
     <TextView
-        android:id="@+id/tvFacType"
+        android:id="@+id/tvVerifyEventDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Event Description" />
+        android:text="TextView" />
 
     <TextView
-        android:id="@+id/tvEventDate"
+        android:id="@+id/tvVerifyEventOrganizer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="5 days ago" />
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvVerifyEventDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvVerifyEventLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
 
     <Button
         android:id="@+id/btnApprove"
