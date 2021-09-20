@@ -67,7 +67,8 @@ class zLoginFragment : Fragment() {
                                             var temp1 = i.child("id").getValue().toString()
                                             var temp2 = i.child("name").getValue().toString()
                                             var temp3 = i.child("gender").getValue().toString()
-                                            var temp4 = i.child("password").getValue().toString()
+                                            var temp7 = i.child("address").getValue().toString()
+                                            var temp8 = i.child("phoneNumber").getValue().toString()
                                             var temp5 = i.child("email").getValue().toString()
                                             var temp6 = i.child("userType").getValue().toString()
 
@@ -88,6 +89,9 @@ class zLoginFragment : Fragment() {
                                                 editor?.putString("email", temp5)
                                                 editor?.putString("name", temp2)
                                                 editor?.putString("id", temp1)
+                                                editor?.putString("address", temp7)
+                                                editor?.putString("phoneNumber", temp8)
+
                                                 editor?.apply()
                                                 startActivity(intent)
 
