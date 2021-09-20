@@ -62,12 +62,12 @@ class Suggestfacilities : Fragment(),
         var longitude : String="null"
         val database =
             Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-        val ref = database.getReference("Facilities")
+        val ref = database.getReference("PendingFacility")
 
         binding.btnLocation.setOnClickListener() {
 
             if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
+                != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(
                     requireActivity(), arrayOf(
                         Manifest.permission.ACCESS_FINE_LOCATION

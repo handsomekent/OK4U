@@ -59,7 +59,7 @@ class zLoginFragment : Fragment() {
             val database =
                 FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                     .getReference("Users")
-auth=Firebase.auth
+            auth=Firebase.auth
             auth.signInWithEmailAndPassword(email1, pass1)
                 .addOnCompleteListener { task ->
 

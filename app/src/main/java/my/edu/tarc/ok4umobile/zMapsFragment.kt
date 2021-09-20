@@ -80,6 +80,7 @@ class zMapsFragment : Fragment()
 
                 for (i in snapshot.children) {
                     var facilityName = i.child("facilityName").getValue().toString()
+                    var facilityDesc = i.child("faciDesc").getValue().toString()
                     var lat = i.child("latitude").getValue().toString()
                     var long = i.child("longitude").getValue().toString()
                     var isFaci=i.child("facility").getValue().toString()
@@ -92,14 +93,16 @@ class zMapsFragment : Fragment()
                         map.addMarker(
                             MarkerOptions()
                                 .position(temp1)
-                                .title(""+facilityName+" (Facility)")
+                                .title(""+facilityName+"")
+                                .snippet("(Facility)  ${facilityDesc} "+" .")
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))
 
                     }else{
                         map.addMarker(
                             MarkerOptions()
                                 .position(temp1)
-                                .title(""+facilityName+" (Service)")
+                                .title(""+facilityName+"")
+                                .snippet("(Service)  ${facilityDesc} "+" .")
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
                     }
 
