@@ -32,11 +32,11 @@ class RgAdapter (private val registerList : List<Register>): RecyclerView.Adapte
     override fun onBindViewHolder(holder: RgViewHolder, position: Int) {
         val current = registerList[position]
 
-        holder.lblName.text  = current.name
-        holder.lblEmail.text  = current.email
-        holder.lblctc.text  = current.phNumber
-        holder.lbladdress.text  = current.address
-        holder.lbltransport.text  = current.transport
+        holder.lblName.text  = "Name :" + current.name
+        holder.lblEmail.text  = "Email :" + current.email
+        holder.lblctc.text  = "Phone Number :" + current.phNumber
+        holder.lbladdress.text  = "Address : " + current.address
+        holder.lbltransport.text  = "Transport" + current.transport
     }
 
     override fun getItemCount(): Int {
