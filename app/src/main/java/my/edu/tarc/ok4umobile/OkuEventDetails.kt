@@ -47,6 +47,8 @@ class OkuEventDetails : Fragment() {
         var email: String = sharedPref?.getString("email", "No Data").toString()
         var userType: String = sharedPref?.getString("userType", "No Data").toString()
         var id : String = sharedPref?.getString("id","No Data").toString()
+        var phone : String = sharedPref?.getString("phoneNumber","No Data").toString()
+        var address : String = sharedPref?.getString("phoneNumber","No Data").toString()
 
         var current : Int
 
@@ -194,6 +196,16 @@ class OkuEventDetails : Fragment() {
                                                     db.child("$inputData").child("register")
                                                         .child("$id").child("transport")
                                                         .setValue("Yes")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$id").child("name")
+                                                        .setValue("$name")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$id").child("phNumber")
+                                                        .setValue("$phone")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$id").child("address")
+                                                        .setValue("$address")
+
                                                     Toast.makeText(
                                                         context,
                                                         "Register Successful",
@@ -210,6 +222,15 @@ class OkuEventDetails : Fragment() {
                                                     db.child("$inputData").child("register")
                                                         .child("$id").child("transport")
                                                         .setValue("No")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$id").child("name")
+                                                        .setValue("$name")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$id").child("phNumber")
+                                                        .setValue("$phone")
+                                                    db.child("$inputData").child("register")
+                                                        .child("$id").child("address")
+                                                        .setValue("$address")
                                                     Toast.makeText(
                                                         context,
                                                         "Register Successful",
