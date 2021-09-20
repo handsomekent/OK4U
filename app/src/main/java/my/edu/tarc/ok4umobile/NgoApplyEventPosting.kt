@@ -31,6 +31,13 @@ import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import my.edu.tarc.ok4umobile.databinding.FragmentNgoApplyEventPostingFragmenttBinding
 import java.util.*
+import androidx.annotation.NonNull
+
+import com.google.android.gms.tasks.OnCompleteListener
+
+
+import com.google.firebase.storage.UploadTask
+import java.lang.Exception
 
 
 class ApplyEventPostingFragmentt : Fragment() {
@@ -106,20 +113,21 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val availableSlot = binding.tvInputSlot.text.toString()
 
 
-
                 var imageLink: String
-                var uplaodID : String
-
 
                 val database =
                     Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val ref = database.getReference("PendingEvent")
 
+
+                val tempString :String="images/" + UUID.randomUUID().toString()+  ".jpg"
                 val storageReference =
                     FirebaseStorage.getInstance()
-                        .getReference("images/" + System.currentTimeMillis() +  ".jpg")
+                        .getReference(tempString)
 
-                val getLink = storageReference.child("images")
+                val getLink = FirebaseStorage.getInstance().reference
+
+                val databaseReference = FirebaseDatabase.getInstance().getReference(("images/"))
 
 
 
@@ -131,25 +139,31 @@ class ApplyEventPostingFragmentt : Fragment() {
                 storageReference.putFile(ImageUri).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         binding.ivUpload.setImageURI(null)
-                        imageLink = task.result.toString()
-                        getLink.downloadUrl
-
-//                        val upload = Upload(
-//                            mEditTextFileName.getText().toString().trim(),
-//                            taskSnapshot.getDownloadUrl().toString()
-//                        )
-//                        val uploadId: String = mDatabaseRef.push().getKey()
-//                        mDatabaseRef.child(uploadId).setValue(upload)
 
 
-                        Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
+                        getLink.child(""+tempString+"").downloadUrl.addOnCompleteListener{ task->
+                            if(task.isSuccessful){
+                                imageLink=task.result.toString()
+                                Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
+
+
+                                val newevent = Event1(ngoName, eventName, eventDescription, date, location, "0",
+                                    availableSlot, "0", "", imageLink,email)
+                                ref.child(eventName).setValue(newevent)
+                            }else{
+                                binding.tvInputDate.setText(tempString)
+                            }
+
+                        }
 
 
 
-
-                        val newevent = Event1(ngoName, eventName, eventDescription, date, location, "0",
-                            availableSlot, "0", "", imageLink,email)
-                        ref.child(eventName).setValue(newevent)
+//                        Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
+//
+//
+//                        val newevent = Event1(ngoName, eventName, eventDescription, date, location, "0",
+//                            availableSlot, "0", "", imageLink,email)
+//                        ref.child(eventName).setValue(newevent)
                     } else {
                         Toast.makeText(this.context, "Upload Fail", Toast.LENGTH_LONG).show()
                     }
