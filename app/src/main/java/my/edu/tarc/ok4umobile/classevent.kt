@@ -10,7 +10,8 @@ class Event1(
     var maxSlot:String,
     var status:String,
     var denyReason:String,
-    var imageUrl : String
+    var imageUrl : String,
+    var userEmail : String
 ){
-    constructor(): this("","","","","","","","","","")
+    constructor(): this("","","","","","","","","","","")
 }

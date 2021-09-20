@@ -1,6 +1,7 @@
 package my.edu.tarc.ok4umobile
 
 import android.Manifest
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -19,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -65,7 +67,7 @@ class ApplyEventPostingFragmentt : Fragment() {
         )
 
         val sharedPref = this.activity?.getSharedPreferences(
-            "pref", Context.MODE_PRIVATE
+            "kotlinsharedpreference", Context.MODE_PRIVATE
         )
         var name: String = sharedPref?.getString("name", "No Data").toString()
         var email: String = sharedPref?.getString("email", "No Data").toString()
@@ -104,16 +106,24 @@ class ApplyEventPostingFragmentt : Fragment() {
                 val availableSlot = binding.tvInputSlot.text.toString()
 
 
+
                 var imageLink: String
+                var uplaodID : String
 
 
                 val database =
                     Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                val ref = database.getReference("events")
+                val ref = database.getReference("PendingEvent")
 
                 val storageReference =
                     FirebaseStorage.getInstance()
-                        .getReference("images/" + UUID.randomUUID().toString())
+                        .getReference("images/" + System.currentTimeMillis() +  ".jpg")
+
+                val getLink = storageReference.child("images")
+
+
+
+
 
 
 
@@ -122,20 +132,23 @@ class ApplyEventPostingFragmentt : Fragment() {
                     if (task.isSuccessful) {
                         binding.ivUpload.setImageURI(null)
                         imageLink = task.result.toString()
+                        getLink.downloadUrl
+
+//                        val upload = Upload(
+//                            mEditTextFileName.getText().toString().trim(),
+//                            taskSnapshot.getDownloadUrl().toString()
+//                        )
+//                        val uploadId: String = mDatabaseRef.push().getKey()
+//                        mDatabaseRef.child(uploadId).setValue(upload)
+
+
                         Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
 
-                        val newevent = Event1(
-                            ngoName,
-                            eventName,
-                            eventDescription,
-                            date,
-                            location,
-                            "0",
-                            availableSlot,
-                            "0",
-                            "",
-                            imageLink
-                        )
+
+
+
+                        val newevent = Event1(ngoName, eventName, eventDescription, date, location, "0",
+                            availableSlot, "0", "", imageLink,email)
                         ref.child(eventName).setValue(newevent)
                     } else {
                         Toast.makeText(this.context, "Upload Fail", Toast.LENGTH_LONG).show()
@@ -153,4 +166,7 @@ class ApplyEventPostingFragmentt : Fragment() {
         }
         return binding.root
     }
+
+
+
 }
