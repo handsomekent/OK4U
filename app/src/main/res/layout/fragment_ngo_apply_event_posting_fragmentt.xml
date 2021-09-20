@@ -29,46 +29,17 @@
 
 
             <TextView
-                android:id="@+id/tvLabelName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-
-                android:layout_marginTop="28dp"
-                android:text="NGO Name :"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.041"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgIcon" />
-
-            <EditText
-                android:id="@+id/tvInputNgoName"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:hint="Enter NGO Name"
-                android:minHeight="48dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.262"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelName" />
-
-            <TextView
                 android:id="@+id/tvLabelEventName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="68dp"
+                android:layout_marginTop="20dp"
                 android:text="Event Name :"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintHorizontal_bias="0.048"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelName" />
+                app:layout_constraintTop_toBottomOf="@+id/imgIcon" />
 
             <TextView
                 android:id="@+id/tvLabelDescription"
@@ -132,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="4dp"
-                android:hint="Enter Event Date"
+                android:hint="dd/mm/yyyy"
                 android:minHeight="48dp"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -235,14 +206,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/btnUpload"  />
 
 
-
             <Button
                 android:id="@+id/btnRegister"
                 style="@style/style_button"
                 android:layout_width="250dp"
                 android:layout_below="@+id/ivUpload"
                 android:layout_marginTop="33dp"
-                android:text="Register"
+                android:text="Apply event posting"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.484"
                 app:layout_constraintStart_toStartOf="parent"

@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -49,7 +50,9 @@ class ApplyEventPostingFragmentt : Fragment() {
     private val pickImages =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri?
             ->
-            ImageUri = uri!!
+            if (uri != null) {
+                ImageUri = uri
+            }
             uri?.let { it ->
                 Picasso.with(context).load(it).resize(800, 800).into(binding.ivUpload)
             }
@@ -101,82 +104,97 @@ class ApplyEventPostingFragmentt : Fragment() {
 
                 pickImages.launch("image/")
             }
+        }
 
             binding.btnRegister.setOnClickListener() {
 
-                val ngoName: String = binding.tvInputNgoName.text.toString()
+               // val ngoName: String = binding.tvInputNgoName.text.toString()
                 val eventName: String = binding.tvInputEventName.text.toString()
                 val eventDescription = binding.tvInputDescription.text.toString()
                 val date = binding.tvInputDate.text.toString()
                 val location = binding.tvInputLocation.text.toString()
                 val availableSlot = binding.tvInputSlot.text.toString()
-
-
                 var imageLink: String
+                val img:ImageView =binding.ivUpload
 
                 val database =
                     Firebase.database("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 val ref = database.getReference("PendingEvent")
-
+                val refUser=database.getReference("Users").child(id)
 
                 val tempString :String="images/" + UUID.randomUUID().toString()+  ".jpg"
                 val storageReference =
                     FirebaseStorage.getInstance()
                         .getReference(tempString)
-
                 val getLink = FirebaseStorage.getInstance().reference
-
                 val databaseReference = FirebaseDatabase.getInstance().getReference(("images/"))
+                if(eventName!=""&&eventDescription!=""&&date!=""&&location!=""&&availableSlot!=""&&img.drawable!=null) {
 
+                    storageReference.putFile(ImageUri).addOnCompleteListener { task ->
 
+                        if (task.isSuccessful) {
 
+                            binding.ivUpload.setImageURI(null)
+                            getLink.child("" + tempString + "").downloadUrl.addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    imageLink = task.result.toString()
+                                    Toast.makeText(
+                                        this.context,
+                                        "Upload Success",
+                                        Toast.LENGTH_LONG
+                                    ).show()
 
+                                    refUser.addValueEventListener(object : ValueEventListener {
+                                        override fun onDataChange(snapshot: DataSnapshot) {
+                                            var ngoName: String =
+                                                snapshot.child("name").getValue().toString()
+                                            val newevent = Event1(
+                                                ngoName,
+                                                eventName,
+                                                eventDescription,
+                                                date,
+                                                location,
+                                                "0",
+                                                availableSlot,
+                                                "0",
+                                                "",
+                                                imageLink,
+                                                id
+                                            )
+                                            ref.child(eventName).setValue(newevent)
+                                        }
 
+                                        override fun onCancelled(error: DatabaseError) {
+                                            TODO("Not yet implemented")
+                                        }
 
+                                    })
 
-                Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
-                storageReference.putFile(ImageUri).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        binding.ivUpload.setImageURI(null)
+                                } else {
+                                    Toast.makeText(context, "Please select a image.", Toast.LENGTH_LONG).show()
+                                }
 
-
-                        getLink.child(""+tempString+"").downloadUrl.addOnCompleteListener{ task->
-                            if(task.isSuccessful){
-                                imageLink=task.result.toString()
-                                Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
-
-
-                                val newevent = Event1(ngoName, eventName, eventDescription, date, location, "0",
-                                    availableSlot, "0", "", imageLink,id)
-                                ref.child(eventName).setValue(newevent)
-                            }else{
-                                binding.tvInputDate.setText(tempString)
                             }
 
+                        } else {
+                            Toast.makeText(context, "Upload Fail", Toast.LENGTH_LONG).show()
                         }
 
+                        Toast.makeText(context, "Event Register Success", Toast.LENGTH_LONG)
+                            .show()
+
+                        Navigation.findNavController(it)
+                            .navigate(R.id.action_nav_apply_event_posting_to_event)
 
 
-//                        Toast.makeText(this.context, "Upload Success", Toast.LENGTH_LONG).show()
-//
-//
-//                        val newevent = Event1(ngoName, eventName, eventDescription, date, location, "0",
-//                            availableSlot, "0", "", imageLink,email)
-//                        ref.child(eventName).setValue(newevent)
-                    } else {
-                        Toast.makeText(this.context, "Upload Fail", Toast.LENGTH_LONG).show()
                     }
-
-                    Toast.makeText(this.context, "Event Register Success", Toast.LENGTH_LONG).show()
-
-//                Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
-
+                }else if(eventName==""||eventDescription==""||date==""||location==""||availableSlot==""||img.drawable==null){
+                    Toast.makeText(context, "Please fill in all the fields.", Toast.LENGTH_LONG).show()
 
                 }
 
-
             }
-        }
+
         return binding.root
     }
 
