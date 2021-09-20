@@ -11,7 +11,7 @@ class Event1(
     var status:String,
     var denyReason:String,
     var imageUrl : String,
-    var userEmail : String
+    var ngoId : String
 ){
     constructor(): this("","","","","","","","","","","")
 }

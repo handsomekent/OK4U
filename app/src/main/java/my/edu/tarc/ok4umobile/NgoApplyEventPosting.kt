@@ -76,8 +76,7 @@ class ApplyEventPostingFragmentt : Fragment() {
         val sharedPref = this.activity?.getSharedPreferences(
             "kotlinsharedpreference", Context.MODE_PRIVATE
         )
-        var name: String = sharedPref?.getString("name", "No Data").toString()
-        var email: String = sharedPref?.getString("email", "No Data").toString()
+        var id: String =sharedPref?.getString("id","No Data").toString()
 
         val databaseuser =
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
@@ -148,7 +147,7 @@ class ApplyEventPostingFragmentt : Fragment() {
 
 
                                 val newevent = Event1(ngoName, eventName, eventDescription, date, location, "0",
-                                    availableSlot, "0", "", imageLink,email)
+                                    availableSlot, "0", "", imageLink,id)
                                 ref.child(eventName).setValue(newevent)
                             }else{
                                 binding.tvInputDate.setText(tempString)
