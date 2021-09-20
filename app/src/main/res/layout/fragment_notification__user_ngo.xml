@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
@@ -11,81 +11,9 @@
 
 
     <ListView
-        android:layout_width="410dp"
-        android:layout_height="68dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="115dp">
-
-        <ListView
-            android:layout_width="410dp"
-            android:layout_height="68dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="108dp">
-
-            <ListView
-                android:layout_width="410dp"
-                android:layout_height="68dp"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="106dp" />
-        </ListView>
-
-        <ListView
-            android:layout_width="410dp"
-            android:layout_height="68dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="106dp" />
-    </ListView>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="47dp"
-        android:layout_marginTop="24dp"
-        android:text="Notifications"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/divider"
+        android:id="@+id/listNotification"
         android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
+        android:layout_height="729dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="79dp" />
-
-    <ListView
-        android:layout_width="410dp"
-        android:layout_height="68dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="115dp">
-
-        <ListView
-            android:layout_width="410dp"
-            android:layout_height="68dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="108dp">
-
-            <ListView
-                android:layout_width="410dp"
-                android:layout_height="68dp"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="106dp" />
-        </ListView>
-
-        <ListView
-            android:layout_width="410dp"
-            android:layout_height="68dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="106dp" />
-    </ListView>
-
-    <ListView
-        android:layout_width="409dp"
-        android:layout_height="553dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="177dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:layout_editor_absoluteY="1dp" />
+</RelativeLayout>

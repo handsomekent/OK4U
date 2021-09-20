@@ -30,7 +30,11 @@
         android:id="@+id/nav_apply_event_posting"
         android:name="my.edu.tarc.ok4umobile.ApplyEventPostingFragmentt"
         android:label="Apply event posting"
-        tools:layout="@layout/fragment_ngo_apply_event_posting_fragmentt" />
+        tools:layout="@layout/fragment_ngo_apply_event_posting_fragmentt" >
+        <action
+            android:id="@+id/action_nav_apply_event_posting_to_event"
+            app:destination="@id/event" />
+    </fragment>
     <fragment
         android:id="@+id/nav_verify_new_facilities"
         android:name="my.edu.tarc.ok4umobile.VerifyNewFacilities"
@@ -50,7 +54,11 @@
         android:id="@+id/nav_oku_suggest_facilities"
         android:name="my.edu.tarc.ok4umobile.Suggestfacilities"
         android:label="Suggest new facilities"
-        tools:layout="@layout/fragment_oku_suggestfacilities" />
+        tools:layout="@layout/fragment_oku_suggestfacilities" >
+        <action
+            android:id="@+id/action_nav_oku_suggest_facilities_to_event"
+            app:destination="@id/event" />
+    </fragment>
     <fragment
         android:id="@+id/okuEventDetails"
         android:name="my.edu.tarc.ok4umobile.OkuEventDetails"
@@ -61,4 +69,9 @@
         android:name="my.edu.tarc.ok4umobile.zEvent"
         android:label="Event List"
         tools:layout="@layout/fragment_event" />
+    <fragment
+        android:id="@+id/notification_UserNgo"
+        android:name="my.edu.tarc.ok4umobile.Notification_UserNgo"
+        android:label="fragment_notification__user_ngo"
+        tools:layout="@layout/fragment_notification__user_ngo" />
 </navigation>

@@ -10,6 +10,10 @@
             android:title="@string/menu_editprofile"
             />
         <item
+            android:id="@+id/notification_UserNgo"
+            android:title="notification"
+            />
+        <item
             android:id="@+id/nav_oku_suggest_facilities"
             android:title="Suggest Facility" />
         <item

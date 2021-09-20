@@ -40,79 +40,75 @@ class zLoginFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
 
-//        binding.btnLogin.setOnClickListener()
-//        {
-//            val intent = Intent(activity, Drawer::class.java) // open activity from fragment
-//            startActivity(intent)
-//        }
 
         binding.btnLogin.setOnClickListener() {
             val email1 = binding.txtEmail.text.toString()
             val pass1 = binding.txtPassword.text.toString()
-            //val database = Firebase.database("https://kzassignment-d1445-default-rtdb.asia-southeast1.firebasedatabase.app/")
-            //val ref = database.getReference("Users")
 
             val database =
                 FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/")
                     .getReference("Users")
             auth=Firebase.auth
-            auth.signInWithEmailAndPassword(email1, pass1)
-                .addOnCompleteListener { task ->
+            if(email1!=""&&pass1!="") {
+                auth.signInWithEmailAndPassword(email1, pass1)
+                    .addOnCompleteListener { task ->
 
-                    if (task.isSuccessful) {
+                        if (task.isSuccessful) {
 
-                        database.addValueEventListener(object : ValueEventListener {
+                            database.addValueEventListener(object : ValueEventListener {
 
 
-                            override fun onDataChange(snapshot: DataSnapshot) {
-                                if (snapshot.exists()) {
-                                    binding.textView.text = "can"
-                                    //change text failed
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    if (snapshot.exists()) {
 
-                                    for (i in snapshot.children) {
-                                        var temp1 = i.child("id").getValue().toString()
-                                        var temp2 = i.child("name").getValue().toString()
-                                        var temp3 = i.child("gender").getValue().toString()
-                                        var temp4 = i.child("password").getValue().toString()
-                                        var temp5 = i.child("email").getValue().toString()
-                                        var temp6 = i.child("userType").getValue().toString()
+                                        //change text failed
 
-                                        if (email1.equals(temp5) == true ) {
-                                            Toast.makeText(context, "Sucess", Toast.LENGTH_LONG)
-                                            val intent = Intent(
-                                                activity,
-                                                zDrawer::class.java
-                                            ) // open activity from fragment
-                                            val sharedPrefFile = "kotlinsharedpreference"
-                                            val sharedPref: SharedPreferences? =
-                                                activity?.getSharedPreferences(
-                                                    sharedPrefFile, Context.MODE_PRIVATE
-                                                )
-                                            val editor: SharedPreferences.Editor? =
-                                                sharedPref?.edit()
-                                            editor?.putString("userType", temp6)
-                                            editor?.putString("email", temp5)
-                                            editor?.putString("name", temp2)
-                                            editor?.putString("id", temp1)
-                                            editor?.apply()
-                                            startActivity(intent)
+                                        for (i in snapshot.children) {
+                                            var temp1 = i.child("id").getValue().toString()
+                                            var temp2 = i.child("name").getValue().toString()
+                                            var temp3 = i.child("gender").getValue().toString()
+                                            var temp4 = i.child("password").getValue().toString()
+                                            var temp5 = i.child("email").getValue().toString()
+                                            var temp6 = i.child("userType").getValue().toString()
 
+                                            if (email1.equals(temp5) == true) {
+                                                Toast.makeText(context, "Sucess", Toast.LENGTH_LONG)
+                                                val intent = Intent(
+                                                    activity,
+                                                    zDrawer::class.java
+                                                ) // open activity from fragment
+                                                val sharedPrefFile = "kotlinsharedpreference"
+                                                val sharedPref: SharedPreferences? =
+                                                    activity?.getSharedPreferences(
+                                                        sharedPrefFile, Context.MODE_PRIVATE
+                                                    )
+                                                val editor: SharedPreferences.Editor? =
+                                                    sharedPref?.edit()
+                                                editor?.putString("userType", temp6)
+                                                editor?.putString("email", temp5)
+                                                editor?.putString("name", temp2)
+                                                editor?.putString("id", temp1)
+                                                editor?.apply()
+                                                startActivity(intent)
+
+
+                                            }
                                         }
+
                                     }
-
                                 }
-                            }
 
-                            override fun onCancelled(error: DatabaseError) {
+                                override fun onCancelled(error: DatabaseError) {
+                                }
+                            })
+                        } else {
+                            Toast.makeText(context, "Email or password is invalid.", Toast.LENGTH_LONG).show()
+                        }
 
-                            }
-                        })
-                    }else{
-                          Toast.makeText(context, "failed", Toast.LENGTH_LONG)
                     }
-
-                }
-
+            }else {
+                Toast.makeText(context, "Please fill in your email and password.", Toast.LENGTH_LONG).show()
+            }
 
 
         }

@@ -34,6 +34,7 @@ class NgoEditProfile : Fragment() {
             "kotlinsharedpreference", Context.MODE_PRIVATE)
         var name: String =sharedPref?.getString("name","No Data").toString()
         var email: String =sharedPref?.getString("email","No Data").toString()
+        var id: String =sharedPref?.getString("id","No Data").toString()
 
 
 
@@ -50,9 +51,11 @@ class NgoEditProfile : Fragment() {
                     var addressdb=i.child("address").getValue().toString()
                     var phonedb=i.child("phoneNumber").getValue().toString()
                     var emaildb=i.child("email").getValue().toString()
+                    var id1=i.child("id").getValue().toString()
+
                     Log.i("MainActivity", ""+email )
                     Log.i("MainActivity", ""+namedb )//test only
-                    if(email.equals(emaildb)){
+                    if(id.equals(id1)){
                         Log.i("MainActivity", "3" )//test only
 
                         binding.txtNgoName.setText(namedb)
@@ -60,10 +63,10 @@ class NgoEditProfile : Fragment() {
                         binding.editTextPhone.setText(phonedb)
                         binding.editTextPostalAddress.setText(addressdb)
                         binding.btnUpdateProfile.setOnClickListener(){
-                            databaseuser.child(email).child("name").setValue(binding.txtNgoName.text.toString())
+                            databaseuser.child(id).child("name").setValue(binding.txtNgoName.text.toString())
 
-                            databaseuser.child(email).child("address").setValue(binding.editTextPostalAddress.text.toString())
-                            databaseuser.child(email).child("phoneNumber").setValue(binding.editTextPhone.text.toString())
+                            databaseuser.child(id).child("address").setValue(binding.editTextPostalAddress.text.toString())
+                            databaseuser.child(id).child("phoneNumber").setValue(binding.editTextPhone.text.toString())
                             Toast.makeText(context, "Updated Successful", Toast.LENGTH_LONG) //   }
 
                         }

@@ -105,6 +105,7 @@ class zDrawer : AppCompatActivity() {
                     R.id.nav_verify_event_posting,
                     R.id.nav_verify_new_facilities,
                     R.id.event,
+                    R.id.notification_UserNgo
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -136,7 +137,9 @@ class zDrawer : AppCompatActivity() {
                     R.id.nav_verify_event_posting,
                     R.id.nav_verify_new_facilities,
                     R.id.event,
-                    R.id.okuEventDetails
+                    R.id.okuEventDetails,
+                    R.id.notification_UserNgo
+
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -162,12 +165,7 @@ class zDrawer : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.notification -> {
-            // User chose the "Settings" item, show the app settings UI...
-            val intent = Intent(this, zNotification2::class.java)
-            startActivity(intent)
-            true
-        }
+
 
         R.id.log_out -> {
             // User chose the "Favorite" action, mark the current item

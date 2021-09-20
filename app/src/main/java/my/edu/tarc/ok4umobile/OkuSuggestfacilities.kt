@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.database.ktx.database
@@ -118,6 +119,7 @@ class Suggestfacilities : Fragment(),
 
                ref.child(name).setValue(newFacility)
             Toast.makeText(context, "Suggest Successful", Toast.LENGTH_LONG) //   }
+            Navigation.findNavController(it).navigate(R.id.action_nav_apply_event_posting_to_event)
 
         }
 
