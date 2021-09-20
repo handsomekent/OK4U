@@ -64,5 +64,14 @@
     <fragment
         android:id="@+id/ngoEventlistFragment"
         android:name="my.edu.tarc.ok4umobile.NgoEventlistFragment"
-        android:label="NgoEventlistFragment" />
+        android:label="NgoEventlistFragment" >
+        <action
+            android:id="@+id/action_ngoEventlistFragment_to_participateFragment"
+            app:destination="@id/participateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/participateFragment"
+        android:name="my.edu.tarc.ok4umobile.data.ParticipateFragment"
+        android:label="fragment_participate"
+        tools:layout="@layout/fragment_participate" />
 </navigation>

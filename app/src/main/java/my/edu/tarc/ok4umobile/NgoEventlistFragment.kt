@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import my.edu.tarc.ok4umobile.data.Event
-import my.edu.tarc.ok4umobile.data.MyAdapter
+import my.edu.tarc.ok4umobile.data.KzAdapter
 
 class NgoEventlistFragment : Fragment() {
     private lateinit var database: DatabaseReference
@@ -58,10 +58,10 @@ class NgoEventlistFragment : Fragment() {
                         }
 
                     }
-                    var adapter = MyAdapter(eventArrayList)
+                    var adapter = KzAdapter(eventArrayList)
                     eventRecyclerView.adapter = adapter
                     adapter.setonItemClickListener(object :
-                        MyAdapter.onItemClickListener {
+                        KzAdapter.onItemClickListener {
                         override fun onItemClick(position: Int) {
                             val bundle = Bundle()
                             bundle.putString("eventTitle",eventArrayList[position].title)
