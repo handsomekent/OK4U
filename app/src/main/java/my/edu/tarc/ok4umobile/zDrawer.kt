@@ -1,6 +1,5 @@
 package my.edu.tarc.ok4umobile
 
-import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -26,7 +25,7 @@ import my.edu.tarc.ok4umobile.databinding.DrawerNgoBinding
 import my.edu.tarc.ok4umobile.databinding.DrawerOkuBinding
 
 
-class zDrawer : AppCompatActivity() {
+class Drawer : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var map: GoogleMap
@@ -40,11 +39,10 @@ class zDrawer : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         val sharedPref: SharedPreferences? = this.getSharedPreferences(
             "kotlinsharedpreference", Context.MODE_PRIVATE
         ) ?: return
-        var id: String = sharedPref?.getString("id", "No Data").toString()
-
         var email: String = sharedPref?.getString("email", "No Data").toString()
         var name: String = sharedPref?.getString("name", "No Data").toString()
         var userType: String = sharedPref?.getString("userType", "No Data").toString()
@@ -69,6 +67,7 @@ class zDrawer : AppCompatActivity() {
             val navController = findNavController(R.id.nav_host_fragment_content_drawer)
             appBarConfiguration = AppBarConfiguration(
                 setOf(
+                    R.id.event,
                     R.id.nav_oku_editProfile,
                     R.id.nav_oku_suggest_facilities,
                     R.id.nav_event,
@@ -76,7 +75,10 @@ class zDrawer : AppCompatActivity() {
                     R.id.nav_apply_event_posting,
                     R.id.nav_verify_event_posting,
                     R.id.nav_verify_new_facilities,
-                    R.id.event
+                    R.id.verifyEvent,
+                    R.id.adminVerifyEventPosting,
+                    R.id.adminVerifyNewFacilities,
+                    R.id.facility
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -105,7 +107,6 @@ class zDrawer : AppCompatActivity() {
                     R.id.nav_verify_event_posting,
                     R.id.nav_verify_new_facilities,
                     R.id.event,
-                    R.id.notification_UserNgo
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -137,9 +138,7 @@ class zDrawer : AppCompatActivity() {
                     R.id.nav_verify_event_posting,
                     R.id.nav_verify_new_facilities,
                     R.id.event,
-                    R.id.okuEventDetails,
-                    R.id.notification_UserNgo
-
+                    R.id.okuEventDetails
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -165,7 +164,10 @@ class zDrawer : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-
+        R.id.action_settings -> {
+            // User chose the "Settings" item, show the app settings UI...
+            true
+        }
 
         R.id.log_out -> {
             // User chose the "Favorite" action, mark the current item

@@ -1,84 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".AdminVerifyEventPosting">
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    tools:context=".OkuEventDetails">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/tvVerifyEventTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".AdminVerifyEventPosting">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
 
-        <TextView
-            android:id="@+id/tvLabelFacilitiesTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Event Title"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.022"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.043" />
+    <TextView
+        android:id="@+id/tvVerifyEventDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
 
-        <ImageView
-            android:id="@+id/ivFacilitiesImage"
-            android:layout_width="366dp"
-            android:layout_height="220dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.17"
-            tools:src="@tools:sample/avatars" />
+    <TextView
+        android:id="@+id/tvVerifyEventOrganizer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
 
-        <TextView
-            android:id="@+id/tvFacilitiesDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Event Description"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/tvVerifyEventDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
 
-        <TextView
-            android:id="@+id/tvPostDay2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="5 days ago"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.544"
-            tools:layout_editor_absoluteX="7dp" />
+    <TextView
+        android:id="@+id/tvVerifyEventLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
 
-        <Button
-            android:id="@+id/btnApprove"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="268dp"
-            android:text="Approve"
-            app:backgroundTint="#4CAF50"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="-23dp" />
+    <Button
+        android:id="@+id/btnApprove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Approve"
+        app:backgroundTint="#4CAF50" />
 
-        <Button
-            android:id="@+id/btnReject"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Reject"
-            app:backgroundTint="#F44336"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.689"
-            tools:layout_editor_absoluteX="7dp" />
+    <Button
+        android:id="@+id/btnReject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Reject"
+        app:backgroundTint="#F44336" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
-
+</LinearLayout>
+</FrameLayout>
