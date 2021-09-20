@@ -17,9 +17,7 @@
         android:roundIcon="@drawable/ok4u"
         android:supportsRtl="true"
         android:theme="@style/Theme.OK4Umobile">
-        <activity
-            android:name=".zNotification2"
-            android:exported="true" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -38,7 +36,7 @@
             android:required="false" />
 
         <activity
-            android:name=".zDrawer"
+            android:name=".Drawer"
             android:exported="true"
             android:label="@string/title_activity_drawer"
             android:theme="@style/Theme.OK4Umobile.NoActionBar" />

@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.Navigation
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -92,6 +93,8 @@ class AdminVerifyNewFacilities : Fragment() {
                 "Facility Approve",
                 Toast.LENGTH_LONG
             ).show()
+            Navigation.findNavController(it).navigate(R.id.action_facility_to_adminVerifyNewFacilities)
+
         }
         btnReject.setOnClickListener(){
             var denyMsg = ""

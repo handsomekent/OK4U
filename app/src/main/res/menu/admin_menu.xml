@@ -5,18 +5,10 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_verify_event_posting"
-            android:title="Verify Event Posting"
-            />
-        <item
-            android:id="@+id/nav_verify_new_facilities"
-            android:title="Verify New Facilities"
-            />
 
         <item
 
-            android:id="@+id/nav_event"
+            android:id="@+id/event"
             android:title="@string/menu_eventlist" />
 
         <item

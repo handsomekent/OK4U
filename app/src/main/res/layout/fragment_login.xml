@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:minHeight="48dp"
             android:textColor="@color/gray"
             app:layout_constraintEnd_toEndOf="@+id/txtEmail"

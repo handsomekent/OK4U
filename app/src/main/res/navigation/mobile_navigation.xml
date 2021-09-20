@@ -17,11 +17,6 @@
         android:label="@string/menu_editprofile"
         tools:layout="@layout/fragment_oku_edit_profile" />
     <fragment
-        android:id="@+id/nav_event"
-        android:name="my.edu.tarc.ok4umobile.zEventList"
-        android:label="@string/menu_eventlist"
-        tools:layout="@layout/fragmentt_event_list" />
-    <fragment
         android:id="@+id/mapsFragment"
         android:name="my.edu.tarc.ok4umobile.zMapsFragment"
         android:label="@string/nav_map"
@@ -30,7 +25,11 @@
         android:id="@+id/nav_apply_event_posting"
         android:name="my.edu.tarc.ok4umobile.ApplyEventPostingFragmentt"
         android:label="Apply event posting"
-        tools:layout="@layout/fragment_ngo_apply_event_posting_fragmentt" />
+        tools:layout="@layout/fragment_ngo_apply_event_posting_fragmentt" >
+        <action
+            android:id="@+id/action_nav_apply_event_posting_to_event"
+            app:destination="@id/event" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_ngo_edit_profile"
@@ -41,7 +40,11 @@
         android:id="@+id/nav_oku_suggest_facilities"
         android:name="my.edu.tarc.ok4umobile.Suggestfacilities"
         android:label="Suggest new facilities"
-        tools:layout="@layout/fragment_oku_suggestfacilities" />
+        tools:layout="@layout/fragment_oku_suggestfacilities" >
+        <action
+            android:id="@+id/action_nav_oku_suggest_facilities_to_event"
+            app:destination="@id/event" />
+    </fragment>
     <fragment
         android:id="@+id/okuEventDetails"
         android:name="my.edu.tarc.ok4umobile.OkuEventDetails"
@@ -50,8 +53,8 @@
     <fragment
         android:id="@+id/event"
         android:name="my.edu.tarc.ok4umobile.Event"
-        android:label="fragment_event"
-        tools:layout="@layout/fragment_event" >
+        android:label="Event"
+        tools:layout="@layout/fragment_event">
         <action
             android:id="@+id/action_event_to_okuEventDetails"
             app:destination="@id/okuEventDetails" />
@@ -72,8 +75,8 @@
     <fragment
         android:id="@+id/verifyEvent"
         android:name="my.edu.tarc.ok4umobile.verifyEvent"
-        android:label="fragment_verify_event"
-        tools:layout="@layout/fragment_verify_event" >
+        android:label="Verify Event Posting"
+        tools:layout="@layout/fragment_verify_event">
         <action
             android:id="@+id/action_verifyEvent_to_adminVerifyEventPosting"
             app:destination="@id/adminVerifyEventPosting" />
@@ -82,5 +85,9 @@
         android:id="@+id/adminVerifyEventPosting"
         android:name="my.edu.tarc.ok4umobile.AdminVerifyEventPosting"
         android:label="fragment_admin_verify_event_posting"
-        tools:layout="@layout/fragment_admin_verify_event_posting" />
+        tools:layout="@layout/fragment_admin_verify_event_posting" >
+        <action
+            android:id="@+id/action_adminVerifyEventPosting_to_verifyEvent"
+            app:destination="@id/verifyEvent" />
+    </fragment>
 </navigation>

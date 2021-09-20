@@ -70,11 +70,9 @@ class Drawer : AppCompatActivity() {
                     R.id.event,
                     R.id.nav_oku_editProfile,
                     R.id.nav_oku_suggest_facilities,
-                    R.id.nav_event,
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
-                    R.id.nav_verify_event_posting,
-                    R.id.nav_verify_new_facilities,
+
                     R.id.verifyEvent,
                     R.id.adminVerifyEventPosting,
                     R.id.adminVerifyNewFacilities,
@@ -101,11 +99,10 @@ class Drawer : AppCompatActivity() {
                 setOf(
                     R.id.nav_ngo_edit_profile,
                     R.id.nav_oku_suggest_facilities,
-                    R.id.nav_event,
+
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
-                    R.id.nav_verify_event_posting,
-                    R.id.nav_verify_new_facilities,
+
                     R.id.event,
                 ), drawerLayout
             )
@@ -132,11 +129,9 @@ class Drawer : AppCompatActivity() {
                 setOf(
                     R.id.nav_oku_editProfile,
                     R.id.nav_oku_suggest_facilities,
-                    R.id.nav_event,
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
-                    R.id.nav_verify_event_posting,
-                    R.id.nav_verify_new_facilities,
+
                     R.id.event,
                     R.id.okuEventDetails
                 ), drawerLayout
@@ -164,10 +159,6 @@ class Drawer : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.action_settings -> {
-            // User chose the "Settings" item, show the app settings UI...
-            true
-        }
 
         R.id.log_out -> {
             // User chose the "Favorite" action, mark the current item

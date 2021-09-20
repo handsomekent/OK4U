@@ -75,7 +75,7 @@ class zLoginFragment : Fragment() {
                                                 Toast.makeText(context, "Sucess", Toast.LENGTH_LONG)
                                                 val intent = Intent(
                                                     activity,
-                                                    zDrawer::class.java
+                                                    Drawer::class.java
                                                 ) // open activity from fragment
                                                 val sharedPrefFile = "kotlinsharedpreference"
                                                 val sharedPref: SharedPreferences? =

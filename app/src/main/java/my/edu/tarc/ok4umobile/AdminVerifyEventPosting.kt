@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.navigation.Navigation
 import com.google.firebase.database.*
 
 
@@ -88,6 +89,9 @@ class AdminVerifyEventPosting : Fragment() {
                 "Event Approve",
                 Toast.LENGTH_LONG
             ).show()
+            Navigation.findNavController(it).navigate(R.id.action_adminVerifyEventPosting_to_verifyEvent)
+
+
         }
 
         btnReject.setOnClickListener(){

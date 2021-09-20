@@ -119,7 +119,7 @@ class Suggestfacilities : Fragment(),
 
                ref.child(name).setValue(newFacility)
             Toast.makeText(context, "Suggest Successful", Toast.LENGTH_LONG) //   }
-            Navigation.findNavController(it).navigate(R.id.action_nav_apply_event_posting_to_event)
+            Navigation.findNavController(it).navigate(R.id.action_nav_oku_suggest_facilities_to_event)
 
         }
 
