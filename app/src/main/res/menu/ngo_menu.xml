@@ -24,5 +24,10 @@
             android:id="@+id/mapsFragment"
             android:title="@string/okumap" />
 
+        <item
+            android:id="@+id/ngoEventlistFragment"
+            android:title="My Event" />
+
+
     </group>
 </menu>

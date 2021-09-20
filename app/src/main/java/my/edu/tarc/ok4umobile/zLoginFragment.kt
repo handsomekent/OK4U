@@ -66,8 +66,6 @@ auth=Firebase.auth
                     if (task.isSuccessful) {
 
                         database.addValueEventListener(object : ValueEventListener {
-
-
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 if (snapshot.exists()) {
                                     binding.textView.text = "can"

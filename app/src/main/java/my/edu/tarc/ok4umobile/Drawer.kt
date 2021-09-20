@@ -102,6 +102,7 @@ class Drawer : AppCompatActivity() {
                     R.id.nav_verify_event_posting,
                     R.id.nav_verify_new_facilities,
                     R.id.event,
+                    R.id.ngoEventlistFragment
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
