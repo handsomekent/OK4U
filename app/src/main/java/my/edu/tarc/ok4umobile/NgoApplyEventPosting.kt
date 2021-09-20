@@ -130,7 +130,7 @@ class ApplyEventPostingFragmentt : Fragment() {
                             eventDescription,
                             date,
                             location,
-                            "",
+                            "0",
                             availableSlot,
                             "0",
                             "",
