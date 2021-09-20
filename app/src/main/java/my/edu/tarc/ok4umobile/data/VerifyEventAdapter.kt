@@ -61,6 +61,7 @@ class VerifyEventAdapter(private val verEventList: List<Event>) :
             bundle.putString("slot",current.currentSlot)
             bundle.putString("imageUrl",current.imageUrl)
             bundle.putString("maxSlot",current.maxSlot)
+            bundle.putString("ngoId",current.ngoId)
 
 
             val fragment = AdminVerifyEventPosting()

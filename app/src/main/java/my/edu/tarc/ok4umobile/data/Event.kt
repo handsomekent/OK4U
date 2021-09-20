@@ -10,6 +10,7 @@ data class Event(var title:String = "",
                 var location:String ="",
                 var ngoName: String = "",
                 var status: String = "",
-                var denyStatus: String = "",
-                var maxSlot:String = "")
+                var denyReason: String = "",
+                var maxSlot:String = "",
+                var ngoId: String = "")
 

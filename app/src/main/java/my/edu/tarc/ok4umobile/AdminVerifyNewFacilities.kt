@@ -48,7 +48,7 @@ class AdminVerifyNewFacilities : Fragment() {
         val inputData2 = args?.get("facType")
         val inputData3 = args?.get("facLat")
         val inputData4 = args?.get("facLong")
-        val inputData5 = args?.get("userEmail")
+        val inputData5 = args?.get("okuId")
 
         tvFacTitle.text = "Facility Name: " + inputData.toString()
         tvFacDesc.text = "Facility Description: " + inputData1.toString()
@@ -70,9 +70,6 @@ class AdminVerifyNewFacilities : Fragment() {
             FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("Facilities").child("$inputData")
 
-        val db3 = FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app")
-            .getReference("Users")
-
         btnApprove.setOnClickListener(){
             db.addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -90,12 +87,19 @@ class AdminVerifyNewFacilities : Fragment() {
             db2.child("status").setValue("1")
             db2.child("latitude").setValue("$inputData3")
             db2.child("longitude").setValue("$inputData4")
-
+            Toast.makeText(
+                context,
+                "Facility Approve",
+                Toast.LENGTH_LONG
+            ).show()
         }
         btnReject.setOnClickListener(){
-            //val pt : EditText = view.findViewById(R.id.ptReason)
             var denyMsg = ""
-
+            Toast.makeText(
+                context,
+                "Facility Rejected",
+                Toast.LENGTH_LONG
+            ).show()
             val builder: AlertDialog.Builder =
                 AlertDialog.Builder(view.context)
             builder.setTitle("Reject Confirmation")
@@ -106,67 +110,31 @@ class AdminVerifyNewFacilities : Fragment() {
             builder.setView(input)
 
             builder.setPositiveButton(
-                "Yes",
+                "Confirm",
                 DialogInterface.OnClickListener { dialog, which ->
                     denyMsg = input.text.toString()
 
-                        /*db.addListenerForSingleValueEvent(object : ValueEventListener{
+                        db.addListenerForSingleValueEvent(object : ValueEventListener{
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 var del = snapshot.ref.removeValue()
                             }
                             override fun onCancelled(error: DatabaseError) {
                                 Log.i("Error", "Read failed")
                             }
-                        })*/
-                    var testing = ""
-                    db3.addValueEventListener(object : ValueEventListener {
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            if (snapshot.exists()) {
-                                for (i in snapshot.children) {
-                                    var temp1 = i.child("id").getValue().toString()
-                                    var temp2 = i.child("email").getValue().toString()
-
-
-                                    if(inputData5.toString().equals(temp2)){
-                                        testing = "$temp1"
-                                        /*val db4 = FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app")
-                                            .getReference("Users").child("$temp1").child("notification")
-
-                                        db4.addListenerForSingleValueEvent(object:ValueEventListener{
-                                            override fun onDataChange(snapshot: DataSnapshot) {
-                                                Id = snapshot.childrenCount.toInt()+1
-                                                var pkId = Id.toString()
-                                                db4.child("$pkId").child("FacilityName").setValue("$inputData")
-                                            }
-
-                                            override fun onCancelled(error: DatabaseError) {
-                                                TODO("Not yet implemented")
-                                            }
-
-                                        })*/
-                                    }
-
-                                }
-                            }
-                        }
-
-                        override fun onCancelled(error: DatabaseError) {
-
-                        }
-                    })
+                        })
 
                     val db4 = FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app")
-                        .getReference("Users").child("$testing").child("notification")
+                        .getReference("Users").child("$inputData5").child("notification")
 
                     db4.addListenerForSingleValueEvent(object:ValueEventListener{
                         override fun onDataChange(snapshot: DataSnapshot) {
                             Id = snapshot.childrenCount.toInt()+1
                             var pkId = Id.toString()
-                            db4.child("$pkId").child("FacilityName").setValue("$inputData")
+                            db4.child("$pkId").child("content").setValue("Facility Name: $inputData , Deny Reason: $denyMsg")
                         }
 
                         override fun onCancelled(error: DatabaseError) {
-                            TODO("Not yet implemented")
+                            Log.i("Error","Not Found")
                         }
 
                     })

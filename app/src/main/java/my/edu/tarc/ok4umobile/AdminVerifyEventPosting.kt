@@ -1,14 +1,15 @@
 package my.edu.tarc.ok4umobile
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.*
 
 
@@ -26,7 +27,7 @@ class AdminVerifyEventPosting : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        var Id:Int = 0
         val btnApprove = view.findViewById<Button>(R.id.btnApprove)
         val btnReject = view.findViewById<Button>(R.id.btnReject)
 
@@ -44,6 +45,8 @@ class AdminVerifyEventPosting : Fragment() {
         val inputData4 = args?.get("desc")
         val inputData5 = args?.get("imageUrl")
         val inputData6 = args?.get("maxSlot")
+        val inputData7 = args?.get("ngoId")
+        Log.i("NGO","$inputData7")
 
         tvVerTitle.text = "Event Name: " + inputData.toString()
         tvVerDate.text = "Event Date: " + inputData1.toString()
@@ -80,8 +83,69 @@ class AdminVerifyEventPosting : Fragment() {
             db2.child("ngoName").setValue("$inputData3")
             db2.child("denyStatus").setValue("")
             db2.child("maxSlot").setValue("$inputData6")
-
+            Toast.makeText(
+                context,
+                "Event Approve",
+                Toast.LENGTH_LONG
+            ).show()
         }
+
+        btnReject.setOnClickListener(){
+            var denyMsg = ""
+            val builder: AlertDialog.Builder =
+                AlertDialog.Builder(view.context)
+            builder.setTitle("Reject Confirmation")
+            builder.setMessage("Confirm to Reject the Event?")
+            val input = EditText(view.context)
+            input.inputType = InputType.TYPE_CLASS_TEXT
+            input.setHint("Enter Reason")
+            builder.setView(input)
+
+            builder.setPositiveButton(
+                "Confirm",
+                DialogInterface.OnClickListener { dialog, which ->
+                    denyMsg = input.text.toString()
+                    Toast.makeText(
+                        context,
+                        "Event Rejected",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    db.addListenerForSingleValueEvent(object : ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            var del = snapshot.ref.removeValue()
+                        }
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.i("Error", "Read failed")
+                        }
+                    })
+
+                    val db4 = FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app")
+                        .getReference("Users").child("$inputData7").child("notification")
+
+                    db4.addListenerForSingleValueEvent(object:ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            Id = snapshot.childrenCount.toInt()+1
+                            var pkId = Id.toString()
+                            db4.child("$pkId").child("content").setValue("Event Name: $inputData , Deny Reason: $denyMsg")
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            Log.i("Error","Not Found")
+                        }
+
+                    })
+
+                    dialog.cancel()
+                })
+            builder.setNegativeButton(
+                "Cancel",
+                DialogInterface.OnClickListener { dialog, which ->
+                    dialog.cancel()
+                })
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.show()
+        }
+
 
 
     }

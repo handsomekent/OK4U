@@ -64,13 +64,5 @@
             android:layout_marginTop="8dp"
             android:text="Reject" />
 
-        <EditText
-            android:id="@+id/ptReason"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:inputType="textLongMessage|textPersonName"
-            android:visibility="gone" />
-
     </LinearLayout>
 </FrameLayout>
