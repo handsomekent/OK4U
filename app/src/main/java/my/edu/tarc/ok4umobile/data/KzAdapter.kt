@@ -50,7 +50,6 @@ class KzAdapter (private val eventList : List<Event>): RecyclerView.Adapter<KzAd
         val current = eventList[position]
         holder.tvEventTitle.text  = "Event Name: " +current.title
         holder.tvPostDay.text = "Event Date: " +current.date
-        holder.slot.text = "Participant: " +current.currentSlot
         Glide.with(holder.img.context).load(current.imageUrl).into(holder.img)
 
         holder.itemView.setOnClickListener(){

@@ -39,8 +39,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="5 days ago" />
-
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 </FrameLayout>

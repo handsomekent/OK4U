@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import my.edu.tarc.ok4umobile.data.Event
 import my.edu.tarc.ok4umobile.data.KzAdapter
+import my.edu.tarc.ok4umobile.data.MyAdapter
 
 class NgoEventlistFragment : Fragment() {
     private lateinit var database: DatabaseReference
@@ -75,7 +76,7 @@ class NgoEventlistFragment : Fragment() {
                             val fragment = OkuEventDetails()
                             fragment.arguments = bundle
                             fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment_content_drawer,fragment)?.commit()
-                            //Log.i("pos", "$position")
+                            Log.i("pos", "$position")
                         }
                     })
                 }
