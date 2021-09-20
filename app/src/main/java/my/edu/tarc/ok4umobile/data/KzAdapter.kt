@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import my.edu.tarc.ok4umobile.OkuEventDetails
 import my.edu.tarc.ok4umobile.R
+import my.edu.tarc.ok4umobile.ParticipateFragment
 
 class KzAdapter (private val eventList : List<Event>): RecyclerView.Adapter<KzAdapter.myViewHolder>() {
 
@@ -62,7 +62,7 @@ class KzAdapter (private val eventList : List<Event>): RecyclerView.Adapter<KzAd
             bundle.putString("slot",current.currentSlot)
             bundle.putString("imageUrl",current.imageUrl)
 
-            val fragment = OkuEventDetails()
+            val fragment = ParticipateFragment()
             fragment.arguments = bundle
             Navigation.findNavController(it).navigate(R.id.action_ngoEventlistFragment_to_participateFragment,bundle)
         }

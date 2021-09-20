@@ -64,19 +64,19 @@ class NgoEventlistFragment : Fragment() {
                     adapter.setonItemClickListener(object :
                         KzAdapter.onItemClickListener {
                         override fun onItemClick(position: Int) {
-                            val bundle = Bundle()
-                            bundle.putString("eventTitle",eventArrayList[position].title)
-                            bundle.putString("eventDay",eventArrayList[position].date)
-                            bundle.putString("location",eventArrayList[position].location)
-                            bundle.putString("ngoName",eventArrayList[position].ngoName)
-                            bundle.putString("desc",eventArrayList[position].eventDesc)
-                            bundle.putString("slot",eventArrayList[position].currentSlot)
-                            bundle.putString("imageUrl",eventArrayList[position].imageUrl)
-
-                            val fragment = OkuEventDetails()
-                            fragment.arguments = bundle
-                            fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment_content_drawer,fragment)?.commit()
-                            Log.i("pos", "$position")
+//                            val bundle = Bundle()
+//                            bundle.putString("eventTitle",eventArrayList[position].title)
+//                            bundle.putString("eventDay",eventArrayList[position].date)
+//                            bundle.putString("location",eventArrayList[position].location)
+//                            bundle.putString("ngoName",eventArrayList[position].ngoName)
+//                            bundle.putString("desc",eventArrayList[position].eventDesc)
+//                            bundle.putString("slot",eventArrayList[position].currentSlot)
+//                            bundle.putString("imageUrl",eventArrayList[position].imageUrl)
+//
+//                            val fragment = OkuEventDetails()
+//                            fragment.arguments = bundle
+//                            fragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment_content_drawer,fragment)?.commit()
+//                            Log.i("pos", "$position")
                         }
                     })
                 }
