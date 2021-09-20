@@ -90,6 +90,7 @@
         <entry key="app/src/main/res/layout/fragment_ngo_apply_event_posting_fragmentt.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/fragment_ngo_edit_profile.xml" value="0.2824074074074074" />
         <entry key="app/src/main/res/layout/fragment_ngo_event_details.xml" value="0.2824074074074074" />
+        <entry key="app/src/main/res/layout/fragment_notification_list.xml" value="0.30277777777777776" />
         <entry key="app/src/main/res/layout/fragment_oku_edit_profile.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/fragment_oku_event_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_oku_suggestfacilities.xml" value="0.2953703703703704" />
@@ -101,6 +102,7 @@
         <entry key="app/src/main/res/layout/fragmentt_event_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragmentt_map.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/nav_header_drawer.xml" value="0.22777777777777777" />
+        <entry key="app/src/main/res/layout/notification.xml" value="0.30277777777777776" />
         <entry key="app/src/main/res/menu/activity_admin_drawer_drawer.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/menu/admin_drawer.xml" value="0.2824074074074074" />
         <entry key="app/src/main/res/menu/drawer.xml" value="0.2824074074074074" />
