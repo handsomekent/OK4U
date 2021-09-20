@@ -90,4 +90,9 @@
             android:id="@+id/action_adminVerifyEventPosting_to_verifyEvent"
             app:destination="@id/verifyEvent" />
     </fragment>
+    <fragment
+        android:id="@+id/notificationList"
+        android:name="my.edu.tarc.ok4umobile.NotificationList"
+        android:label="Notification"
+        tools:layout="@layout/fragment_notification_list" />
 </navigation>

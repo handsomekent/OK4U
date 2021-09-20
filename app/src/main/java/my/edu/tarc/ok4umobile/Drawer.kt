@@ -102,6 +102,7 @@ class Drawer : AppCompatActivity() {
 
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
+                    R.id.listNotification,
 
                     R.id.event,
                 ), drawerLayout
@@ -131,7 +132,7 @@ class Drawer : AppCompatActivity() {
                     R.id.nav_oku_suggest_facilities,
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
-
+                    R.id.listNotification,
                     R.id.event,
                     R.id.okuEventDetails
                 ), drawerLayout
