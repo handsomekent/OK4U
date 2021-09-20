@@ -71,7 +71,7 @@
     </fragment>
     <fragment
         android:id="@+id/participateFragment"
-        android:name="my.edu.tarc.ok4umobile.data.ParticipateFragment"
+        android:name="my.edu.tarc.ok4umobile.ParticipateFragment"
         android:label="fragment_participate"
         tools:layout="@layout/fragment_participate" />
 </navigation>

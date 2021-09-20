@@ -23,7 +23,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.auth.User
 import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ok4umobile.databinding.FragmentLoginBinding
-import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
+//import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
 import kotlin.contracts.Returns
 
 class zLoginFragment : Fragment() {

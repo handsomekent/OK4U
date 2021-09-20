@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import my.edu.tarc.ok4umobile.databinding.FragmentForgetpassBinding
-import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
 
 class zForgetpassFragment : Fragment() {
     private lateinit var binding: FragmentForgetpassBinding

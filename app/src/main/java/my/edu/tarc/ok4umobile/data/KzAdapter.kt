@@ -55,12 +55,6 @@ class KzAdapter (private val eventList : List<Event>): RecyclerView.Adapter<KzAd
         holder.itemView.setOnClickListener(){
             val bundle = Bundle()
             bundle.putString("eventTitle",current.title)
-            bundle.putString("eventDay",current.date)
-            bundle.putString("location",current.location)
-            bundle.putString("ngoName",current.ngoName)
-            bundle.putString("desc",current.eventDesc)
-            bundle.putString("slot",current.currentSlot)
-            bundle.putString("imageUrl",current.imageUrl)
 
             val fragment = ParticipateFragment()
             fragment.arguments = bundle
