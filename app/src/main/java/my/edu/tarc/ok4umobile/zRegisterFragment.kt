@@ -97,7 +97,7 @@ class zRegisterFragment : Fragment() {
                 }
 
 
-                //         Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
+                         Navigation.findNavController(it).navigate(R.id.action_registerFragment_to_loginFragment)
             }else{
                 Toast.makeText(this.context, "Both Passwords are not same!", Toast.LENGTH_SHORT).show()
             }

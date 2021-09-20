@@ -15,7 +15,7 @@ import my.edu.tarc.ok4umobile.data.Event
 import my.edu.tarc.ok4umobile.data.MyAdapter
 
 
-class Event : Fragment() {
+class zEvent : Fragment() {
     private lateinit var db: DatabaseReference
     private lateinit var eventRecyclerView: RecyclerView
     private lateinit var eventArrayList: ArrayList<Event>

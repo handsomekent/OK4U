@@ -7,7 +7,8 @@ class Facilities (
     var facilityName:String,
     var faciDesc :String,
     var status:String,
+    var okuId:String
 )
 {
-    constructor(): this("","","","","","")
+    constructor(): this("","","","","","","")
 }

@@ -1,5 +1,6 @@
 package my.edu.tarc.ok4umobile
 
+import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -25,7 +26,7 @@ import my.edu.tarc.ok4umobile.databinding.DrawerNgoBinding
 import my.edu.tarc.ok4umobile.databinding.DrawerOkuBinding
 
 
-class Drawer : AppCompatActivity() {
+class zDrawer : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var map: GoogleMap
@@ -39,10 +40,11 @@ class Drawer : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         val sharedPref: SharedPreferences? = this.getSharedPreferences(
             "kotlinsharedpreference", Context.MODE_PRIVATE
         ) ?: return
+        var id: String = sharedPref?.getString("id", "No Data").toString()
+
         var email: String = sharedPref?.getString("email", "No Data").toString()
         var name: String = sharedPref?.getString("name", "No Data").toString()
         var userType: String = sharedPref?.getString("userType", "No Data").toString()
@@ -73,7 +75,8 @@ class Drawer : AppCompatActivity() {
                     R.id.mapsFragment,
                     R.id.nav_apply_event_posting,
                     R.id.nav_verify_event_posting,
-                    R.id.nav_verify_new_facilities
+                    R.id.nav_verify_new_facilities,
+                    R.id.event
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
@@ -159,8 +162,10 @@ class Drawer : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.action_settings -> {
+        R.id.notification -> {
             // User chose the "Settings" item, show the app settings UI...
+            val intent = Intent(this, zNotification2::class.java)
+            startActivity(intent)
             true
         }
 

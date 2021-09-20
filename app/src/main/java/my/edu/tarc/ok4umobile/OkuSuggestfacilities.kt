@@ -1,6 +1,8 @@
 package my.edu.tarc.ok4umobile
 
 import android.Manifest
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -52,6 +54,11 @@ class Suggestfacilities : Fragment(),
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val sharedPref : SharedPreferences? = this.activity?.getSharedPreferences(
+            "kotlinsharedpreference", Context.MODE_PRIVATE)
+        var id: String =sharedPref?.getString("id","No Data").toString()
+
+
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_oku_suggestfacilities,
@@ -107,7 +114,7 @@ class Suggestfacilities : Fragment(),
 
 
 
-               val newFacility = Facilities(radtxt, latitude, longitude,name,desc,"0")
+               val newFacility = Facilities(radtxt, latitude, longitude,name,desc,"0",id)
 
                ref.child(name).setValue(newFacility)
             Toast.makeText(context, "Suggest Successful", Toast.LENGTH_LONG) //   }

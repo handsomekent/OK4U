@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.graphics.Color
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
@@ -19,12 +18,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.auth.User
 import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ok4umobile.databinding.FragmentLoginBinding
-import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
-import kotlin.contracts.Returns
 
 class zLoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -85,7 +81,7 @@ class zLoginFragment : Fragment() {
                                             Toast.makeText(context, "Sucess", Toast.LENGTH_LONG)
                                             val intent = Intent(
                                                 activity,
-                                                Drawer::class.java
+                                                zDrawer::class.java
                                             ) // open activity from fragment
                                             val sharedPrefFile = "kotlinsharedpreference"
                                             val sharedPref: SharedPreferences? =

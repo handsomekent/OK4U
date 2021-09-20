@@ -58,7 +58,7 @@
         tools:layout="@layout/fragment_oku_event_details" />
     <fragment
         android:id="@+id/event"
-        android:name="my.edu.tarc.ok4umobile.Event"
+        android:name="my.edu.tarc.ok4umobile.zEvent"
         android:label="Event List"
         tools:layout="@layout/fragment_event" />
 </navigation>
