@@ -25,7 +25,19 @@ class ParticipateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = inflate(inflater, R.layout.fragment_participate, container, false)
-        val database = FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users")
+        val database = FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("events")
+
+        val args = this.arguments
+        val argTittle = args?.get("eventTitle")
+        val argDate = args?.get("eventDay")
+        val argLocation = args?.get("location")
+        val argSlot = args?.get("slot")
+        val argImg = args?.get("imageUrl")
+        binding.txtTittle.text = "Event Title: " + argTittle.toString()
+        binding.txtDate.text = "Event Date: " + argDate.toString()
+        binding.txtLocation.text = "Event Location: " + argLocation.toString()
+        binding.txtSlot.text = "Remaining Slot: " + argSlot.toString()
+        binding.txtParticipate.text = "Participater List: \n" + "testname"
 
 
 
