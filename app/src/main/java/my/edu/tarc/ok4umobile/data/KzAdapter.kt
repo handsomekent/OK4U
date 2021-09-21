@@ -1,5 +1,6 @@
 package my.edu.tarc.ok4umobile.data
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,10 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import my.edu.tarc.ok4umobile.OkuEventDetails
 import my.edu.tarc.ok4umobile.R
+import my.edu.tarc.ok4umobile.ParticipateFragment
 
-class MyAdapter (private val eventList : List<Event>): RecyclerView.Adapter<MyAdapter.myViewHolder>() {
+class KzAdapter (private val eventList : List<Event>): RecyclerView.Adapter<KzAdapter.myViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
 
@@ -26,16 +27,16 @@ class MyAdapter (private val eventList : List<Event>): RecyclerView.Adapter<MyAd
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.fragment_ngo_event,parent,false)
+            R.layout.fragmentt_event_list,parent,false)
+
 
         return myViewHolder(itemView,mListener)
     }
 
     class myViewHolder(itemView:View,listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
-        val tvEventTitle:TextView = itemView.findViewById(R.id.tvEventName)
-        val tvPostDay : TextView = itemView.findViewById(R.id.tvEventDate)
+        val tvEventTitle:TextView = itemView.findViewById(R.id.tvEventTitle)
+        val tvPostDay : TextView = itemView.findViewById(R.id.tvPostDay)
         val img : ImageView = itemView.findViewById(R.id.imageView)
-        val slot : TextView = itemView.findViewById(R.id.tvPartSlot)
 
         init{
             itemView.setOnClickListener(){
@@ -44,30 +45,20 @@ class MyAdapter (private val eventList : List<Event>): RecyclerView.Adapter<MyAd
         }
     }
 
+
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
-            val current = eventList[position]
-            if(current.status == "1"){
-                holder.tvEventTitle.text  = "Event Name: " +current.title
-                holder.tvPostDay.text = "Event Date: " +current.date
-                holder.slot.text = "Participant: " +current.currentSlot
-                Glide.with(holder.img.context).load(current.imageUrl).into(holder.img)
-            }else if (current.status == "0"){
-                holder.itemView.visibility = View.GONE
-            }
+        val current = eventList[position]
+        holder.tvEventTitle.text  = "Event Name: " +current.title
+        holder.tvPostDay.text = "Event Date: " +current.date
+        Glide.with(holder.img.context).load(current.imageUrl).into(holder.img)
 
         holder.itemView.setOnClickListener(){
             val bundle = Bundle()
             bundle.putString("eventTitle",current.title)
-            bundle.putString("eventDay",current.date)
-            bundle.putString("location",current.location)
-            bundle.putString("ngoName",current.ngoName)
-            bundle.putString("desc",current.eventDesc)
-            bundle.putString("slot",current.currentSlot)
-            bundle.putString("imageUrl",current.imageUrl)
 
-            val fragment = OkuEventDetails()
+            val fragment = ParticipateFragment()
             fragment.arguments = bundle
-            Navigation.findNavController(it).navigate(R.id.action_event_to_okuEventDetails,bundle)
+            Navigation.findNavController(it).navigate(R.id.action_ngoEventlistFragment_to_participateFragment,bundle)
         }
 
     }
@@ -75,4 +66,6 @@ class MyAdapter (private val eventList : List<Event>): RecyclerView.Adapter<MyAd
     override fun getItemCount(): Int {
         return eventList.size
     }
+
+
 }

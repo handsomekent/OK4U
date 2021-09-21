@@ -105,6 +105,7 @@ class Drawer : AppCompatActivity() {
                     R.id.listNotification,
 
                     R.id.event,
+                    R.id.ngoEventlistFragment
                 ), drawerLayout
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
