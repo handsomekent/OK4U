@@ -91,7 +91,7 @@ class AdminVerifyEventPosting : Fragment() {
                 "Event Approve",
                 Toast.LENGTH_LONG
             ).show()
-            Navigation.findNavController(it).navigate(R.id.action_nav_verify_event_posting_to_verifyEvent22)
+            Navigation.findNavController(it).navigate(R.id.action_nav_verify_event_posting_to_event)
 
 
         }
@@ -116,7 +116,7 @@ class AdminVerifyEventPosting : Fragment() {
                         "Event Rejected",
                         Toast.LENGTH_LONG
                     ).show()
-                    db.addListenerForSingleValueEvent(object : ValueEventListener{
+                    db.addValueEventListener(object : ValueEventListener{
                         override fun onDataChange(snapshot: DataSnapshot) {
                             var del = snapshot.ref.removeValue()
                         }
@@ -140,9 +140,12 @@ class AdminVerifyEventPosting : Fragment() {
                         }
 
                     })
-
+                    Navigation.findNavController(it).navigate(R.id.action_nav_verify_event_posting_to_event)
                     dialog.cancel()
-                })
+                }
+
+
+            )
             builder.setNegativeButton(
                 "Cancel",
                 DialogInterface.OnClickListener { dialog, which ->

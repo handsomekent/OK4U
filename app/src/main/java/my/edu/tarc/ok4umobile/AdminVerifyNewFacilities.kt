@@ -98,11 +98,7 @@ class AdminVerifyNewFacilities : Fragment() {
         }
         btnReject.setOnClickListener(){
             var denyMsg = ""
-            Toast.makeText(
-                context,
-                "Facility Rejected",
-                Toast.LENGTH_LONG
-            ).show()
+
             val builder: AlertDialog.Builder =
                 AlertDialog.Builder(view.context)
             builder.setTitle("Reject Confirmation")
@@ -116,7 +112,11 @@ class AdminVerifyNewFacilities : Fragment() {
                 "Confirm",
                 DialogInterface.OnClickListener { dialog, which ->
                     denyMsg = input.text.toString()
-
+                    Toast.makeText(
+                        context,
+                        "Facility Rejected",
+                        Toast.LENGTH_LONG
+                    ).show()
                         db.addListenerForSingleValueEvent(object : ValueEventListener{
                             override fun onDataChange(snapshot: DataSnapshot) {
                                 var del = snapshot.ref.removeValue()
