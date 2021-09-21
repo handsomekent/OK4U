@@ -21,7 +21,6 @@ import com.google.android.gms.location.LocationServices
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ok4umobile.databinding.FragmentOkuSuggestfacilitiesBinding
-import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

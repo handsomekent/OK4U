@@ -84,12 +84,14 @@ class AdminVerifyEventPosting : Fragment() {
             db2.child("ngoName").setValue("$inputData3")
             db2.child("denyStatus").setValue("")
             db2.child("maxSlot").setValue("$inputData6")
+            db2.child("ngoId").setValue("$inputData7")
+
             Toast.makeText(
                 context,
                 "Event Approve",
                 Toast.LENGTH_LONG
             ).show()
-            Navigation.findNavController(it).navigate(R.id.action_adminVerifyEventPosting_to_verifyEvent)
+            Navigation.findNavController(it).navigate(R.id.action_nav_verify_event_posting_to_verifyEvent22)
 
 
         }

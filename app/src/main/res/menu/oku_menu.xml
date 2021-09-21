@@ -10,7 +10,7 @@
             android:title="@string/menu_editprofile"
             />
         <item
-            android:id="@+id/notificationList"
+            android:id="@+id/notificationList2"
             android:title="notification"
             />
         <item

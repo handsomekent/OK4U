@@ -66,7 +66,7 @@ class VerifyEventAdapter(private val verEventList: List<Event>) :
 
             val fragment = AdminVerifyEventPosting()
             fragment.arguments = bundle
-            Navigation.findNavController(it).navigate(R.id.action_verifyEvent_to_adminVerifyEventPosting,bundle)
+            Navigation.findNavController(it).navigate(R.id.action_verifyEvent2_to_nav_verify_event_posting,bundle)
 
         }
     }

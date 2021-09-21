@@ -5,18 +5,20 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
+
+
         <item
             android:id="@+id/nav_ngo_edit_profile"
             android:title="@string/menu_editprofile"
             />
         <item
-            android:id="@+id/notificationList"
-            android:title="notification"
-            />
-        <item
             android:id="@+id/nav_apply_event_posting"
             android:title="Apply posting event" />
-
+        <item
+            android:id="@+id/notificationList2"
+            android:title="notification"
+            />
         <item
 
             android:id="@+id/event"
@@ -24,5 +26,11 @@
         <item
             android:id="@+id/mapsFragment"
             android:title="@string/okumap" />
+
+        <item
+            android:id="@+id/ngoEventlistFragment"
+            android:title="My Event" />
+
+
     </group>
 </menu>

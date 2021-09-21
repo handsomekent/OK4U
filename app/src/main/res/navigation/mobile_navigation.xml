@@ -17,6 +17,11 @@
         android:label="@string/menu_editprofile"
         tools:layout="@layout/fragment_oku_edit_profile" />
     <fragment
+        android:id="@+id/nav_event"
+        android:name="my.edu.tarc.ok4umobile.zEventList"
+        android:label="@string/menu_eventlist"
+        tools:layout="@layout/fragmentt_event_list" />
+    <fragment
         android:id="@+id/mapsFragment"
         android:name="my.edu.tarc.ok4umobile.zMapsFragment"
         android:label="@string/nav_map"
@@ -30,7 +35,24 @@
             android:id="@+id/action_nav_apply_event_posting_to_event"
             app:destination="@id/event" />
     </fragment>
-
+    <fragment
+        android:id="@+id/nav_verify_new_facilities"
+        android:name="my.edu.tarc.ok4umobile.AdminVerifyNewFacilities"
+        android:label="Verify new facilities"
+        tools:layout="@layout/fragment_admin_verify_new_facilities" >
+        <action
+            android:id="@+id/action_nav_verify_new_facilities_to_facility2"
+            app:destination="@id/facility2" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_verify_event_posting"
+        android:name="my.edu.tarc.ok4umobile.AdminVerifyEventPosting"
+        android:label="Verify event posting"
+        tools:layout="@layout/fragment_admin_verify_event_posting" >
+        <action
+            android:id="@+id/action_nav_verify_event_posting_to_verifyEvent22"
+            app:destination="@id/verifyEvent2" />
+    </fragment>
     <fragment
         android:id="@+id/nav_ngo_edit_profile"
         android:name="my.edu.tarc.ok4umobile.NgoEditProfile"
@@ -48,50 +70,49 @@
     <fragment
         android:id="@+id/okuEventDetails"
         android:name="my.edu.tarc.ok4umobile.OkuEventDetails"
-        android:label="Event details"
+        android:label="Event Detail"
         tools:layout="@layout/fragment_oku_event_details" />
     <fragment
         android:id="@+id/event"
         android:name="my.edu.tarc.ok4umobile.Event"
-        android:label="Event"
-        tools:layout="@layout/fragment_event">
+        android:label="Event List"
+        tools:layout="@layout/fragment_event" >
         <action
             android:id="@+id/action_event_to_okuEventDetails"
             app:destination="@id/okuEventDetails" />
     </fragment>
     <fragment
-        android:id="@+id/facility"
+        android:id="@+id/ngoEventlistFragment"
+        android:name="my.edu.tarc.ok4umobile.NgoEventlistFragment"
+        android:label="My Event list">
+        <action
+            android:id="@+id/action_ngoEventlistFragment_to_participateFragment"
+            app:destination="@id/participateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/participateFragment"
+        android:name="my.edu.tarc.ok4umobile.ParticipateFragment"
+        android:label="Event user registered list"
+        tools:layout="@layout/fragment_participate" />
+    <fragment
+        android:id="@+id/verifyEvent2"
+        android:name="my.edu.tarc.ok4umobile.verifyEvent"
+        android:label="Verify event list"
+        tools:layout="@layout/fragment_verify_event" >
+        <action
+            android:id="@+id/action_verifyEvent2_to_nav_verify_event_posting"
+            app:destination="@id/nav_verify_event_posting" />
+    </fragment>
+    <fragment
+        android:id="@+id/facility2"
         android:name="my.edu.tarc.ok4umobile.Facility"
         android:label="Facility" >
         <action
-            android:id="@+id/action_facility_to_adminVerifyNewFacilities"
-            app:destination="@id/adminVerifyNewFacilities" />
+            android:id="@+id/action_facility2_to_nav_verify_new_facilities"
+            app:destination="@id/nav_verify_new_facilities" />
     </fragment>
     <fragment
-        android:id="@+id/adminVerifyNewFacilities"
-        android:name="my.edu.tarc.ok4umobile.AdminVerifyNewFacilities"
-        android:label="Verify facility"
-        tools:layout="@layout/fragment_admin_verify_new_facilities" />
-    <fragment
-        android:id="@+id/verifyEvent"
-        android:name="my.edu.tarc.ok4umobile.verifyEvent"
-        android:label="Verify Event Posting"
-        tools:layout="@layout/fragment_verify_event">
-        <action
-            android:id="@+id/action_verifyEvent_to_adminVerifyEventPosting"
-            app:destination="@id/adminVerifyEventPosting" />
-    </fragment>
-    <fragment
-        android:id="@+id/adminVerifyEventPosting"
-        android:name="my.edu.tarc.ok4umobile.AdminVerifyEventPosting"
-        android:label="Verify event posting"
-        tools:layout="@layout/fragment_admin_verify_event_posting">
-        <action
-            android:id="@+id/action_adminVerifyEventPosting_to_verifyEvent"
-            app:destination="@id/verifyEvent" />
-    </fragment>
-    <fragment
-        android:id="@+id/notificationList"
+        android:id="@+id/notificationList2"
         android:name="my.edu.tarc.ok4umobile.NotificationList"
         android:label="Notification"
         tools:layout="@layout/fragment_notification_list" />

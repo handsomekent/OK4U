@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import my.edu.tarc.ok4umobile.databinding.FragmentForgetpassBinding
-import my.edu.tarc.ok4umobile.databinding.FragmentRegisterBinding
 
 class zForgetpassFragment : Fragment() {
     private lateinit var binding: FragmentForgetpassBinding
