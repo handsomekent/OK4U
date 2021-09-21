@@ -37,6 +37,8 @@
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_event.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_event_details.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_event_list.xml" value="0.28541666666666665" />
+        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_facility.xml" value="0.28541666666666665" />
+        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_facility_list.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_forgetpass.xml" value="0.264" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_gallery.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_home.xml" value="0.15104166666666666" />
@@ -45,7 +47,9 @@
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_maps.xml" value="0.15104166666666666" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_ngo_apply_event_posting_fragmentt.xml" value="0.4" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_ngo_edit_profile.xml" value="0.28541666666666665" />
+        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_ngo_event.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_ngo_event_details.xml" value="0.4" />
+        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_ngo_eventlist.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_notification__user_ngo.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_oku_edit_profile.xml" value="0.4" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_oku_event_details.xml" value="0.28541666666666665" />
@@ -54,6 +58,8 @@
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_slideshow.xml" value="0.28541666666666665" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_suggestfacilities.xml" value="0.15104166666666666" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_test.xml" value="0.28541666666666665" />
+        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_verify_event.xml" value="0.28541666666666665" />
+        <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_verify_event_list.xml" value="0.203125" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_verify_event_posting.xml" value="0.2713541666666667" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_verify_new_facilities.xml" value="0.2713541666666667" />
         <entry key="..\:/Users/clken/Documents/GitHub/OK4U/app/src/main/res/layout/fragment_xdddd.xml" value="0.28102564102564104" />

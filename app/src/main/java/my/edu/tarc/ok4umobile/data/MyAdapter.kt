@@ -26,7 +26,7 @@ class MyAdapter (private val eventList : List<Event>): RecyclerView.Adapter<MyAd
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.fragment_ngo_event,parent,false)
+            R.layout.fragmentt_event_list,parent,false)
 
         return myViewHolder(itemView,mListener)
     }

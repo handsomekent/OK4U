@@ -27,7 +27,7 @@ class KzAdapter (private val eventList : List<Event>): RecyclerView.Adapter<KzAd
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): myViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
-            R.layout.fragmentt_event_list,parent,false)
+            R.layout.fragment_ngo_event,parent,false)
 
 
         return myViewHolder(itemView,mListener)

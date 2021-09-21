@@ -93,7 +93,7 @@ class AdminVerifyNewFacilities : Fragment() {
                 "Facility Approve",
                 Toast.LENGTH_LONG
             ).show()
-            Navigation.findNavController(it).navigate(R.id.action_facility_to_adminVerifyNewFacilities)
+            Navigation.findNavController(it).navigate(R.id.action_nav_verify_new_facilities_to_facility2)
 
         }
         btnReject.setOnClickListener(){

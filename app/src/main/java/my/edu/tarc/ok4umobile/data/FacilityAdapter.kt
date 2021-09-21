@@ -65,7 +65,7 @@ class FacilityAdapter (private val facilityList : List<Facility>): RecyclerView.
 
             val fragment = AdminVerifyNewFacilities()
             fragment.arguments = bundle
-            Navigation.findNavController(it).navigate(R.id.action_facility_to_adminVerifyNewFacilities,bundle)
+            Navigation.findNavController(it).navigate(R.id.action_facility2_to_nav_verify_new_facilities,bundle)
         }
     }
 

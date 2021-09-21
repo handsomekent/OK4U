@@ -36,6 +36,8 @@ class NgoEventlistFragment : Fragment() {
         val sharedPref : SharedPreferences? = this.activity?.getSharedPreferences("kotlinsharedpreference", Context.MODE_PRIVATE)
         var name: String =sharedPref?.getString("name","No Data").toString()
         var email: String =sharedPref?.getString("email","No Data").toString()
+        var id1: String =sharedPref?.getString("id","No Data").toString()
+
         Log.i("beta", "$email" )//test only
 
         eventRecyclerView = view.findViewById(R.id.eventRecyclerView)
@@ -43,10 +45,10 @@ class NgoEventlistFragment : Fragment() {
         eventRecyclerView.setHasFixedSize(true)
         eventArrayList = arrayListOf<Event>()
 
-        getEventData(name)
+        getEventData(id1)
     }
 
-    private fun getEventData(ngoName: String) {
+    private fun getEventData(id1: String) {
         database = FirebaseDatabase.getInstance("https://ok4u-a1047-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("events")
 
         database.addValueEventListener(object : ValueEventListener {
@@ -54,7 +56,7 @@ class NgoEventlistFragment : Fragment() {
                 if (snapshot.exists()) {
                     for (snap in snapshot.children) {
                         val eve = snap.getValue(Event::class.java)
-                        if(ngoName.equals(eve?.ngoName) == true ){
+                        if(id1.equals(eve?.ngoId) == true ){
                             eventArrayList.add(eve!!)
                         }
 

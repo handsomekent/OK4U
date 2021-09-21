@@ -15,10 +15,10 @@
             android:id="@+id/mapsFragment"
             android:title="@string/okumap" />
 
-        <item android:id="@+id/facility"
+        <item android:id="@+id/facility2"
             android:title="Verify Facility"/>
 
-        <item android:id="@+id/verifyEvent"
+        <item android:id="@+id/verifyEvent2"
             android:title="Verify Event"/>
 
     </group>
